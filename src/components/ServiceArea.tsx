@@ -12,13 +12,13 @@ export default function ServiceArea() {
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-red-100 text-red-700 text-sm font-bold mb-6 uppercase tracking-wider">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary text-primary text-sm font-bold mb-6 uppercase tracking-wider">
               <MapPin className="w-4 h-4" />
               Visit Our Shop
             </div>
             
             <h2 className="text-4xl md:text-5xl font-extrabold text-zinc-950 mb-6 tracking-tight">
-              Serving <span className="text-red-600">Trenton</span> & Beyond
+              Serving <span className="text-primary">Trenton</span> & Beyond
             </h2>
             
             <p className="text-lg text-zinc-600 mb-8 leading-relaxed">
@@ -33,7 +33,7 @@ export default function ServiceArea() {
                 <div>
                   <h3 className="text-xl font-bold mb-2 text-zinc-950">Location</h3>
                   <p className="text-zinc-600">1017 Hamilton Ave<br />Trenton, NJ 08629</p>
-                  <a href="https://www.google.com/maps/place/Zambranos+Complete+Auto+Center/@40.2186444,-74.7358035,21z/data=!4m15!1m8!3m7!1s0x89c159aa2414b915:0x36716ece72290eab!2s1017+Hamilton+Ave,+Trenton,+NJ+08629!3b1!8m2!3d40.2186494!4d-74.7355814!16s%2Fg%2F11b8yyr95l!3m5!1s0x89c159aa244419cb:0xeda66e2d8ae67a21!8m2!3d40.2186444!4d-74.7356426!16s%2Fg%2F1tdj5380?entry=ttu&g_ep=EgoyMDI2MDIyNC4wIKXMDSoASAFQAw%3D%3D" target="_blank" rel="noreferrer" className="text-red-600 font-bold hover:text-red-700 text-sm mt-2 inline-block">Get Directions</a>
+                  <a href="https://www.google.com/maps/place/Zambranos+Complete+Auto+Center/@40.2186444,-74.7358035,21z/data=!4m15!1m8!3m7!1s0x89c159aa2414b915:0x36716ece72290eab!2s1017+Hamilton+Ave,+Trenton,+NJ+08629!3b1!8m2!3d40.2186494!4d-74.7355814!16s%2Fg%2F11b8yyr95l!3m5!1s0x89c159aa244419cb:0xeda66e2d8ae67a21!8m2!3d40.2186444!4d-74.7356426!16s%2Fg%2F1tdj5380?entry=ttu&g_ep=EgoyMDI2MDIyNC4wIKXMDSoASAFQAw%3D%3D" target="_blank" rel="noreferrer" className="text-primary font-bold hover:text-primary text-sm mt-2 inline-block">Get Directions</a>
                 </div>
               </div>
               
@@ -44,7 +44,7 @@ export default function ServiceArea() {
                 <div>
                   <h3 className="text-xl font-bold mb-2 text-zinc-950">Contact</h3>
                   <p className="text-zinc-600">Phone: (609) 396-8417</p>
-                  <a href="tel:609-396-8417" className="text-red-600 font-bold hover:text-red-700 text-sm mt-2 inline-block">Call Now</a>
+                  <a href="tel:609-396-8417" className="text-primary font-bold hover:text-primary text-sm mt-2 inline-block">Call Now</a>
                 </div>
               </div>
             </div>
@@ -54,7 +54,7 @@ export default function ServiceArea() {
               <ul className="space-y-2 text-zinc-600">
                 <li className="flex justify-between"><span>Monday - Friday</span><span className="font-medium">8:00 AM - 6:00 PM</span></li>
                 <li className="flex justify-between"><span>Saturday</span><span className="font-medium">8:00 AM - 4:00 PM</span></li>
-                <li className="flex justify-between text-red-600 font-bold"><span>Sunday</span><span>Closed</span></li>
+                <li className="flex justify-between text-primary font-bold"><span>Sunday</span><span>Closed</span></li>
               </ul>
             </div>
           </motion.div>

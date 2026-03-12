@@ -21,7 +21,7 @@ export default function AnimatedButton({ text, href, className = '', variant = '
   if (variant === 'red') {
     // Initial: Red bg, white text. Hover: Dark bg, white text.
     variantClasses = "bg-zinc-950 text-white border-zinc-950";
-    originalClasses = "bg-red-600 text-white";
+    originalClasses = "bg-primary text-white";
     hoverTextClasses = "text-white";
   } else if (variant === 'white') {
     // Initial: White bg, dark text. Hover: Dark bg, white text.
@@ -30,13 +30,13 @@ export default function AnimatedButton({ text, href, className = '', variant = '
     hoverTextClasses = "text-white";
   } else if (variant === 'dark') {
     // Initial: Dark bg, white text. Hover: Red bg, white text.
-    variantClasses = "bg-red-600 text-white border-red-600";
+    variantClasses = "bg-primary text-white border-primary";
     originalClasses = "bg-zinc-950 text-white";
     hoverTextClasses = "text-white";
   } else if (variant === 'outline-red') {
     // Initial: White bg, red text, red border. Hover: Red bg, white text.
-    variantClasses = "bg-red-600 text-white border-red-600";
-    originalClasses = "bg-white text-red-600";
+    variantClasses = "bg-primary text-white border-primary";
+    originalClasses = "bg-white text-primary";
     hoverTextClasses = "text-white";
   }
 

@@ -9,7 +9,7 @@ export default function Footer() {
           <div className="col-span-1 lg:col-span-1">
             <a href="#" className="text-2xl font-bold tracking-tighter flex items-center gap-1 mb-4">
               <span className="text-white">Zambran</span>
-              <span className="text-red-600">o</span>
+              <span className="text-primary">o</span>
               <span className="text-white">s</span>
             </a>
             <p className="text-sm mb-6 leading-relaxed">
@@ -27,12 +27,12 @@ export default function Footer() {
           <div>
             <h4 className="text-white font-bold mb-4 uppercase tracking-wider text-sm">Quick Links</h4>
             <ul className="space-y-3 text-sm">
-              <li><a href="#" className="hover:text-red-500 transition-colors">Home</a></li>
-              <li><a href="#services" className="hover:text-red-500 transition-colors">Auto Repair</a></li>
-              <li><a href="#commercial" className="hover:text-red-500 transition-colors">Commercial Vehicles</a></li>
-              <li><a href="#financing" className="hover:text-red-500 transition-colors">Financing</a></li>
-              <li><a href="#" className="hover:text-red-500 transition-colors">Coupons</a></li>
-              <li><a href="#" className="hover:text-red-500 transition-colors">Reviews</a></li>
+              <li><a href="#" className="hover:text-primary transition-colors">Home</a></li>
+              <li><a href="#services" className="hover:text-primary transition-colors">Auto Repair</a></li>
+              <li><a href="#commercial" className="hover:text-primary transition-colors">Commercial Vehicles</a></li>
+              <li><a href="#financing" className="hover:text-primary transition-colors">Financing</a></li>
+              <li><a href="#" className="hover:text-primary transition-colors">Coupons</a></li>
+              <li><a href="#" className="hover:text-primary transition-colors">Reviews</a></li>
             </ul>
           </div>
 
@@ -53,11 +53,11 @@ export default function Footer() {
             <h4 className="text-white font-bold mb-4 uppercase tracking-wider text-sm">Contact Us</h4>
             <ul className="space-y-4 text-sm">
               <li className="flex items-start gap-3">
-                <MapPin className="w-5 h-5 text-red-600 flex-shrink-0 mt-0.5" />
+                <MapPin className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
                 <span>1017 Hamilton Ave<br />Trenton, NJ 08629</span>
               </li>
               <li className="flex items-center gap-3">
-                <Phone className="w-5 h-5 text-red-600 flex-shrink-0" />
+                <Phone className="w-5 h-5 text-primary flex-shrink-0" />
                 <a href="tel:609-396-8417" className="hover:text-white transition-colors font-bold text-lg text-white">(609) 396-8417</a>
               </li>
             </ul>

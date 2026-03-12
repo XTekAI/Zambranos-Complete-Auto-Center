@@ -16,7 +16,7 @@ export default function MaintenanceServices() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="bg-white rounded-3xl p-8 md:p-12 shadow-xl shadow-zinc-200/50 border border-zinc-100 relative overflow-hidden">
           {/* Decorative Background Element */}
-          <div className="absolute top-0 right-0 w-64 h-64 bg-red-50 rounded-full blur-3xl opacity-50 -translate-y-1/2 translate-x-1/4 pointer-events-none"></div>
+          <div className="absolute top-0 right-0 w-64 h-64 bg-primary rounded-full blur-3xl opacity-50 -translate-y-1/2 translate-x-1/4 pointer-events-none"></div>
 
           <div className="grid lg:grid-cols-2 gap-12 items-center relative z-10">
             <motion.div
@@ -26,7 +26,7 @@ export default function MaintenanceServices() {
               transition={{ duration: 0.5 }}
             >
               <h2 className="text-3xl md:text-4xl font-extrabold text-zinc-950 mb-6 tracking-tight">
-                Routine <span className="text-red-600">Maintenance</span>
+                Routine <span className="text-primary">Maintenance</span>
               </h2>
               <p className="text-lg text-zinc-600 mb-8 leading-relaxed">
                 While we specialize in complex suspension and brake systems, we also provide essential maintenance services to keep your vehicle running smoothly.
@@ -34,8 +34,8 @@ export default function MaintenanceServices() {
               
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 {maintenanceServices.map((service, index) => (
-                  <div key={index} className="flex items-center gap-3 p-3 bg-zinc-50 rounded-lg border border-zinc-100 hover:border-red-200 transition-colors">
-                    <div className="text-red-600 bg-red-100 p-2 rounded-md">
+                  <div key={index} className="flex items-center gap-3 p-3 bg-zinc-50 rounded-lg border border-zinc-100 hover:border-primary transition-colors">
+                    <div className="text-primary bg-primary p-2 rounded-md">
                       {service.icon}
                     </div>
                     <span className="font-semibold text-zinc-800">{service.name}</span>

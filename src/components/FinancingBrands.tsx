@@ -18,7 +18,7 @@ export default function FinancingBrands() {
             {/* Top Half - Logos */}
             <div className="absolute top-0 inset-x-0 h-[55%] bg-gradient-to-b from-white to-zinc-100 flex flex-col items-center justify-center pt-2">
               <span className="font-black text-3xl tracking-tighter text-zinc-900 leading-none">BRIDGESTONE</span>
-              <span className="font-black text-3xl tracking-tighter text-red-600 italic leading-none mt-1">Firestone</span>
+              <span className="font-black text-3xl tracking-tighter text-primary italic leading-none mt-1">Firestone</span>
             </div>
             
             {/* Divider Lines */}

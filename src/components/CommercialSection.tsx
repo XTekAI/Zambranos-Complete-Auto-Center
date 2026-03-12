@@ -24,13 +24,13 @@ export default function CommercialSection() {
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-red-600/20 border border-red-600/50 text-red-500 text-sm font-bold mb-6 uppercase tracking-wider">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/20 border border-primary/50 text-primary text-sm font-bold mb-6 uppercase tracking-wider">
               <Truck className="w-4 h-4" />
               Fleet & Work Trucks
             </div>
             
             <h2 className="text-4xl md:text-5xl font-extrabold tracking-tight mb-6 leading-tight">
-              Keep Your Business <span className="text-red-600">Moving Forward</span>
+              Keep Your Business <span className="text-primary">Moving Forward</span>
             </h2>
             
             <p className="text-xl text-zinc-300 mb-8 font-medium leading-relaxed">
@@ -39,8 +39,8 @@ export default function CommercialSection() {
 
             <div className="space-y-6 mb-10">
               <div className="flex gap-4">
-                <div className="bg-red-600/20 p-3 rounded-xl h-fit">
-                  <Clock className="w-6 h-6 text-red-500" />
+                <div className="bg-primary/20 p-3 rounded-xl h-fit">
+                  <Clock className="w-6 h-6 text-primary" />
                 </div>
                 <div>
                   <h3 className="text-xl font-bold mb-2">Priority Service</h3>
@@ -49,8 +49,8 @@ export default function CommercialSection() {
               </div>
               
               <div className="flex gap-4">
-                <div className="bg-red-600/20 p-3 rounded-xl h-fit">
-                  <ShieldCheck className="w-6 h-6 text-red-500" />
+                <div className="bg-primary/20 p-3 rounded-xl h-fit">
+                  <ShieldCheck className="w-6 h-6 text-primary" />
                 </div>
                 <div>
                   <h3 className="text-xl font-bold mb-2">Heavy-Duty Expertise</h3>
@@ -69,7 +69,7 @@ export default function CommercialSection() {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="relative"
           >
-            <div className="absolute inset-0 bg-red-600 rounded-2xl transform translate-x-4 translate-y-4 opacity-50"></div>
+            <div className="absolute inset-0 bg-primary rounded-2xl transform translate-x-4 translate-y-4 opacity-50"></div>
             <img
               src="https://images.unsplash.com/photo-1601584115197-04ecc0da31d7?q=80&w=2070&auto=format&fit=crop"
               alt="Mechanic working on truck"

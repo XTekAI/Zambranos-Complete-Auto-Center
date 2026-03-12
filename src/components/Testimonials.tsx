@@ -26,7 +26,7 @@ export default function Testimonials() {
   return (
     <section className="bg-zinc-950 py-24 border-t border-zinc-800 relative overflow-hidden">
       {/* Decorative Elements */}
-      <div className="absolute top-0 left-0 w-96 h-96 bg-red-900/20 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2 pointer-events-none"></div>
+      <div className="absolute top-0 left-0 w-96 h-96 bg-primary/20 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2 pointer-events-none"></div>
       <div className="absolute bottom-0 right-0 w-96 h-96 bg-zinc-800/50 rounded-full blur-3xl translate-x-1/2 translate-y-1/2 pointer-events-none"></div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -36,7 +36,7 @@ export default function Testimonials() {
             200+ 5-Star Google Reviews
           </div>
           <h2 className="text-4xl md:text-5xl font-extrabold text-white mb-6 tracking-tight">
-            What Our <span className="text-red-600">Customers</span> Say
+            What Our <span className="text-primary">Customers</span> Say
           </h2>
           <p className="text-lg text-zinc-400 leading-relaxed">
             Don't just take our word for it. Read why over 200 drivers in Trenton have given Zambranos Complete Auto Center a 5-star rating.
@@ -53,7 +53,7 @@ export default function Testimonials() {
               transition={{ duration: 0.5, delay: index * 0.1 }}
               className="bg-zinc-900 p-8 rounded-2xl border border-zinc-800 relative group hover:border-zinc-700 transition-colors"
             >
-              <Quote className="absolute top-6 right-6 w-12 h-12 text-zinc-800 group-hover:text-red-900/30 transition-colors" />
+              <Quote className="absolute top-6 right-6 w-12 h-12 text-zinc-800 group-hover:text-primary/30 transition-colors" />
               
               <div className="flex gap-1 mb-4">
                 {[...Array(review.rating)].map((_, i) => (
@@ -76,7 +76,7 @@ export default function Testimonials() {
         <div className="mt-12 text-center">
           <a
             href="#"
-            className="inline-flex items-center gap-2 text-red-500 font-bold hover:text-red-400 transition-colors"
+            className="inline-flex items-center gap-2 text-primary font-bold hover:text-primary transition-colors"
           >
             Read More Reviews on Google
             <Star className="w-4 h-4" />

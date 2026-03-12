@@ -2,16 +2,16 @@ import AnimatedButton from './AnimatedButton';
 
 export default function FinalCTA() {
   return (
-    <section className="bg-red-600 py-20 relative overflow-hidden">
+    <section className="bg-primary py-20 relative overflow-hidden">
       {/* Decorative Elements */}
-      <div className="absolute top-0 right-0 w-96 h-96 bg-red-500 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 pointer-events-none"></div>
-      <div className="absolute bottom-0 left-0 w-96 h-96 bg-red-700 rounded-full blur-3xl translate-y-1/2 -translate-x-1/2 pointer-events-none"></div>
+      <div className="absolute top-0 right-0 w-96 h-96 bg-primary rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 pointer-events-none"></div>
+      <div className="absolute bottom-0 left-0 w-96 h-96 bg-primary rounded-full blur-3xl translate-y-1/2 -translate-x-1/2 pointer-events-none"></div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
         <h2 className="text-4xl md:text-5xl font-extrabold text-white mb-6 tracking-tight">
           Ready to Get Back on the Road?
         </h2>
-        <p className="text-xl text-red-100 mb-10 max-w-2xl mx-auto font-medium">
+        <p className="text-xl text-primary mb-10 max-w-2xl mx-auto font-medium">
           Trust Zambranos Complete Auto Center for expert suspension, brake, and tire services. Fast turnaround, honest pricing, and guaranteed results.
         </p>
         

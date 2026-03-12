@@ -23,13 +23,13 @@ export default function Hero() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
           >
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-red-600/20 border border-red-600/50 text-red-500 text-sm font-semibold mb-6 uppercase tracking-wider">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/20 border border-primary/50 text-primary text-sm font-semibold mb-6 uppercase tracking-wider">
               <CheckCircle2 className="w-4 h-4" />
               Trenton's Suspension & Brake Specialists
             </div>
             
             <h1 className="text-5xl md:text-6xl lg:text-7xl font-extrabold tracking-tight mb-6 leading-tight">
-              Expert <span className="text-red-600">Suspension</span>, <span className="text-red-600">Brakes</span> & <span className="text-red-600">Tires</span>
+              Expert <span className="text-primary">Suspension</span>, <span className="text-primary">Brakes</span> & <span className="text-primary">Tires</span>
             </h1>
             
             <p className="text-xl md:text-2xl text-zinc-300 mb-8 font-medium max-w-2xl leading-relaxed">
