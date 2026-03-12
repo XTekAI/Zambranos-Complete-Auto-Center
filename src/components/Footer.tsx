@@ -1,75 +1,115 @@
-import { Phone, MapPin, Facebook, Instagram, Twitter, Linkedin } from 'lucide-react';
+import { Phone, MapPin, Facebook, Instagram, Twitter } from 'lucide-react';
+import Link from 'next/link';
+import { BUSINESS, LINKS } from '../lib/constants';
+
+const quickLinks = [
+  { label: 'Home', href: '/' },
+  { label: 'Services', href: '/services' },
+  { label: 'About', href: '/about' },
+  { label: 'Commercial Fleet', href: '/#commercial' },
+  { label: 'Financing', href: '/financing' },
+];
+
+const serviceLinks = [
+  'Suspension Repair',
+  'Brake Services',
+  'Wheel Alignment',
+  'Tire Installation',
+  'Fleet Maintenance',
+  'AC Service',
+];
+
+const socials = [
+  { icon: Facebook, href: LINKS.facebook, label: 'Facebook' },
+  { icon: Instagram, href: LINKS.instagram, label: 'Instagram' },
+  { icon: Twitter, href: LINKS.twitter, label: 'Twitter / X' },
+];
 
 export default function Footer() {
   return (
-    <footer className="bg-zinc-950 text-zinc-400 py-16 border-t border-zinc-900">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
+    <footer className="bg-dark text-white/50">
+      <div className="mx-auto max-w-7xl px-6 py-16">
+        <div className="mb-12 grid grid-cols-1 gap-12 md:grid-cols-2 lg:grid-cols-4">
           {/* Brand */}
-          <div className="col-span-1 lg:col-span-1">
-            <a href="#" className="text-2xl font-bold tracking-tighter flex items-center gap-1 mb-4">
-              <span className="text-white">Zambran</span>
-              <span className="text-primary">o</span>
-              <span className="text-white">s</span>
-            </a>
-            <p className="text-sm mb-6 leading-relaxed">
-              Serving Trenton since 1997. We are the premier auto center specializing in high-performance suspension, brake systems, wheel alignment, and tire services for passenger and commercial vehicles.
+          <div>
+            <Link href="/" className="mb-4 flex items-center gap-1 cursor-pointer">
+              <span className="font-display text-xl font-black text-white">ZAMBRANO&apos;S</span>
+              <span className="font-display text-xl font-black text-primary">AUTO</span>
+            </Link>
+            <p className="mb-6 text-sm leading-relaxed">
+              Veteran-owned &amp; family operated auto repair serving Trenton since{' '}
+              {BUSINESS.established}. Specialists in suspension, brakes, tires &amp; commercial fleet services.
             </p>
-            <div className="flex gap-4">
-              <a href="#" className="text-zinc-500 hover:text-white transition-colors"><Facebook className="w-5 h-5" /></a>
-              <a href="#" className="text-zinc-500 hover:text-white transition-colors"><Twitter className="w-5 h-5" /></a>
-              <a href="#" className="text-zinc-500 hover:text-white transition-colors"><Instagram className="w-5 h-5" /></a>
-              <a href="#" className="text-zinc-500 hover:text-white transition-colors"><Linkedin className="w-5 h-5" /></a>
+            <div className="flex gap-3">
+              {socials.map((s) => {
+                const Icon = s.icon;
+                return (
+                  <a
+                    key={s.label}
+                    href={s.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={s.label}
+                    className="rounded-lg bg-white/5 p-2 text-white/40 transition-colors hover:bg-primary/20 hover:text-primary cursor-pointer"
+                  >
+                    <Icon className="h-5 w-5" />
+                  </a>
+                );
+              })}
             </div>
           </div>
 
           {/* Quick Links */}
           <div>
-            <h4 className="text-white font-bold mb-4 uppercase tracking-wider text-sm">Quick Links</h4>
-            <ul className="space-y-3 text-sm">
-              <li><a href="#" className="hover:text-primary transition-colors">Home</a></li>
-              <li><a href="#services" className="hover:text-primary transition-colors">Auto Repair</a></li>
-              <li><a href="#commercial" className="hover:text-primary transition-colors">Commercial Vehicles</a></li>
-              <li><a href="#financing" className="hover:text-primary transition-colors">Financing</a></li>
-              <li><a href="#" className="hover:text-primary transition-colors">Coupons</a></li>
-              <li><a href="#" className="hover:text-primary transition-colors">Reviews</a></li>
+            <h4 className="mb-4 text-sm font-bold uppercase tracking-wider text-white">Quick Links</h4>
+            <ul className="space-y-2 text-sm">
+              {quickLinks.map((link) => (
+                <li key={link.label}>
+                  <Link href={link.href} className="transition-colors hover:text-primary cursor-pointer">
+                    {link.label}
+                  </Link>
+                </li>
+              ))}
             </ul>
           </div>
 
           {/* Services */}
           <div>
-            <h4 className="text-white font-bold mb-4 uppercase tracking-wider text-sm">Our Specialties</h4>
-            <ul className="space-y-3 text-sm">
-              <li><span className="text-zinc-500">Suspension Repair</span></li>
-              <li><span className="text-zinc-500">Brake Services</span></li>
-              <li><span className="text-zinc-500">Wheel Alignment</span></li>
-              <li><span className="text-zinc-500">Tire Installation</span></li>
-              <li><span className="text-zinc-500">Fleet Maintenance</span></li>
+            <h4 className="mb-4 text-sm font-bold uppercase tracking-wider text-white">Our Specialties</h4>
+            <ul className="space-y-2 text-sm">
+              {serviceLinks.map((service) => (
+                <li key={service}>
+                  <Link href="/services" className="transition-colors hover:text-primary cursor-pointer">
+                    {service}
+                  </Link>
+                </li>
+              ))}
             </ul>
           </div>
 
           {/* Contact */}
           <div>
-            <h4 className="text-white font-bold mb-4 uppercase tracking-wider text-sm">Contact Us</h4>
+            <h4 className="mb-4 text-sm font-bold uppercase tracking-wider text-white">Contact Us</h4>
             <ul className="space-y-4 text-sm">
               <li className="flex items-start gap-3">
-                <MapPin className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
-                <span>1017 Hamilton Ave<br />Trenton, NJ 08629</span>
+                <MapPin className="mt-0.5 h-5 w-5 shrink-0 text-primary" />
+                <a href={LINKS.google} target="_blank" rel="noopener noreferrer" className="transition-colors hover:text-white cursor-pointer">
+                  1017 Hamilton Ave<br />Trenton, NJ 08629
+                </a>
               </li>
               <li className="flex items-center gap-3">
-                <Phone className="w-5 h-5 text-primary flex-shrink-0" />
-                <a href="tel:609-396-8417" className="hover:text-white transition-colors font-bold text-lg text-white">(609) 396-8417</a>
+                <Phone className="h-5 w-5 shrink-0 text-primary" />
+                <a href={BUSINESS.phoneTel} className="text-lg font-bold text-white transition-colors hover:text-primary cursor-pointer">
+                  {BUSINESS.phone}
+                </a>
               </li>
             </ul>
           </div>
         </div>
 
-        <div className="border-t border-zinc-900 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-zinc-600">
-          <p>&copy; {new Date().getFullYear()} Zambranos Complete Auto Center. All rights reserved.</p>
-          <div className="flex gap-4">
-            <a href="#" className="hover:text-zinc-400 transition-colors">Privacy Policy</a>
-            <a href="#" className="hover:text-zinc-400 transition-colors">Terms of Service</a>
-          </div>
+        <div className="flex flex-col items-center justify-between gap-4 border-t border-white/10 pt-8 text-xs md:flex-row">
+          <p>&copy; {new Date().getFullYear()} {BUSINESS.name}. All rights reserved.</p>
+          <p className="text-white/30">Veteran-Owned &amp; Family Operated Since {BUSINESS.established}</p>
         </div>
       </div>
     </footer>

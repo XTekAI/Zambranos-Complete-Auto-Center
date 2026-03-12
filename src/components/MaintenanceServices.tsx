@@ -1,46 +1,65 @@
-import { motion } from 'motion/react';
-import { CheckCircle2, Droplet, Battery, Lightbulb, Settings2 } from 'lucide-react';
+'use client';
 
-const maintenanceServices = [
-  { name: 'Oil Changes', icon: <Droplet className="w-5 h-5" /> },
-  { name: 'Filter Replacements', icon: <Settings2 className="w-5 h-5" /> },
-  { name: 'Fluid Services', icon: <Droplet className="w-5 h-5" /> },
-  { name: 'Battery Replacement', icon: <Battery className="w-5 h-5" /> },
-  { name: 'Wiper Blades', icon: <Settings2 className="w-5 h-5" /> },
-  { name: 'Lighting Replacement', icon: <Lightbulb className="w-5 h-5" /> },
+import { motion } from 'motion/react';
+import {
+  Droplet,
+  Battery,
+  Lightbulb,
+  Settings2,
+  Wind,
+  Thermometer,
+} from 'lucide-react';
+import Image from 'next/image';
+
+const maintenanceItems = [
+  { name: 'Oil Changes', icon: Droplet },
+  { name: 'Filter Replacements', icon: Settings2 },
+  { name: 'Fluid Services', icon: Thermometer },
+  { name: 'Battery Replacement', icon: Battery },
+  { name: 'Wiper Blades', icon: Wind },
+  { name: 'Lighting', icon: Lightbulb },
 ];
 
 export default function MaintenanceServices() {
   return (
-    <section className="bg-zinc-100 py-20 border-b border-zinc-200">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="bg-white rounded-3xl p-8 md:p-12 shadow-xl shadow-zinc-200/50 border border-zinc-100 relative overflow-hidden">
-          {/* Decorative Background Element */}
-          <div className="absolute top-0 right-0 w-64 h-64 bg-primary rounded-full blur-3xl opacity-50 -translate-y-1/2 translate-x-1/4 pointer-events-none"></div>
+    <section className="bg-surface py-24">
+      <div className="mx-auto max-w-7xl px-6">
+        <div className="relative overflow-hidden rounded-3xl bg-white p-8 shadow-[6px_6px_12px_#d1d1d1,-6px_-6px_12px_#ffffff] md:p-12">
+          {/* Decorative */}
+          <div className="pointer-events-none absolute -top-32 right-0 h-64 w-64 rounded-full bg-primary/10 blur-3xl" />
 
-          <div className="grid lg:grid-cols-2 gap-12 items-center relative z-10">
+          <div className="relative z-10 grid items-center gap-12 lg:grid-cols-2">
             <motion.div
               initial={{ opacity: 0, x: -20 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5 }}
             >
-              <h2 className="text-3xl md:text-4xl font-extrabold text-zinc-950 mb-6 tracking-tight">
+              <h2 className="font-display text-3xl font-extrabold tracking-tight text-dark md:text-4xl">
                 Routine <span className="text-primary">Maintenance</span>
               </h2>
-              <p className="text-lg text-zinc-600 mb-8 leading-relaxed">
-                While we specialize in complex suspension and brake systems, we also provide essential maintenance services to keep your vehicle running smoothly.
+              <p className="mt-4 text-lg leading-relaxed text-muted">
+                Beyond our specialty services, we keep your vehicle running
+                smoothly with essential maintenance at competitive prices.
               </p>
-              
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                {maintenanceServices.map((service, index) => (
-                  <div key={index} className="flex items-center gap-3 p-3 bg-zinc-50 rounded-lg border border-zinc-100 hover:border-primary transition-colors">
-                    <div className="text-primary bg-primary p-2 rounded-md">
-                      {service.icon}
+
+              <div className="mt-8 grid grid-cols-1 gap-3 sm:grid-cols-2">
+                {maintenanceItems.map((item) => {
+                  const Icon = item.icon;
+                  return (
+                    <div
+                      key={item.name}
+                      className="flex items-center gap-3 rounded-xl bg-surface p-3 transition-colors hover:bg-primary/5"
+                    >
+                      <div className="rounded-lg bg-primary/10 p-2">
+                        <Icon className="h-5 w-5 text-primary" />
+                      </div>
+                      <span className="text-sm font-semibold text-dark">
+                        {item.name}
+                      </span>
                     </div>
-                    <span className="font-semibold text-zinc-800">{service.name}</span>
-                  </div>
-                ))}
+                  );
+                })}
               </div>
             </motion.div>
 
@@ -49,18 +68,23 @@ export default function MaintenanceServices() {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: 0.2 }}
-              className="relative h-[400px] rounded-2xl overflow-hidden shadow-lg"
+              className="relative h-[400px] overflow-hidden rounded-2xl shadow-lg"
             >
-              <img
-                src="https://images.unsplash.com/photo-1635438837136-128c77aa71e4?q=80&w=2070&auto=format&fit=crop"
-                alt="Mechanic changing oil"
-                className="w-full h-full object-cover"
-                referrerPolicy="no-referrer"
+              <Image
+                src="https://images.unsplash.com/photo-1635438837136-128c77aa71e4?w=800&q=80"
+                alt="Mechanic performing maintenance"
+                fill
+                sizes="(max-width: 1024px) 100vw, 50vw"
+                className="object-cover"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-zinc-950/60 to-transparent"></div>
+              <div className="absolute inset-0 bg-gradient-to-t from-dark/60 to-transparent" />
               <div className="absolute bottom-6 left-6 right-6">
-                <p className="text-white font-bold text-xl mb-2">Keep Your Engine Healthy</p>
-                <p className="text-zinc-200 text-sm">Regular oil changes and fluid checks prevent costly repairs down the road.</p>
+                <p className="font-display text-xl font-bold text-white">
+                  Keep Your Engine Healthy
+                </p>
+                <p className="mt-1 text-sm text-white/70">
+                  Regular maintenance prevents costly repairs down the road.
+                </p>
               </div>
             </motion.div>
           </div>

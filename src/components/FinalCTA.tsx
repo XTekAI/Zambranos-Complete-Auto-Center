@@ -1,31 +1,50 @@
-import AnimatedButton from './AnimatedButton';
+'use client';
+
+import { Phone, MapPin, Calendar } from 'lucide-react';
+import { BUSINESS, LINKS } from '../lib/constants';
 
 export default function FinalCTA() {
   return (
-    <section className="bg-primary py-20 relative overflow-hidden">
-      {/* Decorative Elements */}
-      <div className="absolute top-0 right-0 w-96 h-96 bg-primary rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 pointer-events-none"></div>
-      <div className="absolute bottom-0 left-0 w-96 h-96 bg-primary rounded-full blur-3xl translate-y-1/2 -translate-x-1/2 pointer-events-none"></div>
+    <section className="relative overflow-hidden bg-primary py-20">
+      {/* Decorative */}
+      <div className="pointer-events-none absolute -right-32 -top-32 h-96 w-96 rounded-full bg-white/10 blur-3xl" />
+      <div className="pointer-events-none absolute -bottom-32 -left-32 h-96 w-96 rounded-full bg-black/10 blur-3xl" />
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
-        <h2 className="text-4xl md:text-5xl font-extrabold text-white mb-6 tracking-tight">
+      <div className="relative z-10 mx-auto max-w-7xl px-6 text-center">
+        <h2 className="font-display text-4xl font-extrabold tracking-tight text-white md:text-5xl">
           Ready to Get Back on the Road?
         </h2>
-        <p className="text-xl text-primary mb-10 max-w-2xl mx-auto font-medium">
-          Trust Zambranos Complete Auto Center for expert suspension, brake, and tire services. Fast turnaround, honest pricing, and guaranteed results.
+        <p className="mx-auto mt-4 max-w-2xl text-lg text-white/80">
+          Trust {BUSINESS.name} for expert suspension, brake, and tire services.
+          Fast turnaround, honest pricing, guaranteed results.
         </p>
-        
-        <div className="flex flex-col sm:flex-row justify-center items-center gap-4">
-          <AnimatedButton text="(609) 396-8417" href="tel:609-396-8417" variant="dark" className="w-full sm:w-auto" />
-          <AnimatedButton text="Book Appointment" href="#contact" variant="white" className="w-full sm:w-auto" />
-          <AnimatedButton 
-            text="Get Directions" 
-            href="https://www.google.com/maps/place/Zambranos+Complete+Auto+Center/@40.2186444,-74.7358035,21z/data=!4m15!1m8!3m7!1s0x89c159aa2414b915:0x36716ece72290eab!2s1017+Hamilton+Ave,+Trenton,+NJ+08629!3b1!8m2!3d40.2186494!4d-74.7355814!16s%2Fg%2F11b8yyr95l!3m5!1s0x89c159aa244419cb:0xeda66e2d8ae67a21!8m2!3d40.2186444!4d-74.7356426!16s%2Fg%2F1tdj5380?entry=ttu&g_ep=EgoyMDI2MDIyNC4wIKXMDSoASAFQAw%3D%3D" 
-            target="_blank" 
-            rel="noreferrer" 
-            variant="dark" 
-            className="w-full sm:w-auto" 
-          />
+
+        <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
+          <a
+            href={BUSINESS.phoneTel}
+            className="inline-flex items-center gap-2 rounded-xl bg-dark px-8 py-4 text-sm font-bold text-white transition-all hover:bg-white hover:text-dark cursor-pointer"
+          >
+            <Phone className="h-5 w-5" />
+            {BUSINESS.phone}
+          </a>
+          <a
+            href={LINKS.appointment}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 rounded-xl bg-white px-8 py-4 text-sm font-bold text-dark transition-all hover:bg-dark hover:text-white cursor-pointer"
+          >
+            <Calendar className="h-5 w-5" />
+            Schedule Service
+          </a>
+          <a
+            href={LINKS.google}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 rounded-xl border-2 border-white/30 bg-white/10 px-8 py-4 text-sm font-bold text-white backdrop-blur-sm transition-all hover:bg-white hover:text-dark cursor-pointer"
+          >
+            <MapPin className="h-5 w-5" />
+            Get Directions
+          </a>
         </div>
       </div>
     </section>

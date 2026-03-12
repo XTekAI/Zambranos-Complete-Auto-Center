@@ -1,83 +1,106 @@
+'use client';
+
 import { motion } from 'motion/react';
-import { Truck, Clock, ShieldCheck } from 'lucide-react';
-import AnimatedButton from './AnimatedButton';
+import { Truck, Clock, ShieldCheck, Phone, Zap, Gauge } from 'lucide-react';
+import Image from 'next/image';
+import { BUSINESS, LINKS } from '../lib/constants';
+
+const features = [
+  {
+    icon: Clock,
+    title: 'Priority Scheduling',
+    desc: 'Jump to the front of the line. We prioritize commercial vehicles to minimize your downtime.',
+  },
+  {
+    icon: ShieldCheck,
+    title: 'Heavy-Duty Expertise',
+    desc: 'Specialized equipment for heavy-duty suspension, brakes, and commercial tires.',
+  },
+  {
+    icon: Zap,
+    title: 'Same-Day Turnaround',
+    desc: 'Most fleet services completed same-day so your trucks stay on the road.',
+  },
+  {
+    icon: Gauge,
+    title: 'Fleet Diagnostics',
+    desc: 'Comprehensive multi-point inspections to prevent breakdowns before they happen.',
+  },
+];
 
 export default function CommercialSection() {
   return (
-    <section id="commercial" className="relative bg-zinc-950 text-white overflow-hidden py-24">
-      {/* Background Image with Overlay */}
-      <div className="absolute inset-0 z-0">
-        <img
-          src="https://images.unsplash.com/photo-1519003722824-194d4455a60c?q=80&w=2075&auto=format&fit=crop"
-          alt="Commercial Fleet"
-          className="w-full h-full object-cover opacity-20"
-          referrerPolicy="no-referrer"
-        />
-        <div className="absolute inset-0 bg-gradient-to-r from-zinc-950 via-zinc-950/90 to-transparent"></div>
-      </div>
+    <section id="commercial" className="relative overflow-hidden bg-dark py-24 text-white">
+      <Image
+        src="https://images.unsplash.com/photo-1519003722824-194d4455a60c?w=1920&q=80"
+        alt="Commercial fleet vehicles"
+        fill
+        className="object-cover opacity-15"
+        sizes="100vw"
+      />
+      <div className="absolute inset-0 bg-gradient-to-r from-dark via-dark/95 to-dark/80" />
 
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid lg:grid-cols-2 gap-16 items-center">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-          >
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/20 border border-primary/50 text-primary text-sm font-bold mb-6 uppercase tracking-wider">
-              <Truck className="w-4 h-4" />
-              Fleet & Work Trucks
-            </div>
-            
-            <h2 className="text-4xl md:text-5xl font-extrabold tracking-tight mb-6 leading-tight">
-              Keep Your Business <span className="text-primary">Moving Forward</span>
-            </h2>
-            
-            <p className="text-xl text-zinc-300 mb-8 font-medium leading-relaxed">
-              We understand that downtime costs you money. Our commercial vehicle services are designed for fast turnaround and priority scheduling.
-            </p>
+      <div className="relative z-10 mx-auto max-w-7xl px-6">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="mb-12 max-w-2xl"
+        >
+          <span className="mb-4 inline-flex items-center gap-2 rounded-full border border-primary/30 bg-primary/10 px-4 py-1.5 text-xs font-bold uppercase tracking-wider text-primary">
+            <Truck className="h-4 w-4" />
+            Fleet Pro
+          </span>
+          <h2 className="font-display text-4xl font-extrabold tracking-tight md:text-5xl">
+            Keep Your Business{' '}
+            <span className="text-primary">Moving Forward</span>
+          </h2>
+          <p className="mt-4 text-lg leading-relaxed text-white/60">
+            We understand downtime costs you money. Our commercial vehicle services are designed for fast turnaround and priority scheduling.
+          </p>
+        </motion.div>
 
-            <div className="space-y-6 mb-10">
-              <div className="flex gap-4">
-                <div className="bg-primary/20 p-3 rounded-xl h-fit">
-                  <Clock className="w-6 h-6 text-primary" />
+        <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
+          {features.map((f, i) => {
+            const Icon = f.icon;
+            return (
+              <motion.div
+                key={f.title}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.4, delay: i * 0.1 }}
+                className="group rounded-2xl border border-white/10 bg-white/5 p-6 backdrop-blur-sm transition-all hover:border-primary/30 hover:bg-white/10"
+              >
+                <div className="mb-4 inline-flex rounded-xl bg-primary/20 p-3">
+                  <Icon className="h-6 w-6 text-primary" />
                 </div>
-                <div>
-                  <h3 className="text-xl font-bold mb-2">Priority Service</h3>
-                  <p className="text-zinc-400">Jump to the front of the line. We prioritize commercial vehicles to get you back to work faster.</p>
-                </div>
-              </div>
-              
-              <div className="flex gap-4">
-                <div className="bg-primary/20 p-3 rounded-xl h-fit">
-                  <ShieldCheck className="w-6 h-6 text-primary" />
-                </div>
-                <div>
-                  <h3 className="text-xl font-bold mb-2">Heavy-Duty Expertise</h3>
-                  <p className="text-zinc-400">Specialized equipment and technicians trained for heavy-duty suspension, brakes, and commercial tires.</p>
-                </div>
-              </div>
-            </div>
-
-            <AnimatedButton text="Call for Fleet Services" href="tel:609-396-8417" variant="red" className="w-full sm:w-auto" />
-          </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0, scale: 0.95 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="relative"
-          >
-            <div className="absolute inset-0 bg-primary rounded-2xl transform translate-x-4 translate-y-4 opacity-50"></div>
-            <img
-              src="https://images.unsplash.com/photo-1601584115197-04ecc0da31d7?q=80&w=2070&auto=format&fit=crop"
-              alt="Mechanic working on truck"
-              className="relative z-10 rounded-2xl shadow-2xl border border-zinc-800 object-cover h-[500px] w-full"
-              referrerPolicy="no-referrer"
-            />
-          </motion.div>
+                <h3 className="mb-2 font-display text-lg font-bold">{f.title}</h3>
+                <p className="text-sm leading-relaxed text-white/50">{f.desc}</p>
+              </motion.div>
+            );
+          })}
         </div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5, delay: 0.4 }}
+          className="mt-12 flex flex-col items-start gap-4 sm:flex-row sm:items-center"
+        >
+          <a
+            href={BUSINESS.phoneTel}
+            className="group inline-flex items-center gap-2 rounded-xl bg-primary px-8 py-4 text-base font-bold text-white transition-all hover:brightness-110 cursor-pointer"
+          >
+            <Phone className="h-5 w-5 transition-transform group-hover:rotate-12" />
+            Call for Fleet Services
+          </a>
+          <span className="text-sm text-white/40">
+            Priority scheduling for commercial accounts
+          </span>
+        </motion.div>
       </div>
     </section>
   );

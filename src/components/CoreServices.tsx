@@ -1,99 +1,131 @@
+'use client';
+
 import { motion } from 'motion/react';
-import { Settings, Disc, Move, Truck, ArrowRight, Wrench } from 'lucide-react';
+import {
+  Wrench,
+  ArrowRight,
+  CircleDot,
+  Move,
+  Disc,
+  Truck,
+} from 'lucide-react';
+import Image from 'next/image';
+import Link from 'next/link';
 
 const services = [
   {
     title: 'Suspension Repair',
-    description: 'Expert diagnostics and repair for shocks, struts, and steering components to ensure a smooth, safe ride.',
-    icon: <Settings className="w-8 h-8 text-primary" />,
-    image: 'https://images.unsplash.com/photo-1596464619711-6415e6b189a8?q=80&w=2070&auto=format&fit=crop',
-    link: '#contact'
+    description:
+      'Shocks, struts, control arms & steering components. Expert diagnostics for a smooth, safe ride.',
+    icon: Wrench,
+    image:
+      'https://images.unsplash.com/photo-1596464619711-6415e6b189a8?w=800&q=80',
+    href: '/services#suspension',
   },
   {
     title: 'Brake Services',
-    description: 'Complete brake system repair, pad replacement, and rotor resurfacing for optimal stopping power.',
-    icon: <Disc className="w-8 h-8 text-primary" />,
-    image: 'https://images.unsplash.com/photo-1486262715619-67b85e0b08d3?q=80&w=2072&auto=format&fit=crop',
-    link: '#contact'
+    description:
+      'Complete brake system repair — pads, rotors, calipers & fluid flush for optimal stopping power.',
+    icon: Disc,
+    image:
+      'https://images.unsplash.com/photo-1486262715619-67b85e0b08d3?w=800&q=80',
+    href: '/services#brakes',
   },
   {
     title: 'Wheel Alignment',
-    description: 'Precision computerized alignment to extend tire life and improve vehicle handling.',
-    icon: <Move className="w-8 h-8 text-primary" />,
-    image: 'https://images.unsplash.com/photo-1580273916550-e323be2ae537?q=80&w=1964&auto=format&fit=crop',
-    link: '#contact'
+    description:
+      'Precision computerized alignment extends tire life and improves handling and fuel economy.',
+    icon: Move,
+    image:
+      'https://images.unsplash.com/photo-1580273916550-e323be2ae537?w=800&q=80',
+    href: '/services#alignment',
   },
   {
     title: 'Tire Services',
-    description: 'Installation, rotation, balancing, TPMS service, and flat repair for all major brands.',
-    icon: <Disc className="w-8 h-8 text-primary" />,
-    image: 'https://images.unsplash.com/photo-1590240455581-28564a594367?q=80&w=2070&auto=format&fit=crop',
-    link: '#contact'
+    description:
+      'Bridgestone, Firestone & Fuzion. Installation, rotation, balancing, TPMS & flat repair.',
+    icon: CircleDot,
+    image:
+      'https://images.unsplash.com/photo-1590240455581-28564a594367?w=800&q=80',
+    href: '/services#tires',
   },
   {
     title: 'Commercial Vehicles',
-    description: 'Priority service for work trucks, vans, and fleets to minimize downtime.',
-    icon: <Truck className="w-8 h-8 text-primary" />,
-    image: 'https://images.unsplash.com/photo-1601584115197-04ecc0da31d7?q=80&w=2070&auto=format&fit=crop',
-    link: '#commercial'
-  }
+    description:
+      'Priority fleet service for trucks & vans. Heavy-duty suspension, brakes & commercial tires.',
+    icon: Truck,
+    image:
+      'https://images.unsplash.com/photo-1601584115197-04ecc0da31d7?w=800&q=80',
+    href: '/#commercial',
+  },
 ];
 
 export default function CoreServices() {
   return (
-    <section id="services" className="bg-zinc-50 py-24">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center max-w-3xl mx-auto mb-16">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary text-primary text-sm font-bold mb-6 uppercase tracking-wider">
-            <Wrench className="w-4 h-4" />
+    <section id="services" className="bg-surface py-24">
+      <div className="mx-auto max-w-7xl px-6">
+        {/* Header */}
+        <div className="mx-auto mb-16 max-w-3xl text-center">
+          <span className="mb-4 inline-flex items-center gap-2 rounded-full bg-primary/10 px-4 py-1.5 text-xs font-bold uppercase tracking-wider text-primary">
+            <Wrench className="h-4 w-4" />
             Our Specialties
-          </div>
-          <h2 className="text-4xl md:text-5xl font-extrabold text-zinc-950 mb-6 tracking-tight">
+          </span>
+          <h2 className="font-display text-4xl font-extrabold tracking-tight text-dark md:text-5xl">
             High-Performance <span className="text-primary">Auto Care</span>
           </h2>
-          <p className="text-lg text-zinc-600 leading-relaxed">
-            We focus on the critical systems that keep you safe on the road. From complex suspension work to precision alignments, our certified technicians deliver expert results.
+          <p className="mt-4 text-lg leading-relaxed text-muted">
+            We focus on the critical systems that keep you safe. From complex suspension
+            to precision alignments, our certified technicians deliver expert results.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {services.map((service, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="group bg-white rounded-2xl overflow-hidden shadow-lg shadow-zinc-200/50 hover:shadow-xl hover:shadow-zinc-300/50 transition-all border border-zinc-100 flex flex-col"
-            >
-              <div className="relative h-48 overflow-hidden">
-                <img
-                  src={service.image}
-                  alt={service.title}
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                  referrerPolicy="no-referrer"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-zinc-950/80 to-transparent"></div>
-                <div className="absolute bottom-4 left-4 bg-white p-2 rounded-lg shadow-md">
-                  {service.icon}
+        {/* Cards Grid */}
+        <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
+          {services.map((service, index) => {
+            const Icon = service.icon;
+            return (
+              <motion.div
+                key={service.title}
+                initial={{ opacity: 0, y: 24 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                className="group flex flex-col overflow-hidden rounded-2xl bg-white shadow-[6px_6px_12px_#d1d1d1,-6px_-6px_12px_#ffffff] transition-all duration-200 hover:-translate-y-1 hover:shadow-[8px_8px_16px_#c8c8c8,-8px_-8px_16px_#ffffff]"
+              >
+                {/* Image */}
+                <div className="relative h-48 w-full overflow-hidden">
+                  <Image
+                    src={service.image}
+                    alt={service.title}
+                    fill
+                    sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                    className="object-cover transition-transform duration-500 group-hover:scale-105"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-dark/70 to-transparent" />
+                  <div className="absolute bottom-4 left-4 rounded-lg bg-white p-2 shadow-md">
+                    <Icon className="h-6 w-6 text-primary" />
+                  </div>
                 </div>
-              </div>
-              
-              <div className="p-6 flex-grow flex flex-col">
-                <h3 className="text-2xl font-bold text-zinc-950 mb-3">{service.title}</h3>
-                <p className="text-zinc-600 mb-6 flex-grow leading-relaxed">
-                  {service.description}
-                </p>
-                <a
-                  href={service.link}
-                  className="inline-flex items-center gap-2 text-primary font-bold hover:text-primary transition-colors group/link"
-                >
-                  Learn More
-                  <ArrowRight className="w-4 h-4 group-hover/link:translate-x-1 transition-transform" />
-                </a>
-              </div>
-            </motion.div>
-          ))}
+
+                {/* Content */}
+                <div className="flex flex-grow flex-col p-6">
+                  <h3 className="mb-2 font-display text-xl font-bold text-dark">
+                    {service.title}
+                  </h3>
+                  <p className="mb-6 flex-grow text-sm leading-relaxed text-muted">
+                    {service.description}
+                  </p>
+                  <Link
+                    href={service.href}
+                    className="group/link inline-flex items-center gap-2 text-sm font-bold text-primary transition-colors hover:text-dark cursor-pointer"
+                  >
+                    Learn More
+                    <ArrowRight className="h-4 w-4 transition-transform group-hover/link:translate-x-1" />
+                  </Link>
+                </div>
+              </motion.div>
+            );
+          })}
         </div>
       </div>
     </section>
