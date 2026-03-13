@@ -50,7 +50,7 @@ export default function Footer() {
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label={s.label}
-                    className="rounded-lg bg-white/5 p-2 text-white/40 transition-colors hover:bg-primary/20 hover:text-primary cursor-pointer"
+                    className="rounded-lg bg-white/5 p-3 text-white/40 transition-colors hover:bg-primary/20 hover:text-primary cursor-pointer"
                   >
                     <Icon className="h-5 w-5" />
                   </a>
@@ -109,7 +109,17 @@ export default function Footer() {
 
         <div className="flex flex-col items-center justify-between gap-4 border-t border-white/10 pt-8 text-xs md:flex-row">
           <p>&copy; {new Date().getFullYear()} {BUSINESS.name}. All rights reserved.</p>
-          <p className="text-white/30">Veteran-Owned &amp; Family Operated Since {BUSINESS.established}</p>
+          <p className="text-white/30">
+            Website by{' '}
+            <a
+              href="https://www.xtekai.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-white/50 font-semibold transition-colors hover:text-primary"
+            >
+              XtekAI
+            </a>
+          </p>
         </div>
       </div>
     </footer>

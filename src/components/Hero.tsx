@@ -5,30 +5,72 @@ import { Star, Shield, Calendar, CircleDot } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { BUSINESS, LINKS } from '../lib/constants';
+import AnimatedButton from './AnimatedButton';
+
+const transitionVariants = {
+  container: {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.2,
+        delayChildren: 0.4,
+      },
+    },
+  },
+  item: {
+    hidden: {
+      opacity: 0,
+      filter: 'blur(12px)',
+      y: 30,
+    },
+    visible: {
+      opacity: 1,
+      filter: 'blur(0px)',
+      y: 0,
+      transition: {
+        type: 'spring' as const,
+        bounce: 0.3,
+        duration: 1.5,
+      },
+    },
+  },
+} as const;
 
 export default function Hero() {
+  const currentYear = new Date().getFullYear();
+  const yearsOfService = currentYear - BUSINESS.established;
+
   return (
-    <section className="relative flex min-h-[90vh] items-center overflow-hidden bg-dark">
+    <section className="relative flex min-h-[95vh] items-center justify-center overflow-hidden bg-dark">
+      {/* Decorative Light Leaks */}
+      <div
+        aria-hidden
+        className="z-[2] absolute inset-0 pointer-events-none isolate opacity-30 contain-strict hidden lg:block">
+        <div className="w-[35rem] h-[80rem] -translate-y-[350px] absolute left-0 top-0 -rotate-45 rounded-full bg-[radial-gradient(68.54%_68.72%_at_55.02%_31.46%,hsla(0,0%,85%,.1)_0,hsla(0,0%,55%,.05)_50%,hsla(0,0%,45%,0)_80%)]" />
+        <div className="h-[80rem] absolute left-0 top-0 w-56 -rotate-45 rounded-full bg-[radial-gradient(50%_50%_at_50%_50%,hsla(0,0%,85%,.08)_0,hsla(0,0%,45%,.04)_80%,transparent_100%)] [translate:5%_-50%]" />
+      </div>
+
       <Image
-        src="https://images.unsplash.com/photo-1619642751034-765dfdf7c58e?w=1920&q=80"
-        alt="Auto repair shop interior"
+        src="/images/hero-truck.jpg"
+        alt="Ford Super Duty truck in the desert"
         fill
         priority
-        className="object-cover"
+        className="object-cover opacity-50"
         sizes="100vw"
       />
-      <div className="absolute inset-0 bg-gradient-to-r from-dark via-dark/90 to-dark/40" />
+      <div className="absolute inset-0 bg-gradient-to-b from-dark/40 via-dark/70 to-dark" />
       <div className="absolute bottom-0 left-0 right-0 h-1 bg-primary" />
 
-      <div className="relative z-10 mx-auto w-full max-w-7xl px-6 py-20">
+      <div className="relative z-10 mx-auto w-full max-w-7xl px-6 pt-24 md:pt-40 pb-16 md:pb-24 text-center">
         <motion.div
-          initial={{ opacity: 0, y: 40 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7 }}
-          className="max-w-2xl"
+          variants={transitionVariants.container}
+          initial="hidden"
+          animate="visible"
+          className="flex flex-col items-center"
         >
-          <div className="mb-6 flex flex-wrap items-center gap-3">
-            <span className="inline-flex items-center gap-1.5 rounded-full bg-blue-900/30 px-4 py-1.5 text-xs font-semibold text-blue-300 backdrop-blur-sm">
+          <motion.div variants={transitionVariants.item} className="mb-12 flex flex-wrap justify-center items-center gap-3">
+            <span className="inline-flex items-center gap-1.5 rounded-full bg-blue-900/30 px-4 py-1.5 text-xs font-semibold text-blue-300 backdrop-blur-sm border border-blue-400/20">
               <Shield className="h-3.5 w-3.5" />
               Veteran-Owned &amp; Family Operated
             </span>
@@ -36,57 +78,61 @@ export default function Hero() {
               href={LINKS.google}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-1.5 rounded-full bg-yellow-500/20 px-4 py-1.5 text-xs font-semibold text-yellow-300 backdrop-blur-sm transition-colors hover:bg-yellow-500/30 cursor-pointer"
+              className="inline-flex items-center gap-1.5 rounded-full bg-yellow-500/20 px-4 py-1.5 text-xs font-semibold text-yellow-300 backdrop-blur-sm border border-yellow-400/20 transition-colors hover:bg-yellow-500/30 cursor-pointer"
             >
               <Star className="h-3.5 w-3.5 fill-yellow-400" />
               {BUSINESS.rating} Stars · {BUSINESS.reviewCount} Google Reviews
             </a>
-          </div>
+          </motion.div>
 
-          <h1 className="font-display text-4xl font-black leading-[1.1] tracking-tight text-white sm:text-5xl md:text-6xl lg:text-7xl">
-            Veteran-Owned{' '}
-            <span className="text-primary">Excellence</span> in Trenton
-            <span className="text-primary">.</span>
-          </h1>
+          <motion.h1 
+            variants={transitionVariants.item}
+            className="font-display text-4xl font-black leading-[1.05] tracking-tight sm:text-5xl md:text-7xl lg:text-8xl max-w-5xl"
+          >
+            <span className="text-red-500">Veteran-Owned{' '}</span>
+            <span className="text-red-600 border-b-4 border-red-600/30">Excellence</span> 
+            <span className="text-red-500"> in Trenton</span>
+            <span className="text-red-600">.</span>
+          </motion.h1>
 
-          <p className="mt-5 max-w-lg text-lg leading-relaxed text-white/70">
+          <motion.p 
+            variants={transitionVariants.item}
+            className="mt-8 max-w-2xl text-lg md:text-xl leading-relaxed text-red-400/90 font-medium"
+          >
             Since {BUSINESS.established}, delivering expert suspension, brakes, tires &amp;
             commercial fleet services with military-grade precision. Same-day service available.
-          </p>
+          </motion.p>
 
-          <div className="mt-8 flex flex-col gap-4 sm:flex-row">
-            <a
+          <motion.div 
+            variants={transitionVariants.item}
+            className="mt-12 flex flex-col gap-4 sm:flex-row justify-center w-full"
+          >
+            <AnimatedButton 
+              text="Schedule Service"
               href={LINKS.appointment}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="group inline-flex items-center justify-center gap-2 rounded-xl bg-primary px-8 py-4 text-base font-bold text-white transition-all hover:brightness-110 hover:-translate-y-0.5 cursor-pointer"
-            >
-              <Calendar className="h-5 w-5 transition-transform group-hover:scale-110" />
-              Schedule Service
-            </a>
-            <Link
+              icon={<Calendar className="h-5 w-5" />}
+              className="px-6 py-4 md:px-10 md:py-5 text-base md:text-lg text-white"
+            />
+            <AnimatedButton 
+              text="Search Tires"
               href="/services#tires"
-              className="inline-flex items-center justify-center gap-2 rounded-xl border-2 border-white/20 bg-white/5 px-8 py-4 text-base font-bold text-white backdrop-blur-sm transition-all hover:border-white/40 hover:bg-white/10 cursor-pointer"
-            >
-              <CircleDot className="h-5 w-5" />
-              Search Tires
-            </Link>
-          </div>
+              icon={<CircleDot className="h-5 w-5" />}
+              className="border-2 border-white/20 text-white backdrop-blur-sm shadow-none hover:shadow-none px-6 py-4 md:px-10 md:py-5 text-base md:text-lg"
+            />
+          </motion.div>
 
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.4 }}
-            className="mt-12 flex gap-8 border-t border-white/10 pt-8"
+            variants={transitionVariants.item}
+            className="mt-12 md:mt-16 flex justify-center gap-6 md:gap-12 border-t border-white/10 pt-8 md:pt-10 w-full max-w-2xl"
           >
             {[
-              { value: '27+', label: 'Years Experience' },
+              { value: `${yearsOfService}+`, label: 'Years Experience' },
               { value: `${BUSINESS.reviewCount}+`, label: 'Google Reviews' },
               { value: `${BUSINESS.rating}★`, label: 'Average Rating' },
             ].map((stat) => (
-              <div key={stat.label}>
-                <div className="font-display text-2xl font-black text-white">{stat.value}</div>
-                <div className="text-xs text-white/50">{stat.label}</div>
+              <div key={stat.label} className="flex flex-col items-center">
+                <div className="font-display text-2xl md:text-3xl font-black text-white">{stat.value}</div>
+                <div className="text-xs uppercase tracking-widest text-white/40 mt-1">{stat.label}</div>
               </div>
             ))}
           </motion.div>

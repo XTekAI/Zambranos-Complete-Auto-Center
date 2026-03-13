@@ -4,6 +4,7 @@ import { motion } from 'motion/react';
 import { Truck, Clock, ShieldCheck, Phone, Zap, Gauge } from 'lucide-react';
 import Image from 'next/image';
 import { BUSINESS, LINKS } from '../lib/constants';
+import AnimatedButton from './AnimatedButton';
 
 const features = [
   {
@@ -32,10 +33,10 @@ export default function CommercialSection() {
   return (
     <section id="commercial" className="relative overflow-hidden bg-dark py-24 text-white">
       <Image
-        src="https://images.unsplash.com/photo-1519003722824-194d4455a60c?w=1920&q=80"
-        alt="Commercial fleet vehicles"
+        src="/images/zambrano-van-real.jpg"
+        alt="Zambrano's Commercial fleet"
         fill
-        className="object-cover opacity-15"
+        className="object-cover opacity-20"
         sizes="100vw"
       />
       <div className="absolute inset-0 bg-gradient-to-r from-dark via-dark/95 to-dark/80" />
@@ -52,13 +53,49 @@ export default function CommercialSection() {
             <Truck className="h-4 w-4" />
             Fleet Pro
           </span>
-          <h2 className="font-display text-4xl font-extrabold tracking-tight md:text-5xl">
-            Keep Your Business{' '}
-            <span className="text-primary">Moving Forward</span>
+          <h2 className="font-display text-3xl font-extrabold tracking-tight md:text-4xl lg:text-5xl leading-tight">
+            <span className="text-white drop-shadow-md">Keep Your Business</span> <span className="text-red-600 drop-shadow-md">Moving Forward</span>
           </h2>
-          <p className="mt-4 text-lg leading-relaxed text-white/60">
+          <p className="mt-4 text-lg leading-relaxed text-white font-bold drop-shadow-md">
             We understand downtime costs you money. Our commercial vehicle services are designed for fast turnaround and priority scheduling.
           </p>
+
+          <motion.div 
+            initial={{ opacity: 0, x: -20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            className="mt-8 flex flex-col md:flex-row items-center gap-8 rounded-3xl bg-white/5 p-6 border border-white/10 backdrop-blur-md"
+          >
+            <div className="relative w-full md:w-2/5 h-64 overflow-hidden rounded-2xl shadow-2xl">
+              <Image 
+                src="/images/zambrano-van-real.jpg"
+                alt="Zambranos Commercial Van"
+                fill
+                className="object-cover transition-transform duration-700 hover:scale-105"
+              />
+            </div>
+            <div className="flex-1">
+              <h4 className="text-primary font-bold text-sm uppercase tracking-widest mb-2">Fleet Expertise</h4>
+              <p className="text-white font-bold text-xl md:text-2xl mb-4 leading-tight">
+                Full service repair for F150 & F250 trucks, and E250 & E350 fleet vehicles!
+              </p>
+              <p className="text-white/60 mb-6 text-sm">
+                We specialize in keeping your business on the road with military-grade precision and fast turnaround times.
+              </p>
+              <div className="flex flex-wrap gap-4">
+                <AnimatedButton
+                  href="/commercial"
+                  text="Learn More"
+                  className="px-8 py-3 text-sm font-bold border-2 border-white/20 hover:border-white/40"
+                />
+                <AnimatedButton
+                  href={BUSINESS.phoneTel}
+                  text="Call Now"
+                  className="px-8 py-3 text-sm font-bold bg-primary hover:bg-red-700"
+                />
+              </div>
+            </div>
+          </motion.div>
         </motion.div>
 
         <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
@@ -82,25 +119,6 @@ export default function CommercialSection() {
             );
           })}
         </div>
-
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5, delay: 0.4 }}
-          className="mt-12 flex flex-col items-start gap-4 sm:flex-row sm:items-center"
-        >
-          <a
-            href={BUSINESS.phoneTel}
-            className="group inline-flex items-center gap-2 rounded-xl bg-primary px-8 py-4 text-base font-bold text-white transition-all hover:brightness-110 cursor-pointer"
-          >
-            <Phone className="h-5 w-5 transition-transform group-hover:rotate-12" />
-            Call for Fleet Services
-          </a>
-          <span className="text-sm text-white/40">
-            Priority scheduling for commercial accounts
-          </span>
-        </motion.div>
       </div>
     </section>
   );

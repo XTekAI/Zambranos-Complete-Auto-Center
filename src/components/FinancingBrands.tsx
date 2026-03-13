@@ -1,41 +1,50 @@
 'use client';
 
 import { motion } from 'motion/react';
-import { CreditCard, ArrowRight } from 'lucide-react';
-import Link from 'next/link';
+import Image from 'next/image';
+import AnimatedButton from './AnimatedButton';
+import { LINKS } from '../lib/constants';
 
 export default function FinancingBrands() {
   return (
-    <section className="bg-white py-12">
+    <section className="bg-white py-16 overflow-hidden">
       <div className="mx-auto max-w-7xl px-6">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
+          initial={{ opacity: 0, scale: 0.95 }}
+          whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
-          className="flex flex-col items-center justify-between gap-6 rounded-2xl bg-dark p-8 md:flex-row md:p-10"
+          transition={{ duration: 0.6 }}
+          className="premium-card relative flex flex-col items-center justify-center gap-10 p-8 md:flex-row md:p-16"
         >
-          <div className="flex items-center gap-4">
-            <div className="rounded-xl bg-primary/20 p-3">
-              <CreditCard className="h-7 w-7 text-primary" />
-            </div>
-            <div>
-              <p className="font-display text-lg font-bold text-white">
-                Financing Available
-              </p>
-              <p className="text-sm text-white/60">
-                Up to 6 months no interest through CFNA &middot; All credit
-                welcome with American First Finance
-              </p>
+          {/* Card Image Side */}
+          <div className="relative w-full max-w-full md:max-w-[550px] flex-shrink-0 group">
+             <div className="absolute -inset-10 bg-red-600/10 rounded-full blur-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+             <Image 
+                src="/images/financing-card.png"
+                alt="Bridgestone Firestone Credit Card"
+                width={700}
+                height={400}
+                className="relative z-10 w-full h-auto drop-shadow-[0_20px_50px_rgba(0,0,0,0.15)] transform transition-transform duration-500 hover:-rotate-1 hover:scale-105"
+             />
+          </div>
+
+          {/* Text Side */}
+          <div className="flex flex-col items-center md:items-start text-center md:text-left max-w-lg">
+            <span className="text-gray-600 text-xl md:text-2xl font-medium tracking-tight mb-1">
+              check out our available
+            </span>
+            <h2 className="font-display text-4xl md:text-5xl lg:text-7xl font-black text-dark leading-none tracking-tighter mb-8">
+              FINANCING
+            </h2>
+            
+            <div className="w-full flex justify-center md:justify-start">
+               <AnimatedButton
+                href={LINKS.financingCFNA}
+                text="learn more"
+                className="btn-dark px-12 py-4 text-lg font-bold"
+              />
             </div>
           </div>
-          <Link
-            href="/financing"
-            className="group inline-flex items-center gap-2 rounded-xl bg-primary px-6 py-3 text-sm font-bold text-white transition-all hover:brightness-110 cursor-pointer"
-          >
-            Learn More
-            <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
-          </Link>
         </motion.div>
       </div>
     </section>

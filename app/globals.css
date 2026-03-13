@@ -26,9 +26,11 @@ body {
   font-family: var(--font-sans);
 }
 
-h1, h2, h3, h4, h5, h6 {
-  font-family: var(--font-display);
-  color: var(--color-dark);
+@layer base {
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-display);
+    color: var(--color-dark);
+  }
 }
 
 ::selection {
@@ -43,4 +45,191 @@ h1, h2, h3, h4, h5, h6 {
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
   }
+}
+
+/* Custom Animated CTA Button */
+.animated-button {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  background-color: transparent !important;
+  box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.4);
+  color: #ffffff;
+  cursor: pointer;
+  overflow: hidden;
+  transition: all 0.6s cubic-bezier(0.23, 1, 0.320, 1);
+  border-radius: 9999px;
+  padding: 1rem 2rem;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.animated-button span.anim-bg {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 10px;
+  height: 10px;
+  background-color: #E31E24;
+  border-radius: 50%;
+  opacity: 0;
+  transition: all 0.7s cubic-bezier(0.23, 1, 0.320, 1);
+  z-index: 0;
+}
+
+.animated-button span.anim-text {
+  position: relative;
+  z-index: 2;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: inherit;
+}
+
+.animated-button:hover {
+  box-shadow: 0 0 0 5px rgba(227, 30, 36, 0.5);
+  color: #ffffff;
+}
+
+.animated-button:active {
+  transform: scale(0.95);
+}
+
+.animated-button:hover span.anim-bg {
+  width: 400px;
+  height: 400px;
+  opacity: 1;
+}
+
+/* Variant: Black Hover */
+.animated-button.hover-black span.anim-bg {
+  background-color: #000000;
+}
+
+.animated-button.hover-black:hover {
+  box-shadow: 0 0 0 5px rgba(0, 0, 0, 0.3);
+}
+
+/* Variant: Dark (for white backgrounds) */
+.animated-button.btn-dark {
+  color: #000000;
+  box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.1);
+}
+
+.animated-button.btn-dark:hover {
+  color: #ffffff;
+  box-shadow: 0 0 0 5px rgba(227, 30, 36, 0.4);
+}
+
+/* Premium Glassmorphism Card Effect */
+.premium-card {
+  box-sizing: border-box;
+  background: rgba(255, 255, 255, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  box-shadow: 12px 17px 51px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(8px);
+  border-radius: 1.5rem;
+  cursor: pointer;
+  transition: all 0.5s cubic-bezier(0.23, 1, 0.320, 1);
+  user-select: none;
+}
+
+.premium-card:hover {
+  border: 1px solid #E31E24;
+  transform: scale(1.03) translateY(-5px);
+  box-shadow: 15px 20px 60px rgba(0, 0, 0, 0.15);
+  background: rgba(255, 255, 255, 0.9);
+}
+
+.premium-card:active {
+  transform: scale(0.97) rotateZ(1.5deg);
+}
+
+/* Dark variant for premium cards */
+.premium-card-dark {
+  background: rgba(26, 26, 26, 0.8);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: white;
+}
+
+.premium-card-dark:hover {
+  background: rgba(26, 26, 26, 0.95);
+  border: 1px solid #E31E24;
+}
+
+/* Pill Badge Card */
+.pill-badge {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: start;
+  gap: 0.75rem;
+  padding: 0.75rem 1.25rem;
+  border-radius: 50px;
+  background: linear-gradient(to right, #1A1A1A, #2d2d2d);
+  box-shadow: 0 0 10px rgba(227, 30, 36, 0.3);
+  color: #ffffff;
+  transition: all 0.4s cubic-bezier(0.23, 1, 0.320, 1);
+  cursor: default;
+}
+
+.pill-badge:hover {
+  background: linear-gradient(to right, #E31E24, #f45c43);
+  box-shadow: 0 0 20px rgba(227, 30, 36, 0.5);
+  transform: translateY(-2px);
+}
+
+.pill-badge .pill-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: rgba(227, 30, 36, 0.2);
+  flex-shrink: 0;
+  transition: background 0.4s ease;
+}
+
+.pill-badge:hover .pill-icon {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.pill-badge .pill-text {
+  font-weight: 700;
+  font-size: 0.875rem;
+  color: #ffffff;
+}
+
+/* Pill Badge Light variant (for light backgrounds with more contrast) */
+.pill-badge-info {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem 1.5rem;
+  border-radius: 50px;
+  background: linear-gradient(to right, #1A1A1A, #2d2d2d);
+  box-shadow: 0 0 10px rgba(227, 30, 36, 0.3);
+  color: #ffffff;
+  transition: all 0.4s cubic-bezier(0.23, 1, 0.320, 1);
+}
+
+.pill-badge-info:hover {
+  box-shadow: 0 0 20px rgba(227, 30, 36, 0.5);
+  transform: translateY(-2px);
+}
+
+.pill-badge-info .pill-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: rgba(227, 30, 36, 0.2);
+  flex-shrink: 0;
 }

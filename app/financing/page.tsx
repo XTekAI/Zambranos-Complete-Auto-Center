@@ -39,7 +39,7 @@ export default function FinancingPage() {
       <Navbar />
       <main>
         {/* Hero */}
-        <section className="bg-dark py-20 text-white">
+        <section className="bg-dark py-20 pt-32 lg:pt-40 text-white">
           <div className="mx-auto max-w-7xl px-6">
             <motion.div
               initial={{ opacity: 0, y: 30 }}
@@ -51,8 +51,8 @@ export default function FinancingPage() {
                 <CreditCard className="h-4 w-4" />
                 Flexible Payment Options
               </span>
-              <h1 className="font-display text-4xl font-black tracking-tight sm:text-5xl md:text-6xl">
-                Affordable <span className="text-primary">Financing</span>
+              <h1 className="font-display text-4xl font-black tracking-tight sm:text-5xl md:text-6xl leading-none">
+                <span className="text-white drop-shadow-lg">Affordable</span> <span className="text-red-600 drop-shadow-lg">Financing</span>
               </h1>
               <p className="mt-4 max-w-xl text-lg text-white/60">
                 Don&apos;t let budget stop you from getting the service you need.
@@ -72,7 +72,7 @@ export default function FinancingPage() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5 }}
-                className="overflow-hidden rounded-2xl bg-white shadow-[6px_6px_12px_#d1d1d1,-6px_-6px_12px_#ffffff]"
+                className="premium-card overflow-hidden"
               >
                 {/* Card Header */}
                 <div className="bg-dark p-8">
@@ -138,7 +138,7 @@ export default function FinancingPage() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: 0.15 }}
-                className="overflow-hidden rounded-2xl bg-white shadow-[6px_6px_12px_#d1d1d1,-6px_-6px_12px_#ffffff]"
+                className="premium-card overflow-hidden"
               >
                 {/* Card Header */}
                 <div className="bg-dark p-8">
@@ -241,7 +241,7 @@ export default function FinancingPage() {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.4, delay: i * 0.1 }}
-                    className="relative rounded-2xl bg-surface p-8 shadow-[6px_6px_12px_#d1d1d1,-6px_-6px_12px_#ffffff]"
+                    className="premium-card relative p-8"
                   >
                     <span className="font-display text-5xl font-black text-primary/10">
                       {item.step}

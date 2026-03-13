@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import { ReactNode } from 'react';
 
 interface AnimatedButtonProps {
   text: string;
@@ -8,42 +9,46 @@ interface AnimatedButtonProps {
   className?: string;
   variant?: 'red' | 'white' | 'dark' | 'outline';
   onClick?: () => void;
+  icon?: ReactNode;
 }
-
-const variants: Record<string, string> = {
-  red: 'bg-primary text-white hover:brightness-110',
-  white: 'bg-white text-dark hover:bg-surface',
-  dark: 'bg-dark text-white hover:bg-primary',
-  outline: 'bg-transparent border-2 border-primary text-primary hover:bg-primary hover:text-white',
-};
 
 export default function AnimatedButton({
   text,
   href,
   className = '',
-  variant = 'red',
   onClick,
+  icon,
 }: AnimatedButtonProps) {
-  const base = `inline-flex items-center justify-center rounded-xl px-8 py-4 text-sm font-bold uppercase tracking-wide transition-all duration-200 cursor-pointer ${variants[variant]} ${className}`;
+  const baseClasses = `animated-button group rounded-full px-8 py-4 font-bold transition-all duration-300 ${className}`;
+
+  const content = (
+    <>
+      <span className="anim-text">
+        {icon && icon}
+        {text}
+      </span>
+      <span className="anim-bg" />
+    </>
+  );
 
   if (href) {
     if (href.startsWith('http') || href.startsWith('tel:') || href.startsWith('mailto:')) {
       return (
-        <a href={href} className={base}>
-          {text}
+        <a href={href} className={baseClasses}>
+          {content}
         </a>
       );
     }
     return (
-      <Link href={href} className={base}>
-        {text}
+      <Link href={href} className={baseClasses}>
+        {content}
       </Link>
     );
   }
 
   return (
-    <button onClick={onClick} className={base}>
-      {text}
+    <button onClick={onClick} className={baseClasses}>
+      {content}
     </button>
   );
 }

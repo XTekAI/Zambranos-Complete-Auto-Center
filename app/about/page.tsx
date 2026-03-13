@@ -45,11 +45,14 @@ const values = [
   },
 ];
 
+const currentYear = new Date().getFullYear();
+const yearsOfService = currentYear - BUSINESS.established;
+
 const milestones = [
   { year: '1997', event: 'Founded by the Zambrano family in Trenton, NJ' },
   { year: '2005', event: 'Became an authorized Bridgestone / Firestone dealer' },
   { year: '2015', event: 'Expanded commercial fleet services division' },
-  { year: '2024', event: `Serving 27+ years with ${BUSINESS.reviewCount}+ five-star reviews` },
+  { year: currentYear.toString(), event: `Serving ${yearsOfService}+ years with ${BUSINESS.reviewCount}+ five-star reviews` },
 ];
 
 export default function AboutPage() {
@@ -58,7 +61,7 @@ export default function AboutPage() {
       <Navbar />
       <main>
         {/* Hero */}
-        <section className="relative flex min-h-[50vh] items-center overflow-hidden bg-dark">
+        <section className="relative flex min-h-[40vh] md:min-h-[50vh] items-center overflow-hidden bg-dark pt-24 md:pt-32 lg:pt-40">
           <Image
             src="https://images.unsplash.com/photo-1625047509248-ec889cbff17f?w=1920&q=80"
             alt="Auto repair team at work"
@@ -81,8 +84,8 @@ export default function AboutPage() {
                 <Shield className="h-3.5 w-3.5" />
                 Veteran-Owned &amp; Family Operated
               </span>
-              <h1 className="font-display text-4xl font-black tracking-tight text-white sm:text-5xl md:text-6xl">
-                About <span className="text-primary">Zambrano&apos;s</span>
+              <h1 className="font-display text-4xl font-black tracking-tight sm:text-5xl md:text-6xl leading-none">
+                <span className="text-white drop-shadow-lg">About</span> <span className="text-red-600 drop-shadow-lg">Zambrano&apos;s</span>
               </h1>
               <p className="mt-4 max-w-lg text-lg leading-relaxed text-white/70">
                 Since {BUSINESS.established}, delivering expert auto care with
@@ -134,11 +137,11 @@ export default function AboutPage() {
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: 0.2 }}
-                className="relative h-[500px] overflow-hidden rounded-2xl shadow-[6px_6px_12px_#d1d1d1,-6px_-6px_12px_#ffffff]"
+                className="relative h-72 md:h-[500px] overflow-hidden rounded-2xl shadow-[6px_6px_12px_#d1d1d1,-6px_-6px_12px_#ffffff]"
               >
                 <Image
-                  src="https://images.unsplash.com/photo-1619642751034-765dfdf7c58e?w=800&q=80"
-                  alt="Inside the auto repair shop"
+                  src="/images/owner.jpg"
+                  alt="Founder of Zambrano's Auto Center"
                   fill
                   sizes="(max-width: 1024px) 100vw, 50vw"
                   className="object-cover"
@@ -171,7 +174,7 @@ export default function AboutPage() {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.4, delay: i * 0.1 }}
-                    className="rounded-2xl bg-white p-8 shadow-[6px_6px_12px_#d1d1d1,-6px_-6px_12px_#ffffff] transition-all duration-200 hover:-translate-y-1"
+                    className="premium-card p-8"
                   >
                     <div className="mb-4 inline-flex rounded-xl bg-primary/10 p-3">
                       <Icon className="h-6 w-6 text-primary" />
@@ -269,7 +272,7 @@ export default function AboutPage() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.4 }}
-                className="rounded-2xl bg-white p-8 shadow-[6px_6px_12px_#d1d1d1,-6px_-6px_12px_#ffffff]"
+                className="premium-card p-8"
               >
                 <h3 className="mb-6 font-display text-2xl font-bold text-dark">
                   Business Hours
@@ -295,7 +298,7 @@ export default function AboutPage() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.4, delay: 0.1 }}
-                className="rounded-2xl bg-white p-8 shadow-[6px_6px_12px_#d1d1d1,-6px_-6px_12px_#ffffff]"
+                className="premium-card p-8"
               >
                 <h3 className="mb-6 font-display text-2xl font-bold text-dark">
                   Visit Us

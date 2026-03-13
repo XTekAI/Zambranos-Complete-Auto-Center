@@ -16,10 +16,9 @@ const services = [
   {
     title: 'Suspension Repair',
     description:
-      'Shocks, struts, control arms & steering components. Expert diagnostics for a smooth, safe ride.',
+      'Shocks, struts, control arms, ball joints & tie rods. Expert diagnostics for a smooth, safe ride.',
     icon: Wrench,
-    image:
-      'https://images.unsplash.com/photo-1596464619711-6415e6b189a8?w=800&q=80',
+    image: '/images/suspension repair.jpg',
     href: '/services#suspension',
   },
   {
@@ -27,8 +26,7 @@ const services = [
     description:
       'Complete brake system repair — pads, rotors, calipers & fluid flush for optimal stopping power.',
     icon: Disc,
-    image:
-      'https://images.unsplash.com/photo-1486262715619-67b85e0b08d3?w=800&q=80',
+    image: '/images/brakes.jpg',
     href: '/services#brakes',
   },
   {
@@ -36,8 +34,7 @@ const services = [
     description:
       'Precision computerized alignment extends tire life and improves handling and fuel economy.',
     icon: Move,
-    image:
-      'https://images.unsplash.com/photo-1580273916550-e323be2ae537?w=800&q=80',
+    image: '/images/wheel alaignment.jpg',
     href: '/services#alignment',
   },
   {
@@ -45,18 +42,16 @@ const services = [
     description:
       'Bridgestone, Firestone & Fuzion. Installation, rotation, balancing, TPMS & flat repair.',
     icon: CircleDot,
-    image:
-      'https://images.unsplash.com/photo-1590240455581-28564a594367?w=800&q=80',
-    href: '/services#tires',
+    image: '/images/tire services.jpg',
+    href: '/tires',
   },
   {
     title: 'Commercial Vehicles',
     description:
       'Priority fleet service for trucks & vans. Heavy-duty suspension, brakes & commercial tires.',
     icon: Truck,
-    image:
-      'https://images.unsplash.com/photo-1601584115197-04ecc0da31d7?w=800&q=80',
-    href: '/#commercial',
+    image: '/images/comercila vehicles.jpg',
+    href: '/commercial',
   },
 ];
 
@@ -70,7 +65,7 @@ export default function CoreServices() {
             <Wrench className="h-4 w-4" />
             Our Specialties
           </span>
-          <h2 className="font-display text-4xl font-extrabold tracking-tight text-dark md:text-5xl">
+          <h2 className="font-display text-3xl font-extrabold tracking-tight text-dark md:text-4xl lg:text-5xl">
             High-Performance <span className="text-primary">Auto Care</span>
           </h2>
           <p className="mt-4 text-lg leading-relaxed text-muted">
@@ -90,7 +85,7 @@ export default function CoreServices() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="group flex flex-col overflow-hidden rounded-2xl bg-white shadow-[6px_6px_12px_#d1d1d1,-6px_-6px_12px_#ffffff] transition-all duration-200 hover:-translate-y-1 hover:shadow-[8px_8px_16px_#c8c8c8,-8px_-8px_16px_#ffffff]"
+                className="premium-card group flex flex-col overflow-hidden"
               >
                 {/* Image */}
                 <div className="relative h-48 w-full overflow-hidden">

@@ -24,7 +24,7 @@ export default function MaintenanceServices() {
   return (
     <section className="bg-surface py-24">
       <div className="mx-auto max-w-7xl px-6">
-        <div className="relative overflow-hidden rounded-3xl bg-white p-8 shadow-[6px_6px_12px_#d1d1d1,-6px_-6px_12px_#ffffff] md:p-12">
+        <div className="premium-card relative overflow-hidden p-8 md:p-12">
           {/* Decorative */}
           <div className="pointer-events-none absolute -top-32 right-0 h-64 w-64 rounded-full bg-primary/10 blur-3xl" />
 
@@ -49,14 +49,12 @@ export default function MaintenanceServices() {
                   return (
                     <div
                       key={item.name}
-                      className="flex items-center gap-3 rounded-xl bg-surface p-3 transition-colors hover:bg-primary/5"
+                      className="pill-badge"
                     >
-                      <div className="rounded-lg bg-primary/10 p-2">
-                        <Icon className="h-5 w-5 text-primary" />
+                      <div className="pill-icon">
+                        <Icon className="h-4 w-4 text-primary" />
                       </div>
-                      <span className="text-sm font-semibold text-dark">
-                        {item.name}
-                      </span>
+                      <span className="pill-text">{item.name}</span>
                     </div>
                   );
                 })}
@@ -68,10 +66,10 @@ export default function MaintenanceServices() {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: 0.2 }}
-              className="relative h-[400px] overflow-hidden rounded-2xl shadow-lg"
+              className="relative h-64 md:h-[400px] overflow-hidden rounded-2xl shadow-lg"
             >
               <Image
-                src="https://images.unsplash.com/photo-1635438837136-128c77aa71e4?w=800&q=80"
+                src="/images/inspection.jpg"
                 alt="Mechanic performing maintenance"
                 fill
                 sizes="(max-width: 1024px) 100vw, 50vw"

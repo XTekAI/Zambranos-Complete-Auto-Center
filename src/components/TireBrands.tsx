@@ -7,16 +7,19 @@ import Link from 'next/link';
 const brands = [
   {
     name: 'BRIDGESTONE',
+    logo: '/images/Bridgestone.png',
     tagline: 'Premium Performance',
     description: 'Industry-leading tires for passenger vehicles, SUVs, and light trucks. Engineered for safety and longevity.',
   },
   {
     name: 'FIRESTONE',
+    logo: '/images/firestone.png',
     tagline: 'Trusted Reliability',
     description: 'Dependable all-season and all-terrain tires at competitive prices. A trusted name since 1900.',
   },
   {
     name: 'FUZION',
+    logo: '/images/fuzion-logo.png',
     tagline: 'Value Performance',
     description: 'High-quality tires engineered by Bridgestone at budget-friendly prices without sacrificing safety.',
   },
@@ -44,13 +47,15 @@ export default function TireBrands() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.4, delay: i * 0.1 }}
-              className="group rounded-2xl bg-surface p-8 shadow-[6px_6px_12px_#d1d1d1,-6px_-6px_12px_#ffffff] transition-all duration-200 hover:-translate-y-1"
+              className="premium-card group p-8"
             >
-              {/* Brand Logo Text */}
-              <div className="mb-6 flex h-16 items-center">
-                <span className="font-display text-2xl font-black tracking-wider text-dark">
-                  {brand.name}
-                </span>
+              {/* Brand Logo */}
+              <div className="mb-6 flex h-16 items-start">
+                <img 
+                  src={brand.logo} 
+                  alt={brand.name} 
+                  className="h-full object-contain grayscale transition-all group-hover:grayscale-0" 
+                />
               </div>
               <p className="mb-1 text-xs font-bold uppercase tracking-wider text-primary">
                 {brand.tagline}
@@ -59,7 +64,7 @@ export default function TireBrands() {
                 {brand.description}
               </p>
               <Link
-                href="/services#tires"
+                href="/tires"
                 className="mt-6 inline-flex items-center gap-2 text-sm font-bold text-primary transition-colors hover:text-dark cursor-pointer"
               >
                 View Tires

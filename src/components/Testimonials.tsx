@@ -42,8 +42,8 @@ export default function Testimonials() {
             <Star className="h-4 w-4 fill-yellow-400" />
             {BUSINESS.rating} Stars · {BUSINESS.reviewCount} Google Reviews
           </a>
-          <h2 className="font-display text-4xl font-extrabold tracking-tight text-white md:text-5xl">
-            What Our <span className="text-primary">Customers</span> Say
+          <h2 className="font-display text-4xl font-extrabold tracking-tight md:text-5xl">
+            <span className="text-white drop-shadow-md">What Our</span> <span className="text-red-600 drop-shadow-md">Customers</span> <span className="text-white drop-shadow-md">Say</span>
           </h2>
           <p className="mt-4 text-lg leading-relaxed text-white/50">
             Real reviews from Trenton drivers who trust Zambrano&apos;s for their vehicle&apos;s safety.
