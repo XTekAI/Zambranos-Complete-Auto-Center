@@ -1,7 +1,7 @@
 /* ── Zambrano's Complete Auto Center — Centralized Constants ── */
 
 export const BUSINESS = {
-  name: "Zambrano's Complete Auto Center",
+  name: "Zambranos Complete Auto Center",
   phone: '(609) 396-8417',
   phoneTel: 'tel:6093968417',
   address: '1017 Hamilton Ave, Trenton, NJ 08629',

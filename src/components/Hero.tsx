@@ -42,7 +42,7 @@ export default function Hero() {
   const yearsOfService = currentYear - BUSINESS.established;
 
   return (
-    <section className="relative flex min-h-[95vh] items-center justify-center overflow-hidden bg-dark">
+    <section className="relative flex min-h-screen items-center justify-center overflow-hidden bg-dark">
       {/* Decorative Light Leaks */}
       <div
         aria-hidden
@@ -87,7 +87,7 @@ export default function Hero() {
 
           <motion.h1 
             variants={transitionVariants.item}
-            className="font-display text-4xl font-black leading-[1.05] tracking-tight sm:text-5xl md:text-7xl lg:text-8xl max-w-5xl"
+            className="font-display text-4xl font-black leading-[1.05] tracking-tight sm:text-5xl md:text-7xl lg:text-8xl max-w-5xl text-center"
           >
             <span className="text-red-500">Veteran-Owned{' '}</span>
             <span className="text-red-600 border-b-4 border-red-600/30">Excellence</span> 
@@ -97,7 +97,7 @@ export default function Hero() {
 
           <motion.p 
             variants={transitionVariants.item}
-            className="mt-8 max-w-2xl text-lg md:text-xl leading-relaxed text-red-400/90 font-medium"
+            className="mt-8 max-w-2xl text-lg md:text-xl leading-relaxed text-red-400/90 font-medium text-center"
           >
             Since {BUSINESS.established}, delivering expert suspension, brakes, tires &amp;
             commercial fleet services with military-grade precision. Same-day service available.
@@ -115,7 +115,7 @@ export default function Hero() {
             />
             <AnimatedButton 
               text="Search Tires"
-              href="/services#tires"
+              href="/tires"
               icon={<CircleDot className="h-5 w-5" />}
               className="border-2 border-white/20 text-white backdrop-blur-sm shadow-none hover:shadow-none px-6 py-4 md:px-10 md:py-5 text-base md:text-lg"
             />

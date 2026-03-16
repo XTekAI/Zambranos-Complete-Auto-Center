@@ -49,9 +49,10 @@ const currentYear = new Date().getFullYear();
 const yearsOfService = currentYear - BUSINESS.established;
 
 const milestones = [
-  { year: '1997', event: 'Founded by the Zambrano family in Trenton, NJ' },
+  { year: '1997', event: 'Founded by the Zambranos family' },
   { year: '2005', event: 'Became an authorized Bridgestone / Firestone dealer' },
   { year: '2015', event: 'Expanded commercial fleet services division' },
+  { year: '2018', event: 'Relocated to our current Trenton, NJ facility' },
   { year: currentYear.toString(), event: `Serving ${yearsOfService}+ years with ${BUSINESS.reviewCount}+ five-star reviews` },
 ];
 
@@ -85,7 +86,7 @@ export default function AboutPage() {
                 Veteran-Owned &amp; Family Operated
               </span>
               <h1 className="font-display text-4xl font-black tracking-tight sm:text-5xl md:text-6xl leading-none">
-                <span className="text-white drop-shadow-lg">About</span> <span className="text-red-600 drop-shadow-lg">Zambrano&apos;s</span>
+                <span className="text-white drop-shadow-lg">About</span> <span className="text-red-600 drop-shadow-lg">Zambranos</span>
               </h1>
               <p className="mt-4 max-w-lg text-lg leading-relaxed text-white/70">
                 Since {BUSINESS.established}, delivering expert auto care with
@@ -109,18 +110,17 @@ export default function AboutPage() {
                   <Clock className="h-4 w-4" />
                   Our Story
                 </span>
-                <h2 className="font-display text-3xl font-extrabold tracking-tight text-dark md:text-4xl">
-                  27+ Years of <span className="text-primary">Trusted</span> Service
+                <h2 className="font-display text-3xl font-extrabold tracking-tight md:text-4xl">
+                  29+ Years of <span className="text-primary">Trusted</span> Service
                 </h2>
                 <p className="mt-6 leading-relaxed text-muted">
-                  Zambrano&apos;s Complete Auto Center was founded in {BUSINESS.established} with a
+                  Zambranos Complete Auto Center was founded in {BUSINESS.established} with a
                   simple mission: provide honest, high-quality auto repair at fair
                   prices. As a veteran-owned and family-operated business, we bring
                   the discipline and integrity of military service to every job.
                 </p>
                 <p className="mt-4 leading-relaxed text-muted">
-                  Located at {BUSINESS.address}, we&apos;ve grown from a small
-                  neighborhood shop into Trenton&apos;s trusted destination for
+                  While our roots go back to 1997, we moved to our current Trenton location at {BUSINESS.address} in 2018. Since then, we&apos;ve grown into the area&apos;s trusted destination for
                   suspension repair, brake services, wheel alignments, tire
                   installation, and commercial fleet maintenance.
                 </p>
@@ -155,7 +155,7 @@ export default function AboutPage() {
         <section className="bg-surface py-24">
           <div className="mx-auto max-w-7xl px-6">
             <div className="mb-16 text-center">
-              <h2 className="font-display text-3xl font-extrabold tracking-tight text-dark md:text-4xl">
+              <h2 className="font-display text-3xl font-extrabold tracking-tight md:text-4xl">
                 What <span className="text-primary">Drives</span> Us
               </h2>
               <p className="mx-auto mt-3 max-w-2xl text-muted">
@@ -196,7 +196,7 @@ export default function AboutPage() {
         <section className="bg-white py-24">
           <div className="mx-auto max-w-7xl px-6">
             <div className="mb-16 text-center">
-              <h2 className="font-display text-3xl font-extrabold tracking-tight text-dark md:text-4xl">
+              <h2 className="font-display text-3xl font-extrabold tracking-tight md:text-4xl">
                 Our <span className="text-primary">Journey</span>
               </h2>
             </div>
@@ -236,7 +236,7 @@ export default function AboutPage() {
           <div className="mx-auto max-w-7xl px-6">
             <div className="grid grid-cols-2 gap-8 text-center md:grid-cols-4">
               {[
-                { value: '27+', label: 'Years in Business', icon: Clock },
+                { value: '29+', label: 'Years in Business', icon: Clock },
                 { value: `${BUSINESS.reviewCount}+`, label: 'Google Reviews', icon: Star },
                 { value: `${BUSINESS.rating}★`, label: 'Average Rating', icon: Star },
                 { value: '1000s', label: 'Vehicles Serviced', icon: Wrench },
@@ -274,7 +274,7 @@ export default function AboutPage() {
                 transition={{ duration: 0.4 }}
                 className="premium-card p-8"
               >
-                <h3 className="mb-6 font-display text-2xl font-bold text-dark">
+                <h3 className="mb-6 font-display text-2xl font-bold">
                   Business Hours
                 </h3>
                 <ul className="space-y-4">
@@ -300,7 +300,7 @@ export default function AboutPage() {
                 transition={{ duration: 0.4, delay: 0.1 }}
                 className="premium-card p-8"
               >
-                <h3 className="mb-6 font-display text-2xl font-bold text-dark">
+                <h3 className="mb-6 font-display text-2xl font-bold">
                   Visit Us
                 </h3>
                 <div className="space-y-6">

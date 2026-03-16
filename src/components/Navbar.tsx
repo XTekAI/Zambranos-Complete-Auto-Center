@@ -6,6 +6,7 @@ import { Phone, MapPin, Menu, X, Star, ChevronRight } from 'lucide-react';
 import Link from 'next/link';
 import BusinessStatus from './BusinessStatus';
 import AnimatedButton from './AnimatedButton';
+import Logo from './Logo';
 import { BUSINESS, LINKS } from '../lib/constants';
 
 const NAV_LINKS = [
@@ -60,14 +61,7 @@ export default function Navbar() {
         : 'max-w-7xl bg-dark/95'
       }`}>
         <div className={`mx-auto flex items-center justify-between px-6 transition-all duration-300 ${isScrolled ? 'py-3' : 'py-4'}`}>
-          <Link href="/" className="group flex items-center gap-1 cursor-pointer">
-            <span className="font-display text-xl font-black tracking-tighter text-white">
-              ZAMBRANO&apos;S
-            </span>
-            <span className="font-display text-xl font-black tracking-tighter text-red-600">
-              AUTO
-            </span>
-          </Link>
+          <Logo />
 
           {/* Desktop Nav */}
           <div className="hidden items-center gap-8 md:flex">

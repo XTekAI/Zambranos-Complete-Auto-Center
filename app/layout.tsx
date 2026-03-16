@@ -5,7 +5,7 @@ import Script from 'next/script';
 import JSONLD from '../src/components/JSONLD';
 
 export const metadata: Metadata = {
-  title: "Zambrano's Complete Auto Center | Veteran-Owned Auto Repair in Trenton, NJ",
+  title: "Zambranos Complete Auto Center | Veteran-Owned Auto Repair in Trenton, NJ",
   description:
     'Veteran-owned auto repair shop in Trenton, NJ since 1997. Expert suspension, brakes, tires, wheel alignment & commercial fleet services. 4.4★ rated with 249+ Google reviews. Call (609) 396-8417.',
   keywords: [
@@ -19,11 +19,11 @@ export const metadata: Metadata = {
     'Zambranos auto center',
   ],
   openGraph: {
-    title: "Zambrano's Complete Auto Center",
+    title: "Zambranos Complete Auto Center",
     description: 'Veteran-Owned Excellence in Trenton Since 1997. Expert Suspension, Brakes & Tires.',
     type: 'website',
     locale: 'en_US',
-    siteName: "Zambrano's Complete Auto Center",
+    siteName: "Zambranos Complete Auto Center",
   },
   icons: {
     icon: '/favicon.jpg',

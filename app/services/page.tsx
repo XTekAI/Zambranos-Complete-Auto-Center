@@ -207,7 +207,7 @@ export default function ServicesPage() {
                 <Wrench className="h-4 w-4" />
                 Repairs
               </span>
-              <h2 className="font-display text-3xl font-extrabold tracking-tight text-dark md:text-4xl">
+              <h2 className="font-display text-3xl font-extrabold tracking-tight md:text-4xl">
                 Professional <span className="text-primary">Repair</span> Services
               </h2>
               <p className="mx-auto mt-3 max-w-2xl text-muted">
@@ -239,7 +239,7 @@ export default function ServicesPage() {
                           {service.tagline}
                         </span>
                       </div>
-                      <h3 className="font-display text-3xl font-extrabold text-dark">
+                      <h3 className="font-display text-3xl font-extrabold">
                         {service.title}
                       </h3>
                       <p className="mt-3 leading-relaxed text-muted">
@@ -286,7 +286,7 @@ export default function ServicesPage() {
                 <CircleDot className="h-4 w-4" />
                 Tires
               </span>
-              <h2 className="font-display text-3xl font-extrabold tracking-tight text-dark md:text-4xl">
+              <h2 className="font-display text-3xl font-extrabold tracking-tight md:text-4xl">
                 Complete <span className="text-primary">Tire</span> Services
               </h2>
               <p className="mx-auto mt-3 max-w-2xl text-muted">
@@ -357,7 +357,7 @@ export default function ServicesPage() {
                 <Droplet className="h-4 w-4" />
                 Maintenance
               </span>
-              <h2 className="font-display text-3xl font-extrabold tracking-tight text-dark md:text-4xl">
+              <h2 className="font-display text-3xl font-extrabold tracking-tight md:text-4xl">
                 Routine <span className="text-primary">Maintenance</span>
               </h2>
               <p className="mx-auto mt-3 max-w-2xl text-muted">

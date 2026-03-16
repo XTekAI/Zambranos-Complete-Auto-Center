@@ -38,8 +38,8 @@ export default function WhyChooseUs() {
     <section className="bg-white py-24">
       <div className="mx-auto max-w-7xl px-6">
         <div className="mx-auto mb-16 max-w-3xl text-center">
-          <h2 className="font-display text-3xl font-extrabold tracking-tight text-dark md:text-4xl lg:text-5xl">
-            Why Choose <span className="text-primary">Zambrano&apos;s</span>?
+          <h2 className="font-display text-3xl font-extrabold tracking-tight md:text-4xl lg:text-5xl">
+            Why Choose <span className="text-primary">Zambranos</span>?
           </h2>
           <p className="mt-4 text-lg leading-relaxed text-muted">
             When it comes to your vehicle&apos;s safety and performance, you need
@@ -62,7 +62,7 @@ export default function WhyChooseUs() {
                 <div className="mb-5 inline-flex h-14 w-14 items-center justify-center rounded-xl bg-white shadow-sm transition-transform group-hover:scale-110">
                   <Icon className="h-7 w-7 text-primary" />
                 </div>
-                <h3 className="mb-2 font-display text-lg font-bold text-dark">
+                <h3 className="mb-2 font-display text-lg font-bold">
                   {reason.title}
                 </h3>
                 <p className="text-sm leading-relaxed text-muted">

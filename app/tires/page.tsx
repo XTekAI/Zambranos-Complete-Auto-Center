@@ -1,6 +1,8 @@
 'use client';
 
 import { motion } from 'motion/react';
+import { useEffect } from 'react';
+import Script from 'next/script';
 import {
   CircleDot,
   ShieldCheck,
@@ -49,6 +51,17 @@ const brands = [
 ];
 
 export default function TiresPage() {
+  useEffect(() => {
+    // @ts-ignore
+    if (window.TCWidget) {
+      // @ts-ignore
+      window.TCWidget.init({
+        apikey: "8f51859db3abe21e51e13fd2dae1857a",
+        container: "tireconnect"
+      });
+    }
+  }, []);
+
   return (
     <>
       <Navbar />
@@ -82,6 +95,32 @@ export default function TiresPage() {
               </p>
             </motion.div>
           </div>
+        </section>
+
+        {/* TireConnect Widget */}
+        <section className="py-12 bg-white border-b border-gray-100">
+          <div className="mx-auto max-w-7xl px-6">
+            <div id="tireconnect" className="min-h-[600px] w-full bg-surface/50 rounded-3xl overflow-hidden shadow-sm flex items-center justify-center">
+              <div className="text-center p-12">
+                <CircleDot className="w-12 h-12 text-primary/20 mx-auto mb-4 animate-pulse" />
+                <p className="text-muted font-medium">Loading Tire Catalog...</p>
+              </div>
+            </div>
+          </div>
+          <Script 
+            src="https://app.tireconnect.ca/js/widget.js" 
+            strategy="afterInteractive"
+            onLoad={() => {
+              // @ts-ignore
+              if (window.TCWidget) {
+                // @ts-ignore
+                window.TCWidget.init({
+                  apikey: "8f51859db3abe21e51e13fd2dae1857a",
+                  container: "tireconnect"
+                });
+              }
+            }}
+          />
         </section>
 
         {/* Brand Showcase */}
@@ -145,7 +184,7 @@ export default function TiresPage() {
           </div>
         </section>
 
-        {/* Preparation for TireConnect Widget */}
+        {/* Professional Installation Details */}
         <section className="bg-dark py-24 relative overflow-hidden">
           <div className="absolute inset-0 opacity-10 blur-3xl pointer-events-none">
             <div className="absolute top-10 right-10 w-96 h-96 bg-red-600 rounded-full"></div>
@@ -153,17 +192,12 @@ export default function TiresPage() {
           </div>
 
           <div className="max-w-4xl mx-auto px-6 text-center relative z-10">
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 text-white/60 mb-8">
-              <Zap className="w-4 h-4 text-primary" />
-              <span className="text-xs font-bold uppercase tracking-wider">Coming Soon: TireConnect</span>
-            </div>
             <h2 className="font-display text-3xl md:text-5xl font-black text-white mb-6">
               Expert Selection <br/> <span className="text-primary italic">Simplified</span>
             </h2>
             <p className="text-white/60 text-lg mb-10">
-              We are currently preparing our <strong>TireConnect Interactive Widget</strong>. 
-              Soon, you'll be able to filter by vehicle, size, and brand to find the perfect tires 
-              for your budget and needs directly on this page.
+              Find the perfect tires for your budget and needs directly above. 
+              Our team of experts is ready to get you back on the road safely.
             </p>
             
             <div className="rounded-3xl bg-white/5 border border-white/10 p-8 text-left max-w-2xl mx-auto backdrop-blur-sm">

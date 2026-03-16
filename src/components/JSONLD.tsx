@@ -16,8 +16,8 @@ export default function JSONLD() {
           "https://www.zambranosauto.com/images/owner.jpg",
           "https://www.zambranosauto.com/images/hero-truck.jpg"
         ],
-        "description": "Zambrano's Complete Auto Center is a veteran-owned and family-operated auto repair shop serving Trenton, Hamilton, Ewing, and surrounding areas in New Jersey since 1997. Specialists in tires, suspension, brakes, and wheel alignments.",
-        "slogan": "Veteran-Owned Excellence in Trenton Since 1997",
+        "description": "Zambranos Complete Auto Center is a veteran-owned and family-operated auto repair shop. Established in 1997 and serving Trenton since 2018. Specialists in tires, suspension, brakes, and wheel alignments.",
+        "slogan": "Veteran-Owned Excellence Since 1997",
         "telephone": "+1-609-396-8417",
         "foundingDate": "1997",
         "priceRange": "$$",

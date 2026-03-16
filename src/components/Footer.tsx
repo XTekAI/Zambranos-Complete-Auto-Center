@@ -1,6 +1,7 @@
 import { Phone, MapPin, Facebook, Instagram, Twitter } from 'lucide-react';
 import Link from 'next/link';
 import { BUSINESS, LINKS } from '../lib/constants';
+import Logo from './Logo';
 
 const quickLinks = [
   { label: 'Home', href: '/' },
@@ -32,10 +33,7 @@ export default function Footer() {
         <div className="mb-12 grid grid-cols-1 gap-12 md:grid-cols-2 lg:grid-cols-4">
           {/* Brand */}
           <div>
-            <Link href="/" className="mb-4 flex items-center gap-1 cursor-pointer">
-              <span className="font-display text-xl font-black text-white">ZAMBRANO&apos;S</span>
-              <span className="font-display text-xl font-black text-primary">AUTO</span>
-            </Link>
+            <Logo className="mb-6" />
             <p className="mb-6 text-sm leading-relaxed">
               Veteran-owned &amp; family operated auto repair serving Trenton since{' '}
               {BUSINESS.established}. Specialists in suspension, brakes, tires &amp; commercial fleet services.

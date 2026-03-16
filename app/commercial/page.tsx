@@ -33,7 +33,7 @@ export default function CommercialPage() {
             <span className="text-red-600 block mt-2">BATTLE READY</span>
           </h1>
           <p className="max-w-2xl mx-auto text-white text-lg font-medium leading-relaxed mb-10 drop-shadow-md">
-            Downtime is lost revenue. At Zambrano&apos;s, we provide priority scheduling and specialized heavy-duty repair services for F-Series, E-Series, and all commercial van fleets.
+            Downtime is lost revenue. At Zambranos, we provide priority scheduling and specialized heavy-duty repair services for F-Series, E-Series, and all commercial van fleets.
           </p>
           <div className="flex flex-wrap justify-center gap-4">
             <AnimatedButton 
@@ -57,7 +57,7 @@ export default function CommercialPage() {
             <div>
               <h2 className="font-display text-4xl font-black text-dark mb-6 tracking-tight">
                 Why Mercer County Trusts <br />
-                <span className="text-primary">Zambrano's Commercial</span>
+                <span className="text-primary">Zambranos Commercial</span>
               </h2>
               <p className="text-muted text-lg mb-8 leading-relaxed">
                 Since 1997, we've helped local businesses stay on the road. We understand the specific demands of work trucks and the importance of preventive maintenance.

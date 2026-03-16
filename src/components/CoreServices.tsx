@@ -65,7 +65,7 @@ export default function CoreServices() {
             <Wrench className="h-4 w-4" />
             Our Specialties
           </span>
-          <h2 className="font-display text-3xl font-extrabold tracking-tight text-dark md:text-4xl lg:text-5xl">
+          <h2 className="font-display text-3xl font-extrabold tracking-tight md:text-4xl lg:text-5xl">
             High-Performance <span className="text-primary">Auto Care</span>
           </h2>
           <p className="mt-4 text-lg leading-relaxed text-muted">
@@ -104,7 +104,7 @@ export default function CoreServices() {
 
                 {/* Content */}
                 <div className="flex flex-grow flex-col p-6">
-                  <h3 className="mb-2 font-display text-xl font-bold text-dark">
+                  <h3 className="mb-2 font-display text-xl font-bold">
                     {service.title}
                   </h3>
                   <p className="mb-6 flex-grow text-sm leading-relaxed text-muted">

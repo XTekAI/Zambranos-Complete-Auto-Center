@@ -35,7 +35,7 @@ export default function MaintenanceServices() {
               viewport={{ once: true }}
               transition={{ duration: 0.5 }}
             >
-              <h2 className="font-display text-3xl font-extrabold tracking-tight text-dark md:text-4xl">
+              <h2 className="font-display text-3xl font-extrabold tracking-tight md:text-4xl">
                 Routine <span className="text-primary">Maintenance</span>
               </h2>
               <p className="mt-4 text-lg leading-relaxed text-muted">

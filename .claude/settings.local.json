@@ -1,0 +1,16 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(curl -L -o \"/c/Users/lorel/OneDrive/Escritorio/Zambranos website/public/images/bridgestone-logo.png\" \"https://upload.wikimedia.org/wikipedia/commons/thumb/8/87/Bridgestone_logo.svg/1200px-Bridgestone_logo.svg.png\")",
+      "Bash(curl -L -o \"/c/Users/lorel/OneDrive/Escritorio/Zambranos website/public/images/firestone-logo.png\" \"https://upload.wikimedia.org/wikipedia/commons/thumb/f/f5/Firestone_Logo.svg/1200px-Firestone_Logo.svg.png\")",
+      "Bash(curl -L -o \"/c/Users/lorel/OneDrive/Escritorio/Zambranos website/public/images/fuzion-logo.png\" \"https://upload.wikimedia.org/wikipedia/en/thumb/e/e6/Fuzion_Tires_logo.svg/1200px-Fuzion_Tires_logo.svg.png\")",
+      "Bash(curl -L -A \"Mozilla/5.0\" -o \"/c/Users/lorel/OneDrive/Escritorio/Zambranos website/public/images/bridgestone-logo.png\" \"https://logos-world.net/wp-content/uploads/2020/12/Bridgestone-Logo-700x394.png\")",
+      "Bash(curl -L -A \"Mozilla/5.0\" -o \"/c/Users/lorel/OneDrive/Escritorio/Zambranos website/public/images/firestone-logo.png\" \"https://logos-world.net/wp-content/uploads/2020/12/Firestone-Logo-700x394.png\")",
+      "Bash(curl -L -A \"Mozilla/5.0\" -o \"/c/Users/lorel/OneDrive/Escritorio/Zambranos website/public/images/fuzion-logo.png\" \"https://www.fuzion-tires.com/content/dam/bridgestone/consumer/bst/fuzion-tires/logos/fuzion-logo.png\")",
+      "Bash(npm run dev)",
+      "Bash(npx next dev)",
+      "Bash(taskkill //PID 2208 //F)",
+      "Bash(netstat -ano)"
+    ]
+  }
+}

@@ -34,7 +34,7 @@ export default function CommercialSection() {
     <section id="commercial" className="relative overflow-hidden bg-dark py-24 text-white">
       <Image
         src="/images/zambrano-van-real.jpg"
-        alt="Zambrano's Commercial fleet"
+        alt="Zambranos Commercial fleet"
         fill
         className="object-cover opacity-20"
         sizes="100vw"
@@ -113,7 +113,7 @@ export default function CommercialSection() {
                 <div className="mb-4 inline-flex rounded-xl bg-primary/20 p-3">
                   <Icon className="h-6 w-6 text-primary" />
                 </div>
-                <h3 className="mb-2 font-display text-lg font-bold">{f.title}</h3>
+                <h3 className="mb-2 font-display text-lg font-bold text-primary">{f.title}</h3>
                 <p className="text-sm leading-relaxed text-white/50">{f.desc}</p>
               </motion.div>
             );

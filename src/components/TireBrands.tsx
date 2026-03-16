@@ -1,6 +1,8 @@
 'use client';
 
 import { motion } from 'motion/react';
+import { useEffect } from 'react';
+import Script from 'next/script';
 import { CircleDot, ArrowRight } from 'lucide-react';
 import Link from 'next/link';
 
@@ -26,6 +28,17 @@ const brands = [
 ];
 
 export default function TireBrands() {
+  useEffect(() => {
+    // @ts-ignore
+    if (window.TCWidget) {
+      // @ts-ignore
+      window.TCWidget.init({
+        apikey: "8f51859db3abe21e51e13fd2dae1857a",
+        container: "tireconnect"
+      });
+    }
+  }, []);
+
   return (
     <section className="bg-white py-20">
       <div className="mx-auto max-w-7xl px-6">
@@ -37,6 +50,30 @@ export default function TireBrands() {
           <h2 className="font-display text-3xl font-extrabold tracking-tight text-dark md:text-4xl">
             Premium <span className="text-primary">Tire</span> Brands
           </h2>
+        </div>
+
+        {/* TireConnect Widget */}
+        <div className="mb-20">
+          <div id="tireconnect" className="min-h-[400px] w-full bg-surface/30 rounded-3xl overflow-hidden shadow-inner flex items-center justify-center border border-gray-100">
+            <div className="text-center p-8">
+              <CircleDot className="w-10 h-10 text-primary/20 mx-auto mb-3 animate-pulse" />
+              <p className="text-muted text-sm font-medium">Loading Interactive Tire Catalog...</p>
+            </div>
+          </div>
+          <Script 
+            src="https://app.tireconnect.ca/js/widget.js" 
+            strategy="afterInteractive"
+            onLoad={() => {
+              // @ts-ignore
+              if (window.TCWidget) {
+                // @ts-ignore
+                window.TCWidget.init({
+                  apikey: "8f51859db3abe21e51e13fd2dae1857a",
+                  container: "tireconnect"
+                });
+              }
+            }}
+          />
         </div>
 
         <div className="grid gap-6 md:grid-cols-3">

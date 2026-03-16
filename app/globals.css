@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Roboto:wght@300;400;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Roboto:wght@300;400;500;700&family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap');
 @import "tailwindcss";
 
 @theme {
@@ -9,7 +9,7 @@
   --color-text: #374151;
 
   --font-sans: "Roboto", ui-sans-serif, system-ui, sans-serif;
-  --font-display: "Montserrat", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "DM Sans", ui-sans-serif, system-ui, sans-serif;
 
   --shadow-soft: 6px 6px 12px #d1d1d1, -6px -6px 12px #ffffff;
   --shadow-soft-hover: 8px 8px 16px #c8c8c8, -8px -8px 16px #ffffff;
@@ -29,7 +29,7 @@ body {
 @layer base {
   h1, h2, h3, h4, h5, h6 {
     font-family: var(--font-display);
-    color: var(--color-dark);
+    color: var(--color-primary);
   }
 }
 
