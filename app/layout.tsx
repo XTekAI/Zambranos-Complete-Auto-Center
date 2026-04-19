@@ -37,6 +37,8 @@ export default function RootLayout({ children }: { children: ReactNode }) {
       <head>
         <meta name="geo.region" content="US-NJ" />
         <meta name="geo.placename" content="Trenton" />
+        <link rel="icon" href="/favicon.jpg" type="image/jpeg" />
+        <link rel="apple-touch-icon" href="/favicon.jpg" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <JSONLD />
