@@ -26,7 +26,8 @@ export const metadata: Metadata = {
     siteName: "Zambranos Complete Auto Center",
   },
   icons: {
-    icon: '/favicon.jpg',
+    icon: [{ url: '/icon.jpg', type: 'image/jpeg' }],
+    apple: [{ url: '/icon.jpg', type: 'image/jpeg' }],
   },
 };
 
