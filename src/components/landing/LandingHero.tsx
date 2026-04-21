@@ -109,9 +109,9 @@ export default function LandingHero() {
             className="mt-12 flex flex-col items-center gap-6"
           >
             <div className="flex flex-wrap justify-center gap-4">
-               <AnimatedButton 
+               <AnimatedButton
                  text="Book Appointment"
-                 href="#appointment-form"
+                 href="http://72.60.167.113:8089/"
                  icon={<Calendar className="h-5 w-5" />}
                  className="px-8 py-5 text-lg"
                />
