@@ -107,17 +107,23 @@ export default function Footer() {
 
         <div className="flex flex-col items-center justify-between gap-4 border-t border-white/10 pt-8 text-xs md:flex-row">
           <p>&copy; {new Date().getFullYear()} {BUSINESS.name}. All rights reserved.</p>
-          <p className="text-white/30">
-            Website by{' '}
-            <a
-              href="https://www.xtekai.com/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-white/50 font-semibold transition-colors hover:text-primary"
-            >
-              XtekAI
-            </a>
-          </p>
+          <div className="flex items-center gap-4">
+            <Link href="/privacy" className="text-white/40 transition-colors hover:text-primary">
+              Privacy Policy &amp; Terms
+            </Link>
+            <span className="text-white/20">·</span>
+            <p className="text-white/30">
+              Website by{' '}
+              <a
+                href="https://www.xtekai.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-white/50 font-semibold transition-colors hover:text-primary"
+              >
+                XtekAI
+              </a>
+            </p>
+          </div>
         </div>
       </div>
     </footer>
