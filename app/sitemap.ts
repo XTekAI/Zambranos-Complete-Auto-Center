@@ -1,38 +1,60 @@
 import { MetadataRoute } from 'next';
 
+const BASE_URL = 'https://www.zambranosauto.com';
+
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = 'https://www.zambranosauto.com';
-  
   return [
+    // ── Core pages ──────────────────────────────────────────────
     {
-      url: baseUrl,
-      lastModified: new Date(),
-      changeFrequency: 'monthly',
-      priority: 1,
+      url: BASE_URL,
+      lastModified: new Date('2025-05-01'),
+      changeFrequency: 'weekly',
+      priority: 1.0,
+    },
+    // ── High-value service pages ─────────────────────────────────
+    {
+      url: `${BASE_URL}/tires`,
+      lastModified: new Date('2025-05-01'),
+      changeFrequency: 'weekly',
+      priority: 0.9,
     },
     {
-      url: `${baseUrl}/services`,
-      lastModified: new Date(),
+      url: `${BASE_URL}/services`,
+      lastModified: new Date('2025-05-01'),
+      changeFrequency: 'weekly',
+      priority: 0.9,
+    },
+    {
+      url: `${BASE_URL}/commercial`,
+      lastModified: new Date('2025-05-01'),
       changeFrequency: 'monthly',
       priority: 0.8,
     },
+    // ── Supporting pages ─────────────────────────────────────────
     {
-      url: `${baseUrl}/commercial`,
-      lastModified: new Date(),
-      changeFrequency: 'monthly',
-      priority: 0.8,
-    },
-    {
-      url: `${baseUrl}/financing`,
-      lastModified: new Date(),
+      url: `${BASE_URL}/financing`,
+      lastModified: new Date('2025-05-01'),
       changeFrequency: 'monthly',
       priority: 0.7,
     },
     {
-      url: `${baseUrl}/about`,
-      lastModified: new Date(),
+      url: `${BASE_URL}/about`,
+      lastModified: new Date('2025-05-01'),
       changeFrequency: 'monthly',
       priority: 0.6,
+    },
+    {
+      url: `${BASE_URL}/schedule`,
+      lastModified: new Date('2025-05-01'),
+      changeFrequency: 'monthly',
+      priority: 0.6,
+    },
+    // ── Legal ────────────────────────────────────────────────────
+    {
+      url: `${BASE_URL}/privacy`,
+      lastModified: new Date('2025-05-01'),
+      changeFrequency: 'yearly',
+      priority: 0.3,
     },
   ];
 }
