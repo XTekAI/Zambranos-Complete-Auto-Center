@@ -35,6 +35,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="en">
       <head>
+        <meta name="facebook-domain-verification" content="1euihqpbj1k6o82cld1cx4keaddm9j" />
         <meta name="geo.region" content="US-NJ" />
         <meta name="geo.placename" content="Trenton" />
         <link rel="icon" href="/favicon.jpg" type="image/jpeg" />
