@@ -20,7 +20,7 @@ export const LINKS = {
   financingCFNA:
     'https://www.cfna.com/bridgestonefirestone-credit-card?locationId=904813&referrer=www.zambranosauto.com',
   financingAFF: 'https://www.zambranosauto.com/About/Financing',
-  appointment: 'http://72.60.167.113:8089/',
+  appointment: 'https://appointments.zambranoscomplete.com/',
 } as const;
 
 export const HOURS = [

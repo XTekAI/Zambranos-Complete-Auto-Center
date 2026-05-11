@@ -54,7 +54,7 @@ export default function LandingPage() {
             </div>
             <div className="flex flex-col sm:flex-row gap-4 w-full md:w-auto">
               <a
-                href="http://72.60.167.113:8089/"
+                href="https://appointments.zambranoscomplete.com/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="animated-button group !rounded-2xl !py-5 !px-8 flex"
@@ -98,7 +98,7 @@ export default function LandingPage() {
               </p>
 
               <a
-                href="http://72.60.167.113:8089/"
+                href="https://appointments.zambranoscomplete.com/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="mt-10 inline-flex items-center justify-center gap-3 rounded-2xl bg-primary px-14 py-6 text-xl font-black uppercase tracking-widest text-white shadow-2xl shadow-red-600/40 transition-all duration-300 hover:brightness-110 hover:scale-105 hover:shadow-red-600/60"
