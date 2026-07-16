@@ -13,23 +13,42 @@ const HOURS: Record<number, [number, number, number, number] | null> = {
   6: [8, 30, 14, 0],  // Sat 8:30 AM – 2:00 PM
 };
 
+const LABELS = {
+  en: {
+    closedOpensMon: 'Closed · Opens Mon 8:30 AM',
+    closedOpensTomorrow: 'Closed · Opens Tomorrow 8:30 AM',
+    closedOpens: (time: string) => `Closed · Opens ${time}`,
+    openClosesIn: (min: number) => `Open · Closes in ${min} min`,
+    openCloses: (time: string) => `Open · Closes ${time}`,
+  },
+  es: {
+    closedOpensMon: 'Cerrado · Abre Lun 8:30 AM',
+    closedOpensTomorrow: 'Cerrado · Abre Mañana 8:30 AM',
+    closedOpens: (time: string) => `Cerrado · Abre ${time}`,
+    openClosesIn: (min: number) => `Abierto · Cierra en ${min} min`,
+    openCloses: (time: string) => `Abierto · Cierra ${time}`,
+  },
+} as const;
+
 function getNJTime(): Date {
   return new Date(
     new Date().toLocaleString('en-US', { timeZone: 'America/New_York' })
   );
 }
 
-export default function BusinessStatus() {
+export default function BusinessStatus({ lang = 'en' }: { lang?: 'en' | 'es' }) {
   const [status, setStatus] = useState<{ isOpen: boolean; label: string } | null>(null);
 
   useEffect(() => {
+    const L = LABELS[lang];
+
     function check() {
       const now = getNJTime();
       const day = now.getDay();
       const schedule = HOURS[day];
 
       if (!schedule) {
-        setStatus({ isOpen: false, label: 'Closed · Opens Mon 8:30 AM' });
+        setStatus({ isOpen: false, label: L.closedOpensMon });
         return;
       }
 
@@ -41,19 +60,19 @@ export default function BusinessStatus() {
       if (current >= open && current < close) {
         const remaining = close - current;
         if (remaining <= 60) {
-          setStatus({ isOpen: true, label: `Open · Closes in ${remaining} min` });
+          setStatus({ isOpen: true, label: L.openClosesIn(remaining) });
         } else {
           const closeStr = `${ch > 12 ? ch - 12 : ch}:${String(cm).padStart(2, '0')} PM`;
-          setStatus({ isOpen: true, label: `Open · Closes ${closeStr}` });
+          setStatus({ isOpen: true, label: L.openCloses(closeStr) });
         }
       } else if (current < open) {
         const openStr = `${oh > 12 ? oh - 12 : oh}:${String(om).padStart(2, '0')} AM`;
-        setStatus({ isOpen: false, label: `Closed · Opens ${openStr}` });
+        setStatus({ isOpen: false, label: L.closedOpens(openStr) });
       } else {
         if (day === 6) {
-          setStatus({ isOpen: false, label: 'Closed · Opens Mon 8:30 AM' });
+          setStatus({ isOpen: false, label: L.closedOpensMon });
         } else {
-          setStatus({ isOpen: false, label: 'Closed · Opens Tomorrow 8:30 AM' });
+          setStatus({ isOpen: false, label: L.closedOpensTomorrow });
         }
       }
     }
@@ -61,7 +80,7 @@ export default function BusinessStatus() {
     check();
     const interval = setInterval(check, 60_000);
     return () => clearInterval(interval);
-  }, []);
+  }, [lang]);
 
   if (!status) return null;
 

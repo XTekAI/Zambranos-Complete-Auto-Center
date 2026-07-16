@@ -2,38 +2,36 @@
 
 import LandingNavbar from '../../src/components/landing/LandingNavbar';
 import LandingHero from '../../src/components/landing/LandingHero';
+import { LanguageProvider, useLanguage } from '../../src/components/landing/LanguageContext';
 import { Shield, Award, MapPin, Wrench, PhoneCall, Calendar } from 'lucide-react';
 import { motion } from 'motion/react';
 import { BUSINESS, LINKS } from '../../src/lib/constants';
 
-export default function LandingPage() {
+function LandingContent() {
+  const { t } = useLanguage();
   const currentYear = new Date().getFullYear();
   const yearsOfService = currentYear - BUSINESS.established;
 
   const reasons = [
     {
       icon: Award,
-      title: 'Certified Expertise',
-      description:
-        'Highly trained specialists in suspension, brakes, and alignment — not just general mechanics.',
+      title: t.why.reasons.expertise.title,
+      description: t.why.reasons.expertise.description,
     },
     {
       icon: Shield,
-      title: 'Veteran-Owned Trust',
-      description:
-        'Military-grade discipline and integrity. We stand behind every job with comprehensive warranties.',
+      title: t.why.reasons.veteran.title,
+      description: t.why.reasons.veteran.description,
     },
     {
       icon: MapPin,
-      title: 'Local Since 1997',
-      description:
-        `Proudly serving Trenton for ${yearsOfService}+ years with honest, transparent pricing and reliable service.`,
+      title: t.why.reasons.local.title,
+      description: t.why.reasons.local.description(yearsOfService),
     },
     {
       icon: Wrench,
-      title: 'Modern Equipment',
-      description:
-        'We invest in the latest diagnostic and alignment technology to ensure precision repairs every time.',
+      title: t.why.reasons.equipment.title,
+      description: t.why.reasons.equipment.description,
     },
   ];
 
@@ -43,14 +41,14 @@ export default function LandingPage() {
       <main className="bg-dark">
         {/* Full Screen Hero Section */}
         <LandingHero />
-        
+
         {/* Dedicated Support / Emergency Section */}
         <section className="bg-dark/80 py-12 border-y border-white/5 backdrop-blur-md">
           <div className="mx-auto max-w-7xl px-6 flex flex-col md:flex-row justify-between items-center gap-6">
             <div className="flex flex-col text-center md:text-left">
-              <span className="text-red-500 font-black uppercase text-xs tracking-[0.2em] mb-2">Emergency Service</span>
-              <h2 className="text-2xl font-black text-white uppercase tracking-tight">Need immediate assistance?</h2>
-              <p className="text-gray-400 font-medium">Call our veteran-owned shop directly for same-day service.</p>
+              <span className="text-red-500 font-black uppercase text-xs tracking-[0.2em] mb-2">{t.emergency.label}</span>
+              <h2 className="text-2xl font-black text-white uppercase tracking-tight">{t.emergency.title}</h2>
+              <p className="text-gray-400 font-medium">{t.emergency.description}</p>
             </div>
             <div className="flex flex-col sm:flex-row gap-4 w-full md:w-auto">
               <a
@@ -60,7 +58,7 @@ export default function LandingPage() {
                 className="animated-button group !rounded-2xl !py-5 !px-8 flex"
               >
                 <span className="anim-text flex items-center justify-center gap-3 text-base font-black uppercase tracking-widest">
-                  <Calendar className="h-5 w-5" /> Book Online
+                  <Calendar className="h-5 w-5" /> {t.emergency.bookOnline}
                 </span>
                 <span className="anim-bg" />
               </a>
@@ -88,13 +86,13 @@ export default function LandingPage() {
             >
               <span className="mb-4 inline-flex items-center gap-2 rounded-full bg-primary/10 px-4 py-1.5 text-xs font-black uppercase tracking-widest text-primary">
                 <Calendar className="h-4 w-4" />
-                Online Booking
+                {t.booking.badge}
               </span>
               <h2 className="font-display text-4xl font-black tracking-tight text-dark md:text-5xl mt-4">
-                Book Your <span className="text-primary">Service</span> Online
+                {t.booking.titlePre}<span className="text-primary">{t.booking.titleHighlight}</span>{t.booking.titlePost}
               </h2>
               <p className="mt-4 text-lg leading-relaxed text-muted">
-                Choose your service, pick a date and time, and confirm your appointment — all in under 2 minutes.
+                {t.booking.description}
               </p>
 
               <a
@@ -104,26 +102,25 @@ export default function LandingPage() {
                 className="mt-10 inline-flex items-center justify-center gap-3 rounded-2xl bg-primary px-14 py-6 text-xl font-black uppercase tracking-widest text-white shadow-2xl shadow-red-600/40 transition-all duration-300 hover:brightness-110 hover:scale-105 hover:shadow-red-600/60"
               >
                 <Calendar className="h-6 w-6" />
-                Book My Appointment
+                {t.booking.cta}
               </a>
 
               <p className="mt-6 text-sm text-muted">
-                Mon – Fri: 8:30 AM – 6:00 PM &nbsp;·&nbsp; Sat: 8:30 AM – 2:00 PM
+                {t.booking.hours}
               </p>
             </motion.div>
           </div>
         </section>
-        
+
         {/* Why Choose Us - Exactly like main page but adapted */}
         <section className="bg-white py-24">
           <div className="mx-auto max-w-7xl px-6">
             <div className="mx-auto mb-16 max-w-3xl text-center">
               <h2 className="font-display text-4xl font-extrabold tracking-tight md:text-5xl lg:text-6xl text-dark">
-                Why Choose <span className="text-primary">Zambranos</span>?
+                {t.why.titlePre}<span className="text-primary">{t.why.titleHighlight}</span>{t.why.titlePost}
               </h2>
               <p className="mt-6 text-xl leading-relaxed text-muted font-medium">
-                When it comes to your vehicle&apos;s safety and performance, you need
-                specialists you can trust in Trenton since {BUSINESS.established}.
+                {t.why.subtitle(BUSINESS.established)}
               </p>
             </div>
 
@@ -161,7 +158,7 @@ export default function LandingPage() {
              <div className="grid grid-cols-1 md:grid-cols-3 gap-12 items-center">
                 <div className="flex flex-col items-center md:items-start">
                    <span className="text-xl font-black text-red-600 uppercase tracking-widest mb-6 border-b-2 border-red-600/30 pb-2">Zambranos Auto Center</span>
-                   <a 
+                   <a
                      href={LINKS.google}
                      target="_blank"
                      rel="noopener noreferrer"
@@ -170,7 +167,7 @@ export default function LandingPage() {
                      <MapPin className="h-5 w-5 text-red-600" />
                      {BUSINESS.address}
                    </a>
-                   <a 
+                   <a
                      href={BUSINESS.phoneTel}
                      className="flex items-center gap-3 text-sm font-bold text-white/70 hover:text-white transition-colors mt-4"
                    >
@@ -178,17 +175,17 @@ export default function LandingPage() {
                      {BUSINESS.phone}
                    </a>
                 </div>
-                
+
                 <div className="flex flex-col items-center">
-                   <span className="text-[10px] font-black uppercase tracking-[0.3em] text-white/30 mb-4">Veteran Owned Precision</span>
+                   <span className="text-[10px] font-black uppercase tracking-[0.3em] text-white/30 mb-4">{t.footer.veteranOwned}</span>
                    <p className="text-center text-xs font-medium text-gray-500 max-w-xs uppercase leading-relaxed tracking-wider">
-                     Serving Trenton since {BUSINESS.established}. Dedicated to excellence in automotive service.
+                     {t.footer.serving(BUSINESS.established)}
                    </p>
                 </div>
 
                 <div className="flex justify-center md:justify-end">
                    <div className="text-right text-[10px] font-bold text-gray-600 uppercase tracking-widest">
-                     © {new Date().getFullYear()} Zambranos Complete Auto Center.<br/>All Rights Reserved.
+                     © {currentYear} Zambranos Complete Auto Center.<br/>{t.footer.rights}
                    </div>
                 </div>
              </div>
@@ -196,5 +193,13 @@ export default function LandingPage() {
         </footer>
       </main>
     </>
+  );
+}
+
+export default function LandingPage() {
+  return (
+    <LanguageProvider>
+      <LandingContent />
+    </LanguageProvider>
   );
 }
