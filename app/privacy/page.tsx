@@ -3,13 +3,11 @@ import Footer from '../../src/components/Footer';
 import { BUSINESS } from '../../src/lib/constants';
 
 export const metadata = {
-  title: 'Privacy Policy & Terms | Zambranos Complete Auto Center',
-  description: 'Privacy Policy and Terms of Service for Zambranos Complete Auto Center. Learn how we handle your information and appointment communications.',
+  title: 'Privacy Policy | Zambranos Complete Auto Center',
+  description: 'Privacy Policy for Zambranos Complete Auto Center. Learn how we collect, use, and protect your information when you schedule a service appointment.',
 };
 
 export default function PrivacyPage() {
-  const currentYear = new Date().getFullYear();
-
   return (
     <>
       <Navbar />
@@ -21,10 +19,10 @@ export default function PrivacyPage() {
               Legal
             </span>
             <h1 className="font-display text-4xl font-black tracking-tight text-white sm:text-5xl">
-              Privacy Policy &amp; Terms of Service
+              Privacy Policy
             </h1>
             <p className="mt-4 text-white/60">
-              Last updated: January 1, {currentYear} · {BUSINESS.name}
+              Last updated: July 20, 2026 · {BUSINESS.name}
             </p>
           </div>
         </section>
@@ -36,7 +34,8 @@ export default function PrivacyPage() {
             {/* Intro */}
             <div>
               <p className="text-lg text-muted">
-                Welcome to <strong className="text-dark">{BUSINESS.name}</strong>. By using our website, scheduling an appointment, or providing us with your contact information, you agree to the terms outlined in this Privacy Policy. Please read it carefully.
+                Welcome to <strong className="text-dark">{BUSINESS.name}</strong>. This Privacy Policy explains what information we collect when you schedule an appointment or contact us, and how we use and protect that information. This policy covers data handling only — for the conditions under which we provide our services, see our{' '}
+                <a href="/terms" className="text-primary font-bold hover:underline">Terms of Service</a>.
               </p>
             </div>
 
@@ -65,48 +64,18 @@ export default function PrivacyPage() {
               </ul>
             </div>
 
-            {/* 2. Appointment Reminders & Communications */}
-            <div className="rounded-2xl border-l-4 border-primary bg-primary/5 p-8">
-              <h2 className="font-display text-2xl font-black text-dark mb-4">
-                2. Appointment Reminders &amp; Marketing Communications
-              </h2>
-              <p className="text-muted mb-4">
-                <strong className="text-dark">By scheduling an appointment or submitting your contact information through our website, you expressly consent to receive:</strong>
-              </p>
-              <ul className="space-y-3 text-muted">
-                {[
-                  'Appointment confirmation messages via phone call, SMS text, or email.',
-                  'Appointment reminder messages sent before your scheduled visit.',
-                  'Follow-up messages after your service to ensure your satisfaction.',
-                  'Promotional offers, seasonal discounts, and service reminders from Zambranos Complete Auto Center.',
-                  'General marketing communications about our services, new offerings, and business updates.',
-                ].map((item) => (
-                  <li key={item} className="flex items-start gap-3">
-                    <span className="mt-1.5 h-2 w-2 rounded-full bg-primary shrink-0" />
-                    {item}
-                  </li>
-                ))}
-              </ul>
-              <p className="mt-6 text-sm text-muted">
-                You may opt out of marketing communications at any time by replying <strong>STOP</strong> to any text message, clicking the unsubscribe link in any email, or calling us at{' '}
-                <a href="tel:6093968417" className="text-primary font-bold hover:underline">
-                  {BUSINESS.phone}
-                </a>. Appointment confirmation and reminder messages are part of our service and may still be sent until your appointment is completed or canceled.
-              </p>
-            </div>
-
-            {/* 3. How We Use Your Information */}
+            {/* 2. How We Use Your Information */}
             <div>
               <h2 className="font-display text-2xl font-black text-dark mb-4 border-b border-gray-100 pb-3">
-                3. How We Use Your Information
+                2. How We Use Your Information
               </h2>
               <p className="text-muted mb-4">We use the information we collect exclusively to:</p>
               <ul className="space-y-2 text-muted">
                 {[
                   'Schedule, confirm, and manage your service appointments.',
-                  'Send you reminders and follow-ups related to your vehicle and service history.',
+                  'Send you appointment confirmations, reminders, and service follow-ups.',
+                  'Communicate with you about your vehicle and service history.',
                   'Improve our services and customer experience.',
-                  'Communicate promotional offers and updates from our shop.',
                   'Comply with legal obligations when required.',
                 ].map((item) => (
                   <li key={item} className="flex items-start gap-3">
@@ -115,6 +84,35 @@ export default function PrivacyPage() {
                   </li>
                 ))}
               </ul>
+            </div>
+
+            {/* 3. Appointment Communications (Transactional) */}
+            <div className="rounded-2xl border-l-4 border-primary bg-primary/5 p-8">
+              <h2 className="font-display text-2xl font-black text-dark mb-4">
+                3. Appointment Communications
+              </h2>
+              <p className="text-muted mb-4">
+                <strong className="text-dark">By scheduling an appointment, you consent to receive the following operational communications</strong>, which are necessary to provide you with our services:
+              </p>
+              <ul className="space-y-3 text-muted">
+                {[
+                  'Appointment confirmation messages via phone call, SMS text, or email.',
+                  'Appointment reminder messages sent before your scheduled visit.',
+                  'Follow-up messages after your service to ensure your satisfaction.',
+                ].map((item) => (
+                  <li key={item} className="flex items-start gap-3">
+                    <span className="mt-1.5 h-2 w-2 rounded-full bg-primary shrink-0" />
+                    {item}
+                  </li>
+                ))}
+              </ul>
+              <p className="mt-6 text-sm text-muted">
+                These messages relate directly to a service you requested and are not promotional. You may still reply <strong>STOP</strong> to opt out of text messages at any time, or call us at{' '}
+                <a href="tel:6093968417" className="text-primary font-bold hover:underline">
+                  {BUSINESS.phone}
+                </a>{' '}
+                to reach us by phone instead.
+              </p>
             </div>
 
             {/* 4. We Do NOT Share Your Information */}
@@ -164,7 +162,6 @@ export default function PrivacyPage() {
                   'Request access to the personal information we hold about you.',
                   'Request correction of any inaccurate information.',
                   'Request deletion of your personal data.',
-                  'Opt out of marketing communications at any time.',
                   'File a complaint if you believe your rights have been violated.',
                 ].map((item) => (
                   <li key={item} className="flex items-start gap-3">
@@ -175,29 +172,14 @@ export default function PrivacyPage() {
               </ul>
             </div>
 
-            {/* 8. Terms of Service */}
+            {/* 8. Marketing Communications (Separate Consent) */}
             <div>
               <h2 className="font-display text-2xl font-black text-dark mb-4 border-b border-gray-100 pb-3">
-                8. Terms of Service
+                8. Marketing Communications
               </h2>
-              <p className="text-muted mb-4">
-                By using our website and services, you agree to the following terms:
+              <p className="text-muted">
+                This Privacy Policy does not cover promotional or marketing messages. If you choose to receive promotional offers, seasonal discounts, or marketing SMS from {BUSINESS.name}, that is collected through a separate, optional consent at the time you schedule an appointment, and can be withdrawn at any time by replying <strong>STOP</strong>.
               </p>
-              <ul className="space-y-3 text-muted">
-                {[
-                  'All appointments are subject to availability and may be rescheduled by either party with reasonable notice.',
-                  'Estimates provided are subject to change upon vehicle inspection. Final pricing will be confirmed before any work begins.',
-                  'Zambranos Complete Auto Center is not responsible for pre-existing vehicle conditions discovered during service.',
-                  'Vehicles left on our premises beyond the agreed pickup time may be subject to storage fees.',
-                  'All services are performed by certified technicians and are backed by our service warranty as communicated at the time of service.',
-                  'We reserve the right to refuse service to anyone for any lawful reason.',
-                ].map((item) => (
-                  <li key={item} className="flex items-start gap-3">
-                    <span className="mt-1.5 h-2 w-2 rounded-full bg-primary shrink-0" />
-                    {item}
-                  </li>
-                ))}
-              </ul>
             </div>
 
             {/* 9. Changes */}
@@ -206,7 +188,7 @@ export default function PrivacyPage() {
                 9. Changes to This Policy
               </h2>
               <p className="text-muted">
-                We may update this Privacy Policy and Terms of Service from time to time. Any changes will be posted on this page with an updated date. Continued use of our website or services after changes are posted constitutes acceptance of the updated terms.
+                We may update this Privacy Policy from time to time. Any changes will be posted on this page with an updated date. Continued use of our website or services after changes are posted constitutes acceptance of the updated policy.
               </p>
             </div>
 

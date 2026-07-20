@@ -1,5 +1,6 @@
 'use client';
 
+import Link from 'next/link';
 import LandingNavbar from '../../src/components/landing/LandingNavbar';
 import LandingHero from '../../src/components/landing/LandingHero';
 import { LanguageProvider, useLanguage } from '../../src/components/landing/LanguageContext';
@@ -183,9 +184,18 @@ function LandingContent() {
                    </p>
                 </div>
 
-                <div className="flex justify-center md:justify-end">
+                <div className="flex flex-col items-center gap-4 md:items-end">
                    <div className="text-right text-[10px] font-bold text-gray-600 uppercase tracking-widest">
                      © {currentYear} Zambranos Complete Auto Center.<br/>{t.footer.rights}
+                   </div>
+                   <div className="flex items-center gap-3 text-[10px] font-bold uppercase tracking-widest">
+                     <Link href="/privacy" className="text-white/40 transition-colors hover:text-primary">
+                       {t.footer.privacyPolicy}
+                     </Link>
+                     <span className="text-white/20">·</span>
+                     <Link href="/terms" className="text-white/40 transition-colors hover:text-primary">
+                       {t.footer.termsOfService}
+                     </Link>
                    </div>
                 </div>
              </div>

@@ -52,7 +52,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
     // ── Legal ────────────────────────────────────────────────────
     {
       url: `${BASE_URL}/privacy`,
-      lastModified: new Date('2025-05-01'),
+      lastModified: new Date('2026-07-20'),
+      changeFrequency: 'yearly',
+      priority: 0.3,
+    },
+    {
+      url: `${BASE_URL}/terms`,
+      lastModified: new Date('2026-07-20'),
       changeFrequency: 'yearly',
       priority: 0.3,
     },

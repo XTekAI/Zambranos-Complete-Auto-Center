@@ -70,6 +70,8 @@ const en = {
     serving: (established: number) =>
       `Serving Trenton since ${established}. Dedicated to excellence in automotive service.`,
     rights: 'All Rights Reserved.',
+    privacyPolicy: 'Privacy Policy',
+    termsOfService: 'Terms of Service',
   },
 };
 
@@ -142,6 +144,8 @@ const es: typeof en = {
     serving: (established: number) =>
       `Sirviendo a Trenton desde ${established}. Dedicados a la excelencia en el servicio automotriz.`,
     rights: 'Todos los Derechos Reservados.',
+    privacyPolicy: 'Política de Privacidad',
+    termsOfService: 'Términos de Servicio',
   },
 };
 
