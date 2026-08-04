@@ -22,7 +22,7 @@ export default function TermsPage() {
               Terms of Service
             </h1>
             <p className="mt-4 text-white/60">
-              Last updated: July 20, 2026 · {BUSINESS.name}
+              Last updated: August 4, 2026 · {BUSINESS.name}
             </p>
           </div>
         </section>
@@ -109,10 +109,48 @@ export default function TermsPage() {
               </p>
             </div>
 
+            {/* 8. SMS/Text Messaging Terms */}
+            <div>
+              <h2 className="font-display text-2xl font-black text-dark mb-4 border-b border-gray-100 pb-3">
+                8. SMS/Text Messaging Terms
+              </h2>
+              <p className="text-muted mb-4">
+                By providing your mobile number and opting in through our appointment booking process, you agree to receive text messages from {BUSINESS.name} related to appointment reminders, vehicle status updates, and, if separately opted in, promotional offers and seasonal discounts.
+              </p>
+              <ul className="space-y-2 text-muted">
+                <li className="flex items-start gap-3">
+                  <span className="mt-1.5 h-2 w-2 rounded-full bg-primary shrink-0" />
+                  Message frequency varies based on your appointment activity and marketing preferences.
+                </li>
+                <li className="flex items-start gap-3">
+                  <span className="mt-1.5 h-2 w-2 rounded-full bg-primary shrink-0" />
+                  Message and data rates may apply.
+                </li>
+                <li className="flex items-start gap-3">
+                  <span className="mt-1.5 h-2 w-2 rounded-full bg-primary shrink-0" />
+                  Reply STOP at any time to opt out of receiving messages.
+                </li>
+                <li className="flex items-start gap-3">
+                  <span className="mt-1.5 h-2 w-2 rounded-full bg-primary shrink-0" />
+                  Reply HELP for assistance, or contact us at{' '}
+                  <a href="tel:6093968417" className="text-primary font-bold hover:underline">{BUSINESS.phone}</a>.
+                </li>
+                <li className="flex items-start gap-3">
+                  <span className="mt-1.5 h-2 w-2 rounded-full bg-primary shrink-0" />
+                  Carriers are not liable for delayed or undelivered messages.
+                </li>
+                <li className="flex items-start gap-3">
+                  <span className="mt-1.5 h-2 w-2 rounded-full bg-primary shrink-0" />
+                  For details on how we handle your data, see our{' '}
+                  <a href="/privacy" className="text-primary font-bold hover:underline">Privacy Policy</a>.
+                </li>
+              </ul>
+            </div>
+
             {/* Contact */}
             <div className="rounded-2xl bg-dark p-8 text-white">
               <h2 className="font-display text-2xl font-black mb-4">
-                8. Contact Us
+                9. Contact Us
               </h2>
               <p className="text-white/70 mb-4">
                 If you have any questions about these terms, please contact us:

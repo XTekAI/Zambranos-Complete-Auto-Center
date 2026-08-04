@@ -9,7 +9,10 @@ export function middleware(request: NextRequest) {
   const isLandingSubdomain = hostname.startsWith('landing.zambranosauto.com');
   const isMainDomain = hostname.startsWith('www.zambranosauto.com') || hostname === 'zambranosauto.com';
 
-  if (isLandingSubdomain) {
+  // Legal pages are shared between domains — never prefix these with /landing
+  const isSharedLegalPage = url.pathname === '/privacy' || url.pathname === '/terms';
+
+  if (isLandingSubdomain && !isSharedLegalPage) {
     // Check if the path is already prefixed to avoid double prefixing
     if (!url.pathname.startsWith('/landing')) {
       // Rewrite any path to the /landing directory
