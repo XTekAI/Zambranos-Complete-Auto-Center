@@ -24,7 +24,13 @@ export const LINKS = {
 } as const;
 
 export const HOURS = [
-  { day: 'Monday – Friday', time: '8:30 AM – 6:00 PM' },
-  { day: 'Saturday', time: '8:30 AM – 2:00 PM' },
-  { day: 'Sunday', time: 'Closed' },
+  { dayKey: 'weekdays', day: 'Monday – Friday', time: '8:30 AM – 6:00 PM' },
+  { dayKey: 'saturday', day: 'Saturday', time: '8:30 AM – 2:00 PM' },
+  { dayKey: 'sunday', day: 'Sunday', time: 'Closed' },
 ] as const;
+
+/* September 2026 promo: free multipoint inspection with any booked service.
+   Both the homepage pop-up and the SMS landing page hero banner key off
+   this expiry so they stop showing themselves once the promo ends. */
+export const PROMO_EXPIRES = new Date('2026-10-01T00:00:00-04:00');
+export const isPromoActive = () => new Date() < PROMO_EXPIRES;

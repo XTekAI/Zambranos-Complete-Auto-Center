@@ -5,29 +5,23 @@ import { useEffect } from 'react';
 import Script from 'next/script';
 import { CircleDot, ArrowRight } from 'lucide-react';
 import Link from 'next/link';
+import { useLanguage } from '../lib/i18n/LanguageContext';
 
-const brands = [
-  {
-    name: 'BRIDGESTONE',
-    logo: '/images/Bridgestone.png',
-    tagline: 'Premium Performance',
-    description: 'Industry-leading tires for passenger vehicles, SUVs, and light trucks. Engineered for safety and longevity.',
-  },
-  {
-    name: 'FIRESTONE',
-    logo: '/images/firestone.png',
-    tagline: 'Trusted Reliability',
-    description: 'Dependable all-season and all-terrain tires at competitive prices. A trusted name since 1900.',
-  },
-  {
-    name: 'FUZION',
-    logo: '/images/fuzion-logo.png',
-    tagline: 'Value Performance',
-    description: 'High-quality tires engineered by Bridgestone at budget-friendly prices without sacrificing safety.',
-  },
-];
+const brandData = [
+  { slug: 'bridgestone', name: 'BRIDGESTONE', logo: '/images/Bridgestone.png' },
+  { slug: 'firestone', name: 'FIRESTONE', logo: '/images/firestone.png' },
+  { slug: 'fuzion', name: 'FUZION', logo: '/images/fuzion-logo.png' },
+] as const;
 
 export default function TireBrands() {
+  const { t } = useLanguage();
+
+  const brands = brandData.map((b) => ({
+    ...b,
+    tagline: t.home.tireBrands.brands[b.slug].tagline,
+    description: t.home.tireBrands.brands[b.slug].description,
+  }));
+
   useEffect(() => {
     // @ts-ignore
     if (window.TCWidget) {
@@ -45,10 +39,10 @@ export default function TireBrands() {
         <div className="mb-12 text-center">
           <span className="mb-4 inline-flex items-center gap-2 rounded-full bg-primary/10 px-4 py-1.5 text-xs font-bold uppercase tracking-wider text-primary">
             <CircleDot className="h-4 w-4" />
-            Authorized Tire Dealer
+            {t.home.tireBrands.badge}
           </span>
           <h2 className="font-display text-3xl font-extrabold tracking-tight text-dark md:text-4xl">
-            Premium <span className="text-primary">Tire</span> Brands
+            {t.home.tireBrands.headingPart1} <span className="text-primary">{t.home.tireBrands.headingPart2}</span> {t.home.tireBrands.headingPart3}
           </h2>
         </div>
 
@@ -57,7 +51,7 @@ export default function TireBrands() {
           <div id="tireconnect" className="min-h-[400px] w-full bg-surface/30 rounded-3xl overflow-hidden shadow-inner flex items-center justify-center border border-gray-100">
             <div className="text-center p-8">
               <CircleDot className="w-10 h-10 text-primary/20 mx-auto mb-3 animate-pulse" />
-              <p className="text-muted text-sm font-medium">Loading Interactive Tire Catalog...</p>
+              <p className="text-muted text-sm font-medium">{t.home.tireBrands.loadingCatalog}</p>
             </div>
           </div>
           <Script 
@@ -104,7 +98,7 @@ export default function TireBrands() {
                 href="/tires"
                 className="mt-6 inline-flex items-center gap-2 text-sm font-bold text-primary transition-colors hover:text-dark cursor-pointer"
               >
-                View Tires
+                {t.home.tireBrands.viewTires}
                 <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
               </Link>
             </motion.div>

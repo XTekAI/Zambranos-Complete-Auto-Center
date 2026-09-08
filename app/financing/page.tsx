@@ -15,26 +15,29 @@ import Navbar from '../../src/components/Navbar';
 import Footer from '../../src/components/Footer';
 import Image from 'next/image';
 import { BUSINESS, LINKS } from '../../src/lib/constants';
-
-const cfnaFeatures = [
-  'No annual fee',
-  '6 months promotional financing on qualifying purchases',
-  'Accepted at thousands of locations nationwide',
-  'Easy online account management',
-  'Use at Bridgestone, Firestone, and affiliated retailers',
-  'Special promotional offers throughout the year',
-];
-
-const affFeatures = [
-  'All credit types welcome',
-  'Approvals up to $5,000',
-  'Quick and easy application',
-  'Flexible repayment terms',
-  'No hard credit pull for pre-approval',
-  'Use for any auto service or tires',
-];
+import { useLanguage } from '../../src/lib/i18n/LanguageContext';
 
 export default function FinancingPage() {
+  const { t } = useLanguage();
+
+  const cfnaFeatures = [
+    t.financing.cfna.features.noAnnualFee,
+    t.financing.cfna.features.promoFinancing,
+    t.financing.cfna.features.acceptedNationwide,
+    t.financing.cfna.features.onlineAccountManagement,
+    t.financing.cfna.features.useAtRetailers,
+    t.financing.cfna.features.promoOffers,
+  ];
+
+  const affFeatures = [
+    t.financing.aff.features.allCreditTypes,
+    t.financing.aff.features.approvalsUpTo,
+    t.financing.aff.features.quickApplication,
+    t.financing.aff.features.flexibleRepayment,
+    t.financing.aff.features.noHardPullPreApproval,
+    t.financing.aff.features.useForAnyService,
+  ];
+
   return (
     <>
       <Navbar />
@@ -50,14 +53,13 @@ export default function FinancingPage() {
             >
               <span className="mb-4 inline-flex items-center gap-2 rounded-full bg-primary/10 px-4 py-1.5 text-xs font-bold uppercase tracking-wider text-primary">
                 <CreditCard className="h-4 w-4" />
-                Flexible Payment Options
+                {t.financing.hero.badge}
               </span>
               <h1 className="font-display text-4xl font-black tracking-tight sm:text-5xl md:text-6xl leading-none">
-                <span className="text-white drop-shadow-lg">Affordable</span> <span className="text-red-600 drop-shadow-lg">Financing</span>
+                <span className="text-white drop-shadow-lg">{t.financing.hero.titlePre}</span> <span className="text-red-600 drop-shadow-lg">{t.financing.hero.titleHighlight}</span>
               </h1>
               <p className="mt-4 max-w-xl text-lg text-white/60">
-                Don&apos;t let budget stop you from getting the service you need.
-                We offer flexible financing through two trusted partners.
+                {t.financing.hero.subtitle}
               </p>
             </motion.div>
           </div>
@@ -76,9 +78,9 @@ export default function FinancingPage() {
               {/* Image Side */}
               <div className="relative w-full max-w-[600px] flex-shrink-0">
                 <div className="absolute -inset-10 bg-red-600/5 rounded-full blur-3xl" />
-                <Image 
+                <Image
                   src="/images/financing-card.png"
-                  alt="Bridgestone Firestone Credit Card"
+                  alt={t.financing.cfna.imageAlt}
                   width={700}
                   height={450}
                   className="relative z-10 w-full h-auto drop-shadow-2xl"
@@ -89,24 +91,24 @@ export default function FinancingPage() {
               <div className="flex-1">
                 <span className="mb-4 inline-flex items-center gap-2 rounded-full bg-primary/10 px-4 py-1.5 text-xs font-bold uppercase tracking-wider text-primary">
                   <CreditCard className="h-4 w-4" />
-                  Primary Recommendation
+                  {t.financing.cfna.badge}
                 </span>
                 <h2 className="font-display text-4xl font-extrabold tracking-tight md:text-5xl mb-6">
-                  BRIDGESTONE <span className="text-primary">FIRESTONE</span> CREDIT CARD
+                  BRIDGESTONE <span className="text-primary">FIRESTONE</span> {t.financing.cfna.headingSuffix}
                 </h2>
-                
+
                 <div className="mb-8 flex items-center gap-4 bg-primary/5 p-6 rounded-2xl border border-primary/10 max-w-md">
                   <div className="h-16 w-16 bg-primary flex items-center justify-center rounded-2xl shrink-0">
                     <span className="font-display text-2xl font-black text-white">6</span>
                   </div>
                   <div>
-                    <h4 className="font-bold text-dark text-xl leading-none">MONTHS</h4>
-                    <p className="text-primary font-bold text-sm tracking-widest uppercase">No Interest Financing</p>
+                    <h4 className="font-bold text-dark text-xl leading-none">{t.financing.cfna.monthsLabel}</h4>
+                    <p className="text-primary font-bold text-sm tracking-widest uppercase">{t.financing.cfna.noInterestLabel}</p>
                   </div>
                 </div>
 
                 <p className="text-lg leading-relaxed text-muted mb-8">
-                  Get the repairs or tires you need today without the immediate financial burden. The Bridgestone / Firestone credit card, which we proudly accept as an authorized dealer, offers interest-free financing for emergency repairs and premium tire sets.
+                  {t.financing.cfna.description}
                 </p>
 
                 <ul className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-10">
@@ -125,7 +127,7 @@ export default function FinancingPage() {
                   className="inline-flex items-center gap-2 rounded-xl bg-primary px-10 py-5 text-lg font-bold text-white transition-all hover:scale-105 shadow-xl shadow-red-600/20"
                 >
                   <CreditCard className="h-5 w-5" />
-                  Apply in Minutes
+                  {t.financing.cfna.applyButton}
                 </a>
               </div>
             </motion.div>
@@ -146,17 +148,21 @@ export default function FinancingPage() {
                 <div>
                   <span className="mb-4 inline-flex items-center gap-2 rounded-full bg-green-500/10 px-4 py-1.5 text-xs font-bold uppercase tracking-wider text-green-600">
                     <DollarSign className="h-4 w-4" />
-                    Alternative Financing
+                    {t.financing.aff.badge}
                   </span>
                   <h2 className="font-display text-3xl font-extrabold tracking-tight md:text-4xl mb-6">
                     AMERICAN FIRST <span className="text-green-600">FINANCE</span>
                   </h2>
                   <p className="text-lg text-muted mb-8">
-                    Don't let credit history stand in your way. American First Finance offers lease-to-own and installment options with high approval rates up to $5,000.
+                    {t.financing.aff.description}
                   </p>
-                  
+
                   <div className="flex gap-4 mb-8">
-                    {['No Hard Credit Pull', 'Instant Approval', 'Flexible Terms'].map(badge => (
+                    {[
+                      t.financing.aff.badges.noHardCreditPull,
+                      t.financing.aff.badges.instantApproval,
+                      t.financing.aff.badges.flexibleTerms,
+                    ].map(badge => (
                       <span key={badge} className="px-3 py-1 bg-white rounded-lg text-xs font-bold text-dark shadow-sm border border-black/5">
                         {badge}
                       </span>
@@ -170,7 +176,7 @@ export default function FinancingPage() {
                     className="inline-flex items-center gap-2 rounded-xl bg-dark px-10 py-5 text-lg font-bold text-white transition-all hover:bg-green-600 shadow-xl"
                   >
                     <ArrowRight className="h-5 w-5" />
-                    Apply with AFF
+                    {t.financing.aff.applyButton}
                   </a>
                 </div>
 
@@ -192,10 +198,10 @@ export default function FinancingPage() {
           <div className="mx-auto max-w-7xl px-6">
             <div className="mb-16 text-center">
               <h2 className="font-display text-3xl font-extrabold tracking-tight md:text-4xl">
-                HOW <span className="text-primary">FINANCING</span> WORKS
+                {t.financing.howItWorks.titlePre} <span className="text-primary">{t.financing.howItWorks.titleHighlight}</span> {t.financing.howItWorks.titlePost}
               </h2>
               <p className="mx-auto mt-3 max-w-2xl text-muted">
-                Getting approved is quick and easy. Here&apos;s what to expect.
+                {t.financing.howItWorks.subtitle}
               </p>
             </div>
 
@@ -204,20 +210,20 @@ export default function FinancingPage() {
                 {
                   step: '01',
                   icon: CreditCard,
-                  title: 'Apply Online',
-                  desc: 'Complete the quick application through our partner links. Most applications take less than 5 minutes.',
+                  title: t.financing.howItWorks.steps.apply.title,
+                  desc: t.financing.howItWorks.steps.apply.desc,
                 },
                 {
                   step: '02',
                   icon: Clock,
-                  title: 'Instant Decision',
-                  desc: 'Get an immediate response on your approval amount and terms so you know exactly what your budget is.',
+                  title: t.financing.howItWorks.steps.decision.title,
+                  desc: t.financing.howItWorks.steps.decision.desc,
                 },
                 {
                   step: '03',
                   icon: Shield,
-                  title: 'Flexible Payments',
-                  desc: 'Once approved, simple schedule your service and use your new financing to pay for your repairs or tires.',
+                  title: t.financing.howItWorks.steps.payments.title,
+                  desc: t.financing.howItWorks.steps.payments.desc,
                 },
               ].map((item, i) => {
                 const Icon = item.icon;
@@ -260,11 +266,11 @@ export default function FinancingPage() {
                 className="group inline-flex items-center gap-2 rounded-xl bg-primary px-8 py-4 text-base font-bold text-white transition-all hover:brightness-110 cursor-pointer"
               >
                 <Phone className="h-5 w-5 transition-transform group-hover:rotate-12" />
-                Call to Get Started
+                {t.financing.cta.callButton}
                 <ArrowRight className="h-5 w-5 transition-transform group-hover:translate-x-1" />
               </a>
               <p className="mt-3 text-sm text-muted">
-                Our team will help you find the best option for your budget.
+                {t.financing.cta.subtitle}
               </p>
             </motion.div>
           </div>

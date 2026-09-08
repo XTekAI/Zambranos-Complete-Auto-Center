@@ -11,51 +11,49 @@ import {
 } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
+import { useLanguage } from '../lib/i18n/LanguageContext';
 
-const services = [
+const serviceMeta = [
   {
-    title: 'Suspension Repair',
-    description:
-      'Shocks, struts, control arms, ball joints & tie rods. Expert diagnostics for a smooth, safe ride.',
+    key: 'suspension',
     icon: Wrench,
     image: '/images/suspension repair.jpg',
     href: '/services#suspension',
   },
   {
-    title: 'Brake Services',
-    description:
-      'Complete brake system repair — pads, rotors, calipers & fluid flush for optimal stopping power.',
+    key: 'brakes',
     icon: Disc,
     image: '/images/brakes.jpg',
     href: '/services#brakes',
   },
   {
-    title: 'Wheel Alignment',
-    description:
-      'Precision computerized alignment extends tire life and improves handling and fuel economy.',
+    key: 'alignment',
     icon: Move,
     image: '/images/wheel alaignment.jpg',
     href: '/services#alignment',
   },
   {
-    title: 'Tire Services',
-    description:
-      'Bridgestone, Firestone & Fuzion. Installation, rotation, balancing, TPMS & flat repair.',
+    key: 'tires',
     icon: CircleDot,
     image: '/images/tire services.jpg',
     href: '/tires',
   },
   {
-    title: 'Commercial Vehicles',
-    description:
-      'Priority fleet service for trucks & vans. Heavy-duty suspension, brakes & commercial tires.',
+    key: 'commercial',
     icon: Truck,
     image: '/images/comercila vehicles.jpg',
     href: '/commercial',
   },
-];
+] as const;
 
 export default function CoreServices() {
+  const { t } = useLanguage();
+  const services = serviceMeta.map((meta) => ({
+    ...meta,
+    title: t.home.coreServices.services[meta.key].title,
+    description: t.home.coreServices.services[meta.key].description,
+  }));
+
   return (
     <section id="services" className="bg-surface py-24">
       <div className="mx-auto max-w-7xl px-6">
@@ -63,14 +61,13 @@ export default function CoreServices() {
         <div className="mx-auto mb-16 max-w-3xl text-center">
           <span className="mb-4 inline-flex items-center gap-2 rounded-full bg-primary/10 px-4 py-1.5 text-xs font-bold uppercase tracking-wider text-primary">
             <Wrench className="h-4 w-4" />
-            Our Specialties
+            {t.home.coreServices.eyebrow}
           </span>
           <h2 className="font-display text-3xl font-extrabold tracking-tight md:text-4xl lg:text-5xl">
-            High-Performance <span className="text-primary">Auto Care</span>
+            {t.home.coreServices.headingPart1}<span className="text-primary">{t.home.coreServices.headingHighlight}</span>
           </h2>
           <p className="mt-4 text-lg leading-relaxed text-muted">
-            We focus on the critical systems that keep you safe. From complex suspension
-            to precision alignments, our certified technicians deliver expert results.
+            {t.home.coreServices.description}
           </p>
         </div>
 
@@ -114,7 +111,7 @@ export default function CoreServices() {
                     href={service.href}
                     className="group/link inline-flex items-center gap-2 text-sm font-bold text-primary transition-colors hover:text-dark cursor-pointer"
                   >
-                    Learn More
+                    {t.home.coreServices.learnMore}
                     <ArrowRight className="h-4 w-4 transition-transform group-hover/link:translate-x-1" />
                   </Link>
                 </div>

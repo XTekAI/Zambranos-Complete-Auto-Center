@@ -10,17 +10,20 @@ import {
   Thermometer,
 } from 'lucide-react';
 import Image from 'next/image';
-
-const maintenanceItems = [
-  { name: 'Oil Changes', icon: Droplet },
-  { name: 'Filter Replacements', icon: Settings2 },
-  { name: 'Fluid Services', icon: Thermometer },
-  { name: 'Battery Replacement', icon: Battery },
-  { name: 'Wiper Blades', icon: Wind },
-  { name: 'Lighting', icon: Lightbulb },
-];
+import { useLanguage } from '../lib/i18n/LanguageContext';
 
 export default function MaintenanceServices() {
+  const { t } = useLanguage();
+
+  const maintenanceItems = [
+    { key: 'oilChanges', name: t.home.maintenanceServices.items.oilChanges, icon: Droplet },
+    { key: 'filterReplacements', name: t.home.maintenanceServices.items.filterReplacements, icon: Settings2 },
+    { key: 'fluidServices', name: t.home.maintenanceServices.items.fluidServices, icon: Thermometer },
+    { key: 'batteryReplacement', name: t.home.maintenanceServices.items.batteryReplacement, icon: Battery },
+    { key: 'wiperBlades', name: t.home.maintenanceServices.items.wiperBlades, icon: Wind },
+    { key: 'lighting', name: t.home.maintenanceServices.items.lighting, icon: Lightbulb },
+  ];
+
   return (
     <section className="bg-surface py-24">
       <div className="mx-auto max-w-7xl px-6">
@@ -36,11 +39,11 @@ export default function MaintenanceServices() {
               transition={{ duration: 0.5 }}
             >
               <h2 className="font-display text-3xl font-extrabold tracking-tight md:text-4xl">
-                Routine <span className="text-primary">Maintenance</span>
+                {t.home.maintenanceServices.heading.part1}{' '}
+                <span className="text-primary">{t.home.maintenanceServices.heading.part2}</span>
               </h2>
               <p className="mt-4 text-lg leading-relaxed text-muted">
-                Beyond our specialty services, we keep your vehicle running
-                smoothly with essential maintenance at competitive prices.
+                {t.home.maintenanceServices.description}
               </p>
 
               <div className="mt-8 grid grid-cols-1 gap-3 sm:grid-cols-2">
@@ -48,7 +51,7 @@ export default function MaintenanceServices() {
                   const Icon = item.icon;
                   return (
                     <div
-                      key={item.name}
+                      key={item.key}
                       className="pill-badge"
                     >
                       <div className="pill-icon">
@@ -70,7 +73,7 @@ export default function MaintenanceServices() {
             >
               <Image
                 src="/images/inspection.jpg"
-                alt="Mechanic performing maintenance"
+                alt={t.home.maintenanceServices.imageAlt}
                 fill
                 sizes="(max-width: 1024px) 100vw, 50vw"
                 className="object-cover"
@@ -78,10 +81,10 @@ export default function MaintenanceServices() {
               <div className="absolute inset-0 bg-gradient-to-t from-dark/60 to-transparent" />
               <div className="absolute bottom-6 left-6 right-6">
                 <p className="font-display text-xl font-bold text-white">
-                  Keep Your Engine Healthy
+                  {t.home.maintenanceServices.imageCaptionTitle}
                 </p>
                 <p className="mt-1 text-sm text-white/70">
-                  Regular maintenance prevents costly repairs down the road.
+                  {t.home.maintenanceServices.imageCaptionSubtitle}
                 </p>
               </div>
             </motion.div>

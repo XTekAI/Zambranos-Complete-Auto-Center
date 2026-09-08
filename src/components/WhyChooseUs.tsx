@@ -2,35 +2,33 @@
 
 import { motion } from 'motion/react';
 import { Shield, Award, MapPin, Wrench } from 'lucide-react';
+import { useLanguage } from '../lib/i18n/LanguageContext';
 
 export default function WhyChooseUs() {
+  const { t } = useLanguage();
   const currentYear = new Date().getFullYear();
   const yearsOfService = currentYear - 1997;
 
   const reasons = [
     {
       icon: Award,
-      title: 'Certified Expertise',
-      description:
-        'Highly trained specialists in suspension, brakes, and alignment — not just general mechanics.',
+      title: t.home.whyChooseUs.reasons.certifiedExpertise.title,
+      description: t.home.whyChooseUs.reasons.certifiedExpertise.description,
     },
     {
       icon: Shield,
-      title: 'Veteran-Owned Trust',
-      description:
-        'Military-grade discipline and integrity. We stand behind every job with comprehensive warranties.',
+      title: t.home.whyChooseUs.reasons.veteranOwnedTrust.title,
+      description: t.home.whyChooseUs.reasons.veteranOwnedTrust.description,
     },
     {
       icon: MapPin,
-      title: 'Local Since 1997',
-      description:
-        `Proudly serving Trenton for ${yearsOfService}+ years with honest, transparent pricing and reliable service.`,
+      title: t.home.whyChooseUs.reasons.localSinceYear.title,
+      description: t.home.whyChooseUs.reasons.localSinceYear.description(yearsOfService),
     },
     {
       icon: Wrench,
-      title: 'Modern Equipment',
-      description:
-        'We invest in the latest diagnostic and alignment technology to ensure precision repairs every time.',
+      title: t.home.whyChooseUs.reasons.modernEquipment.title,
+      description: t.home.whyChooseUs.reasons.modernEquipment.description,
     },
   ];
 
@@ -39,11 +37,10 @@ export default function WhyChooseUs() {
       <div className="mx-auto max-w-7xl px-6">
         <div className="mx-auto mb-16 max-w-3xl text-center">
           <h2 className="font-display text-3xl font-extrabold tracking-tight md:text-4xl lg:text-5xl">
-            Why Choose <span className="text-primary">Zambranos</span>?
+            {t.home.whyChooseUs.headingPrefix} <span className="text-primary">Zambranos</span>?
           </h2>
           <p className="mt-4 text-lg leading-relaxed text-muted">
-            When it comes to your vehicle&apos;s safety and performance, you need
-            specialists you can trust.
+            {t.home.whyChooseUs.subheading}
           </p>
         </div>
 

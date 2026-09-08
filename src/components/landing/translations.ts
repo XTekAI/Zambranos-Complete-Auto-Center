@@ -20,6 +20,9 @@ const en = {
     callButton: 'Call (609) 396-8417',
     emergencyNote: 'Emergency? Need help now? Click call above.',
   },
+  promo: {
+    banner: 'September Special: Book Any Service, Get a FREE Multipoint Inspection',
+  },
   emergency: {
     label: 'Emergency Service',
     title: 'Need immediate assistance?',
@@ -92,6 +95,9 @@ const es: typeof en = {
     bookAppointment: 'Reservar Cita',
     callButton: 'Llamar (609) 396-8417',
     emergencyNote: '¿Emergencia? ¿Necesitas ayuda ahora? Presiona llamar arriba.',
+  },
+  promo: {
+    banner: 'Especial de Septiembre: Agenda Cualquier Servicio y Recibe una Inspección Multipunto GRATIS',
   },
   emergency: {
     label: 'Servicio de Emergencia',

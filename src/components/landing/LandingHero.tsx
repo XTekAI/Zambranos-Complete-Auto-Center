@@ -1,9 +1,10 @@
 'use client';
 
+import { useEffect, useState } from 'react';
 import { motion } from 'motion/react';
-import { Shield, Star, Award, ThumbsUp, Calendar, Phone } from 'lucide-react';
+import { Shield, Star, Award, ThumbsUp, Calendar, Phone, Wrench } from 'lucide-react';
 import Image from 'next/image';
-import { BUSINESS, LINKS } from '../../lib/constants';
+import { BUSINESS, LINKS, isPromoActive } from '../../lib/constants';
 import AnimatedButton from '../AnimatedButton';
 import { useLanguage } from './LanguageContext';
 
@@ -40,6 +41,11 @@ const transitionVariants = {
 export default function LandingHero() {
   const { t } = useLanguage();
   const yearsOfService = new Date().getFullYear() - BUSINESS.established;
+  const [showPromo, setShowPromo] = useState(false);
+
+  useEffect(() => {
+    setShowPromo(isPromoActive());
+  }, []);
 
   return (
     <section className="relative flex min-h-[90vh] items-center justify-center overflow-hidden bg-dark">
@@ -63,6 +69,19 @@ export default function LandingHero() {
            animate="visible"
            className="flex flex-col items-center text-center max-w-5xl mx-auto"
         >
+          {/* September Promo Banner */}
+          {showPromo && (
+            <motion.div
+              variants={transitionVariants.item}
+              className="mb-6 inline-flex items-center gap-2 rounded-full bg-primary px-5 py-2.5 shadow-lg shadow-primary/30 animate-pulse sm:px-6 sm:py-3"
+            >
+              <Wrench className="h-4 w-4 shrink-0 text-white sm:h-5 sm:w-5" />
+              <span className="text-xs font-black uppercase tracking-wide text-white sm:text-sm">
+                {t.promo.banner}
+              </span>
+            </motion.div>
+          )}
+
           {/* Badge Section */}
           <motion.div variants={transitionVariants.item} className="mb-12 flex flex-wrap justify-center items-center gap-3">
             <span className="pill-badge-info !py-2 !px-4 !gap-2 !text-xs !bg-blue-900/30 !border-blue-400/20 hover:shadow-blue-500/20">

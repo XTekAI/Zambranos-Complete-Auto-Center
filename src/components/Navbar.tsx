@@ -7,19 +7,22 @@ import Link from 'next/link';
 import BusinessStatus from './BusinessStatus';
 import AnimatedButton from './AnimatedButton';
 import Logo from './Logo';
+import LanguageToggle from '../lib/i18n/LanguageToggle';
+import { useLanguage } from '../lib/i18n/LanguageContext';
 import { BUSINESS, LINKS } from '../lib/constants';
 
-const NAV_LINKS = [
-  { label: 'Tires', href: '/tires' },
-  { label: 'Services', href: '/services' },
-  { label: 'About', href: '/about' },
-  { label: 'Commercial', href: '/commercial' },
-  { label: 'Financing', href: '/financing' },
-];
-
 export default function Navbar() {
+  const { t, lang } = useLanguage();
   const [menuOpen, setMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+
+  const NAV_LINKS = [
+    { label: t.common.nav.links.tires, href: '/tires' },
+    { label: t.common.nav.links.services, href: '/services' },
+    { label: t.common.nav.links.about, href: '/about' },
+    { label: t.common.nav.links.commercial, href: '/commercial' },
+    { label: t.common.nav.links.financing, href: '/financing' },
+  ];
 
   useEffect(() => {
     const handleScroll = () => {
@@ -45,11 +48,12 @@ export default function Navbar() {
             </a>
           </div>
           <div className="flex items-center gap-4">
-            <BusinessStatus />
+            <BusinessStatus lang={lang} />
             <a href={LINKS.google} target="_blank" rel="noopener noreferrer" className="flex items-center gap-1 text-yellow-500 transition-colors hover:text-yellow-400 cursor-pointer">
               <Star className="h-3 w-3 fill-yellow-500" />
-              {BUSINESS.rating} Google Rating
+              {BUSINESS.rating} {t.common.nav.googleRating}
             </a>
+            <LanguageToggle />
           </div>
         </div>
       </div>
@@ -75,8 +79,8 @@ export default function Navbar() {
                 <ChevronRight className="h-3 w-3 opacity-0 transition-all group-hover:translate-x-0.5 group-hover:opacity-100" />
               </Link>
             ))}
-            <AnimatedButton 
-              text="Schedule"
+            <AnimatedButton
+              text={t.common.nav.schedule}
               href={LINKS.appointment}
               className={`transition-all duration-300 ${isScrolled ? 'px-4 py-2 text-xs h-9' : 'px-5 py-2.5 text-sm h-11'}`}
             />
@@ -85,7 +89,7 @@ export default function Navbar() {
           <button
             onClick={() => setMenuOpen(!menuOpen)}
             className="text-white md:hidden cursor-pointer"
-            aria-label={menuOpen ? 'Close menu' : 'Open menu'}
+            aria-label={menuOpen ? t.common.nav.closeMenu : t.common.nav.openMenu}
           >
             {menuOpen ? <X className="h-7 w-7" /> : <Menu className="h-7 w-7" />}
           </button>
@@ -113,10 +117,11 @@ export default function Navbar() {
                 ))}
                 <div className="mt-4 flex flex-col gap-4 border-t border-white/10 pt-6">
                   <div className="flex justify-between items-center px-4">
-                    <BusinessStatus />
+                    <BusinessStatus lang={lang} />
+                    <LanguageToggle />
                   </div>
-                  <AnimatedButton 
-                    text={`Call Now`}
+                  <AnimatedButton
+                    text={t.common.nav.callNow}
                     href={BUSINESS.phoneTel}
                     className="w-full px-5 py-4 text-base h-14"
                   />

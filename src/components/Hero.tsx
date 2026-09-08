@@ -6,6 +6,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { BUSINESS, LINKS } from '../lib/constants';
 import AnimatedButton from './AnimatedButton';
+import { useLanguage } from '../lib/i18n/LanguageContext';
 
 const transitionVariants = {
   container: {
@@ -38,6 +39,7 @@ const transitionVariants = {
 } as const;
 
 export default function Hero() {
+  const { t } = useLanguage();
   const currentYear = new Date().getFullYear();
   const yearsOfService = currentYear - BUSINESS.established;
 
@@ -53,7 +55,7 @@ export default function Hero() {
 
       <Image
         src="/images/hero-truck.jpg"
-        alt="Ford Super Duty truck in the desert"
+        alt={t.home.hero.heroImageAlt}
         fill
         priority
         className="object-cover opacity-50"
@@ -72,7 +74,7 @@ export default function Hero() {
           <motion.div variants={transitionVariants.item} className="mb-12 flex flex-wrap justify-center items-center gap-3">
             <span className="inline-flex items-center gap-1.5 rounded-full bg-blue-900/30 px-4 py-1.5 text-xs font-semibold text-blue-300 backdrop-blur-sm border border-blue-400/20">
               <Shield className="h-3.5 w-3.5" />
-              Veteran-Owned &amp; Family Operated
+              {t.home.hero.badgeVeteranOwned}
             </span>
             <a
               href={LINKS.google}
@@ -81,7 +83,7 @@ export default function Hero() {
               className="inline-flex items-center gap-1.5 rounded-full bg-yellow-500/20 px-4 py-1.5 text-xs font-semibold text-yellow-300 backdrop-blur-sm border border-yellow-400/20 transition-colors hover:bg-yellow-500/30 cursor-pointer"
             >
               <Star className="h-3.5 w-3.5 fill-yellow-400" />
-              {BUSINESS.rating} Stars · {BUSINESS.reviewCount} Google Reviews
+              {t.home.hero.googleRatingBadge(BUSINESS.rating, BUSINESS.reviewCount)}
             </a>
           </motion.div>
 
@@ -89,9 +91,9 @@ export default function Hero() {
             variants={transitionVariants.item}
             className="font-display text-4xl font-black leading-[1.05] tracking-tight sm:text-5xl md:text-7xl lg:text-8xl max-w-5xl text-center"
           >
-            <span className="text-red-500">Veteran-Owned{' '}</span>
-            <span className="text-red-600 border-b-4 border-red-600/30">Excellence</span> 
-            <span className="text-red-500"> in Trenton</span>
+            <span className="text-red-500">{t.home.hero.headingPart1}{' '}</span>
+            <span className="text-red-600 border-b-4 border-red-600/30">{t.home.hero.headingHighlight}</span>
+            <span className="text-red-500">{t.home.hero.headingPart3}</span>
             <span className="text-red-600">.</span>
           </motion.h1>
 
@@ -99,22 +101,21 @@ export default function Hero() {
             variants={transitionVariants.item}
             className="mt-8 max-w-2xl text-lg md:text-xl leading-relaxed text-red-400/90 font-medium text-center"
           >
-            Since {BUSINESS.established}, delivering expert suspension, brakes, tires &amp;
-            commercial fleet services with military-grade precision. Same-day service available.
+            {t.home.hero.subheading(BUSINESS.established)}
           </motion.p>
 
           <motion.div 
             variants={transitionVariants.item}
             className="mt-12 flex flex-col gap-4 sm:flex-row justify-center w-full"
           >
-            <AnimatedButton 
-              text="Schedule Service"
+            <AnimatedButton
+              text={t.home.hero.scheduleServiceButton}
               href={LINKS.appointment}
               icon={<Calendar className="h-5 w-5" />}
               className="px-6 py-4 md:px-10 md:py-5 text-base md:text-lg text-white"
             />
-            <AnimatedButton 
-              text="Search Tires"
+            <AnimatedButton
+              text={t.home.hero.searchTiresButton}
               href="/tires"
               icon={<CircleDot className="h-5 w-5" />}
               className="border-2 border-white/20 text-white backdrop-blur-sm shadow-none hover:shadow-none px-6 py-4 md:px-10 md:py-5 text-base md:text-lg"
@@ -126,9 +127,9 @@ export default function Hero() {
             className="mt-12 md:mt-16 flex justify-center gap-6 md:gap-12 border-t border-white/10 pt-8 md:pt-10 w-full max-w-2xl"
           >
             {[
-              { value: `${yearsOfService}+`, label: 'Years Experience' },
-              { value: `${BUSINESS.reviewCount}+`, label: 'Google Reviews' },
-              { value: `${BUSINESS.rating}★`, label: 'Average Rating' },
+              { value: `${yearsOfService}+`, label: t.home.hero.statsYearsExperience },
+              { value: `${BUSINESS.reviewCount}+`, label: t.home.hero.statsGoogleReviews },
+              { value: `${BUSINESS.rating}★`, label: t.home.hero.statsAverageRating },
             ].map((stat) => (
               <div key={stat.label} className="flex flex-col items-center">
                 <div className="font-display text-2xl md:text-3xl font-black text-white">{stat.value}</div>

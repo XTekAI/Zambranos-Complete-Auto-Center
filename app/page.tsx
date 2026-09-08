@@ -1,5 +1,6 @@
 import Navbar from '../src/components/Navbar';
 import Hero from '../src/components/Hero';
+import PromoPopup from '../src/components/PromoPopup';
 import FinancingBrands from '../src/components/FinancingBrands';
 import CoreServices from '../src/components/CoreServices';
 import CommercialSection from '../src/components/CommercialSection';
@@ -14,6 +15,7 @@ import Footer from '../src/components/Footer';
 export default function Page() {
   return (
     <>
+      <PromoPopup />
       <Navbar />
       <main>
         <Hero />

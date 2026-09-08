@@ -17,46 +17,48 @@ import Image from 'next/image';
 import Navbar from '../../src/components/Navbar';
 import Footer from '../../src/components/Footer';
 import { BUSINESS, LINKS, HOURS } from '../../src/lib/constants';
-
-const values = [
-  {
-    icon: Shield,
-    title: 'Military Precision',
-    description:
-      'Our veteran founder brings the discipline, attention to detail, and commitment to excellence learned through military service to every repair.',
-  },
-  {
-    icon: Heart,
-    title: 'Family Values',
-    description:
-      'As a family-operated business, we treat every customer like family. Your safety and satisfaction are our top priorities.',
-  },
-  {
-    icon: Award,
-    title: 'Certified Expertise',
-    description:
-      'Our technicians are trained and certified in the latest diagnostic and repair techniques for all vehicle makes and models.',
-  },
-  {
-    icon: Users,
-    title: 'Community First',
-    description:
-      'We are proud to serve Trenton and surrounding communities. We believe in honest work, fair pricing, and building lasting relationships.',
-  },
-];
+import { useLanguage } from '../../src/lib/i18n/LanguageContext';
 
 const currentYear = new Date().getFullYear();
 const yearsOfService = currentYear - BUSINESS.established;
 
-const milestones = [
-  { year: '1997', event: 'Founded by the Zambranos family' },
-  { year: '2005', event: 'Became an authorized Bridgestone / Firestone dealer' },
-  { year: '2015', event: 'Expanded commercial fleet services division' },
-  { year: '2018', event: 'Relocated to our current Trenton, NJ facility' },
-  { year: currentYear.toString(), event: `Serving ${yearsOfService}+ years with ${BUSINESS.reviewCount}+ five-star reviews` },
-];
-
 export default function AboutPage() {
+  const { t } = useLanguage();
+
+  const values = [
+    {
+      icon: Shield,
+      title: t.about.values.items.militaryPrecision.title,
+      description: t.about.values.items.militaryPrecision.description,
+    },
+    {
+      icon: Heart,
+      title: t.about.values.items.familyValues.title,
+      description: t.about.values.items.familyValues.description,
+    },
+    {
+      icon: Award,
+      title: t.about.values.items.certifiedExpertise.title,
+      description: t.about.values.items.certifiedExpertise.description,
+    },
+    {
+      icon: Users,
+      title: t.about.values.items.communityFirst.title,
+      description: t.about.values.items.communityFirst.description,
+    },
+  ];
+
+  const milestones = [
+    { year: '1997', event: t.about.timeline.milestones.founded1997 },
+    { year: '2005', event: t.about.timeline.milestones.dealer2005 },
+    { year: '2015', event: t.about.timeline.milestones.fleet2015 },
+    { year: '2018', event: t.about.timeline.milestones.relocated2018 },
+    {
+      year: currentYear.toString(),
+      event: t.about.timeline.milestones.current(yearsOfService, BUSINESS.reviewCount),
+    },
+  ];
+
   return (
     <>
       <Navbar />
@@ -65,7 +67,7 @@ export default function AboutPage() {
         <section className="relative flex min-h-[40vh] md:min-h-[50vh] items-center overflow-hidden bg-dark pt-24 md:pt-32 lg:pt-40">
           <Image
             src="https://images.unsplash.com/photo-1625047509248-ec889cbff17f?w=1920&q=80"
-            alt="Auto repair team at work"
+            alt={t.about.hero.imageAlt}
             fill
             priority
             className="object-cover"
@@ -83,14 +85,13 @@ export default function AboutPage() {
             >
               <span className="mb-4 inline-flex items-center gap-2 rounded-full bg-blue-900/30 px-4 py-1.5 text-xs font-semibold text-blue-300 backdrop-blur-sm">
                 <Shield className="h-3.5 w-3.5" />
-                Veteran-Owned &amp; Family Operated
+                {t.about.hero.badge}
               </span>
               <h1 className="font-display text-4xl font-black tracking-tight sm:text-5xl md:text-6xl leading-none">
-                <span className="text-white drop-shadow-lg">About</span> <span className="text-red-600 drop-shadow-lg">Zambranos</span>
+                <span className="text-white drop-shadow-lg">{t.about.hero.titlePrefix}</span> <span className="text-red-600 drop-shadow-lg">Zambranos</span>
               </h1>
               <p className="mt-4 max-w-lg text-lg leading-relaxed text-white/70">
-                Since {BUSINESS.established}, delivering expert auto care with
-                military-grade precision and family-first values in Trenton, NJ.
+                {t.about.hero.subtitle(BUSINESS.established)}
               </p>
             </motion.div>
           </div>
@@ -108,27 +109,19 @@ export default function AboutPage() {
               >
                 <span className="mb-4 inline-flex items-center gap-2 rounded-full bg-primary/10 px-4 py-1.5 text-xs font-bold uppercase tracking-wider text-primary">
                   <Clock className="h-4 w-4" />
-                  Our Story
+                  {t.about.story.badge}
                 </span>
                 <h2 className="font-display text-3xl font-extrabold tracking-tight md:text-4xl">
-                  29+ Years of <span className="text-primary">Trusted</span> Service
+                  {t.about.story.titleBefore}<span className="text-primary">{t.about.story.titleHighlight}</span>{t.about.story.titleAfter}
                 </h2>
                 <p className="mt-6 leading-relaxed text-muted">
-                  Zambranos Complete Auto Center was founded in {BUSINESS.established} with a
-                  simple mission: provide honest, high-quality auto repair at fair
-                  prices. As a veteran-owned and family-operated business, we bring
-                  the discipline and integrity of military service to every job.
+                  {t.about.story.paragraph1(BUSINESS.established)}
                 </p>
                 <p className="mt-4 leading-relaxed text-muted">
-                  While our roots go back to 1997, we moved to our current Trenton location at {BUSINESS.address} in 2018. Since then, we&apos;ve grown into the area&apos;s trusted destination for
-                  suspension repair, brake services, wheel alignments, tire
-                  installation, and commercial fleet maintenance.
+                  {t.about.story.paragraph2(BUSINESS.address)}
                 </p>
                 <p className="mt-4 leading-relaxed text-muted">
-                  As authorized dealers for Bridgestone, Firestone, and Fuzion tires,
-                  we offer premium products backed by manufacturer warranties. Our
-                  commitment to quality has earned us a {BUSINESS.rating}-star rating
-                  from {BUSINESS.reviewCount}+ Google reviews.
+                  {t.about.story.paragraph3(BUSINESS.rating, BUSINESS.reviewCount)}
                 </p>
               </motion.div>
 
@@ -141,7 +134,7 @@ export default function AboutPage() {
               >
                 <Image
                   src="/images/owner.jpg"
-                  alt="Founder of Zambrano's Auto Center"
+                  alt={t.about.story.imageAlt}
                   fill
                   sizes="(max-width: 1024px) 100vw, 50vw"
                   className="object-cover"
@@ -156,11 +149,10 @@ export default function AboutPage() {
           <div className="mx-auto max-w-7xl px-6">
             <div className="mb-16 text-center">
               <h2 className="font-display text-3xl font-extrabold tracking-tight md:text-4xl">
-                What <span className="text-primary">Drives</span> Us
+                {t.about.values.titleBefore}<span className="text-primary">{t.about.values.titleHighlight}</span>{t.about.values.titleAfter}
               </h2>
               <p className="mx-auto mt-3 max-w-2xl text-muted">
-                Our values define everything we do — from the way we diagnose
-                problems to the way we treat our customers.
+                {t.about.values.subheading}
               </p>
             </div>
 
@@ -197,7 +189,7 @@ export default function AboutPage() {
           <div className="mx-auto max-w-7xl px-6">
             <div className="mb-16 text-center">
               <h2 className="font-display text-3xl font-extrabold tracking-tight md:text-4xl">
-                Our <span className="text-primary">Journey</span>
+                {t.about.timeline.titleBefore}<span className="text-primary">{t.about.timeline.titleHighlight}</span>{t.about.timeline.titleAfter}
               </h2>
             </div>
 
@@ -236,10 +228,10 @@ export default function AboutPage() {
           <div className="mx-auto max-w-7xl px-6">
             <div className="grid grid-cols-2 gap-8 text-center md:grid-cols-4">
               {[
-                { value: '29+', label: 'Years in Business', icon: Clock },
-                { value: `${BUSINESS.reviewCount}+`, label: 'Google Reviews', icon: Star },
-                { value: `${BUSINESS.rating}★`, label: 'Average Rating', icon: Star },
-                { value: '1000s', label: 'Vehicles Serviced', icon: Wrench },
+                { value: '29+', label: t.about.stats.yearsInBusiness, icon: Clock },
+                { value: `${BUSINESS.reviewCount}+`, label: t.about.stats.googleReviews, icon: Star },
+                { value: `${BUSINESS.rating}★`, label: t.about.stats.averageRating, icon: Star },
+                { value: t.about.stats.vehiclesServicedValue, label: t.about.stats.vehiclesServiced, icon: Wrench },
               ].map((stat, i) => {
                 const Icon = stat.icon;
                 return (
@@ -275,17 +267,17 @@ export default function AboutPage() {
                 className="premium-card p-8"
               >
                 <h3 className="mb-6 font-display text-2xl font-bold">
-                  Business Hours
+                  {t.about.hoursLocation.businessHoursTitle}
                 </h3>
                 <ul className="space-y-4">
                   {HOURS.map((h) => (
                     <li
-                      key={h.day}
+                      key={h.dayKey}
                       className="flex items-center justify-between border-b border-gray-100 pb-3 last:border-0"
                     >
-                      <span className="font-semibold text-dark">{h.day}</span>
+                      <span className="font-semibold text-dark">{t.common.hours[h.dayKey]}</span>
                       <span className={`font-bold ${h.time === 'Closed' ? 'text-primary' : 'text-muted'}`}>
-                        {h.time}
+                        {h.time === 'Closed' ? t.common.hours.closed : h.time}
                       </span>
                     </li>
                   ))}
@@ -301,7 +293,7 @@ export default function AboutPage() {
                 className="premium-card p-8"
               >
                 <h3 className="mb-6 font-display text-2xl font-bold">
-                  Visit Us
+                  {t.about.hoursLocation.visitUsTitle}
                 </h3>
                 <div className="space-y-6">
                   <div className="flex items-start gap-4">
@@ -309,7 +301,7 @@ export default function AboutPage() {
                       <MapPin className="h-5 w-5 text-primary" />
                     </div>
                     <div>
-                      <p className="font-semibold text-dark">Address</p>
+                      <p className="font-semibold text-dark">{t.about.hoursLocation.addressLabel}</p>
                       <a
                         href={LINKS.google}
                         target="_blank"
@@ -325,7 +317,7 @@ export default function AboutPage() {
                       <Phone className="h-5 w-5 text-primary" />
                     </div>
                     <div>
-                      <p className="font-semibold text-dark">Phone</p>
+                      <p className="font-semibold text-dark">{t.about.hoursLocation.phoneLabel}</p>
                       <a
                         href={BUSINESS.phoneTel}
                         className="text-lg font-bold text-primary transition-colors hover:text-dark cursor-pointer"
@@ -341,7 +333,7 @@ export default function AboutPage() {
                     className="group mt-4 inline-flex w-full items-center justify-center gap-2 rounded-xl bg-primary px-6 py-4 text-sm font-bold text-white transition-all hover:brightness-110 cursor-pointer"
                   >
                     <Calendar className="h-5 w-5 transition-transform group-hover:scale-110" />
-                    Schedule Service
+                    {t.about.hoursLocation.scheduleService}
                   </a>
                 </div>
               </motion.div>

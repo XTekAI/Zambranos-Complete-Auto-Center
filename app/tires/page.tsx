@@ -16,41 +16,46 @@ import Navbar from '../../src/components/Navbar';
 import Footer from '../../src/components/Footer';
 import FinalCTA from '../../src/components/FinalCTA';
 import { BUSINESS, LINKS } from '../../src/lib/constants';
+import { useLanguage } from '../../src/lib/i18n/LanguageContext';
 
-const brands = [
+const brandAssets = [
   {
+    slug: 'bridgestone',
     name: 'Bridgestone',
-    tagline: 'Premium Performance & Innovation',
-    description: 'Industry-leading tires engineered for those who demand the highest level of safety and performance. From luxury sedans to powerful SUVs and light trucks, Bridgestone delivers precision handling and ultimate comfort.',
-    specialty: 'Premium SUVs, Light Trucks & Luxury Sedans',
-    features: ['Enliten Technology', 'Potenza Performance', 'Alenza SUV specialist'],
     image: '/images/tires bridgestone.jpg',
     logo: '/images/Bridgestone.png',
     color: 'border-red-600'
   },
   {
+    slug: 'firestone',
     name: 'Firestone',
-    tagline: 'Reliability Since 1900',
-    description: 'A legacy of trust. Firestone tires are built for real-world reliability and long-lasting performance. Whether you are commuting to work or hauling a load, Firestone offers dependable all-season and all-terrain options.',
-    specialty: 'Reliable All-Season & All-Terrain',
-    features: ['Centennial Tradition', 'Destination AT2', 'WeatherGrip Technology'],
     image: '/images/firestone tires.png',
     logo: '/images/firestone.png',
     color: 'border-red-500'
   },
   {
+    slug: 'fuzion',
     name: 'Fuzion',
-    tagline: 'Value Meets Performance',
-    description: 'Engineered by Bridgestone, Fuzion tires provide a high-quality, budget-friendly option for drivers who want reliable performance without the premium price tag. Safety and value combined.',
-    specialty: 'Budget-Friendly Performance',
-    features: ['Bridgestone Engineering', 'Great All-Season Value', 'Quiet Ride Design'],
     image: '/images/fuizon tires.jpg',
     logo: '/images/fuzion-logo.png',
     color: 'border-red-400'
   },
-];
+] as const;
 
 export default function TiresPage() {
+  const { t } = useLanguage();
+
+  const brands = brandAssets.map((brand) => {
+    const copy = t.tires.brands[brand.slug];
+    return {
+      ...brand,
+      tagline: copy.tagline,
+      description: copy.description,
+      specialty: copy.specialty,
+      features: Object.values(copy.features),
+    };
+  });
+
   useEffect(() => {
     // @ts-ignore
     if (window.TCWidget) {
@@ -84,14 +89,13 @@ export default function TiresPage() {
             >
               <span className="mb-4 inline-flex items-center gap-2 rounded-full bg-primary/10 px-4 py-1.5 text-xs font-bold uppercase tracking-wider text-primary border border-primary/20">
                 <CircleDot className="h-4 w-4" />
-                Authorized Bridgestone & Firestone Dealer
+                {t.tires.hero.badge}
               </span>
               <h1 className="font-display text-4xl font-black tracking-tight sm:text-5xl md:text-6xl leading-none">
-                <span className="text-white drop-shadow-lg">Premium</span> <span className="text-red-600 drop-shadow-lg">Tire Center</span>
+                <span className="text-white drop-shadow-lg">{t.tires.hero.titlePart1}</span> <span className="text-red-600 drop-shadow-lg">{t.tires.hero.titlePart2}</span>
               </h1>
               <p className="mt-4 max-w-xl text-lg text-white/70">
-                The foundation of your vehicle's safety starts where the rubber meets the road. 
-                We provide expert selection, installation, and maintenance for the world's most trusted tire brands.
+                {t.tires.hero.description}
               </p>
             </motion.div>
           </div>
@@ -103,7 +107,7 @@ export default function TiresPage() {
             <div id="tireconnect" className="min-h-[600px] w-full bg-surface/50 rounded-3xl overflow-hidden shadow-sm flex items-center justify-center">
               <div className="text-center p-12">
                 <CircleDot className="w-12 h-12 text-primary/20 mx-auto mb-4 animate-pulse" />
-                <p className="text-muted font-medium">Loading Tire Catalog...</p>
+                <p className="text-muted font-medium">{t.tires.widget.loading}</p>
               </div>
             </div>
           </div>
@@ -127,10 +131,10 @@ export default function TiresPage() {
         <section className="py-24 px-6 max-w-7xl mx-auto">
           <div className="text-center mb-16">
             <h2 className="font-display text-3xl font-extrabold text-dark md:text-4xl">
-              World-Class <span className="text-primary">Brands</span> We Trust
+              {t.tires.brandsSection.headingPart1} <span className="text-primary">{t.tires.brandsSection.headingHighlight}</span> {t.tires.brandsSection.headingPart2}
             </h2>
             <p className="mt-4 text-muted max-w-2xl mx-auto">
-              We don't just sell tires; we sell peace of mind. Every brand we carry is selected for its performance, safety rating, and longevity.
+              {t.tires.brandsSection.description}
             </p>
           </div>
 
@@ -156,7 +160,7 @@ export default function TiresPage() {
                   </p>
                   
                   <div className="mb-8 p-4 bg-primary/5 rounded-xl border border-primary/10">
-                    <span className="block text-xs font-black uppercase text-primary mb-1">Our Specialty Recommendation</span>
+                    <span className="block text-xs font-black uppercase text-primary mb-1">{t.tires.specialtyLabel}</span>
                     <span className="font-bold text-dark">{brand.specialty}</span>
                   </div>
 
@@ -193,40 +197,39 @@ export default function TiresPage() {
 
           <div className="max-w-4xl mx-auto px-6 text-center relative z-10">
             <h2 className="font-display text-3xl md:text-5xl font-black text-white mb-6">
-              Expert Selection <br/> <span className="text-primary italic">Simplified</span>
+              {t.tires.installation.headingPart1} <br/> <span className="text-primary italic">{t.tires.installation.headingHighlight}</span>
             </h2>
             <p className="text-white/60 text-lg mb-10">
-              Find the perfect tires for your budget and needs directly above. 
-              Our team of experts is ready to get you back on the road safely.
+              {t.tires.installation.description}
             </p>
-            
+
             <div className="rounded-3xl bg-white/5 border border-white/10 p-8 text-left max-w-2xl mx-auto backdrop-blur-sm">
               <h4 className="text-white font-bold mb-4 flex items-center gap-2">
                 <Wrench className="w-5 h-5 text-primary" />
-                Professional Installation Includes:
+                {t.tires.installation.includesTitle}
               </h4>
               <ul className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-sm text-white/70">
-                <li className="flex items-center gap-2"><ChevronRight className="w-4 h-4 text-primary" /> Computerized Balancing</li>
-                <li className="flex items-center gap-2"><ChevronRight className="w-4 h-4 text-primary" /> New Valve Stems</li>
-                <li className="flex items-center gap-2"><ChevronRight className="w-4 h-4 text-primary" /> TPMS Reset/Testing</li>
-                <li className="flex items-center gap-2"><ChevronRight className="w-4 h-4 text-primary" /> Lifetime Rotations</li>
+                <li className="flex items-center gap-2"><ChevronRight className="w-4 h-4 text-primary" /> {t.tires.installation.includes.balancing}</li>
+                <li className="flex items-center gap-2"><ChevronRight className="w-4 h-4 text-primary" /> {t.tires.installation.includes.valveStems}</li>
+                <li className="flex items-center gap-2"><ChevronRight className="w-4 h-4 text-primary" /> {t.tires.installation.includes.tpms}</li>
+                <li className="flex items-center gap-2"><ChevronRight className="w-4 h-4 text-primary" /> {t.tires.installation.includes.rotations}</li>
               </ul>
             </div>
-            
+
             <div className="mt-12 flex flex-col sm:flex-row items-center justify-center gap-6">
-              <a 
-                href={BUSINESS.phoneTel} 
+              <a
+                href={BUSINESS.phoneTel}
                 className="w-full sm:w-auto flex items-center justify-center gap-3 px-10 py-5 bg-primary text-white font-black rounded-2xl hover:brightness-110 transition-all shadow-xl shadow-red-600/20"
               >
                 <Phone className="w-5 h-5" />
-                Get a Quote Today
+                {t.tires.installation.ctaQuote}
               </a>
-              <a 
-                href={LINKS.appointment} 
+              <a
+                href={LINKS.appointment}
                 className="w-full sm:w-auto flex items-center justify-center gap-3 px-10 py-5 bg-white text-dark font-black rounded-2xl hover:bg-gray-100 transition-all"
               >
                 <Calendar className="w-5 h-5" />
-                Book Installation
+                {t.tires.installation.ctaBook}
               </a>
             </div>
           </div>

@@ -3,6 +3,7 @@ import type { ReactNode } from 'react';
 import type { Metadata } from 'next';
 import Script from 'next/script';
 import JSONLD from '../src/components/JSONLD';
+import { LanguageProvider } from '../src/lib/i18n/LanguageContext';
 
 export const metadata: Metadata = {
   title: "Zambranos Complete Auto Center | Veteran-Owned Auto Repair in Trenton, NJ",
@@ -87,7 +88,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
           />
         </noscript>
         {/* End Meta Pixel Code */}
-        {children}
+        <LanguageProvider>{children}</LanguageProvider>
       </body>
     </html>
   );

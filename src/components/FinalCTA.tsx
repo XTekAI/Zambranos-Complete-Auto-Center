@@ -3,8 +3,11 @@
 import { Phone, MapPin, Calendar } from 'lucide-react';
 import { BUSINESS, LINKS } from '../lib/constants';
 import AnimatedButton from './AnimatedButton';
+import { useLanguage } from '../lib/i18n/LanguageContext';
 
 export default function FinalCTA() {
+  const { t } = useLanguage();
+
   return (
     <section className="relative overflow-hidden bg-primary py-20">
       {/* Decorative */}
@@ -13,11 +16,10 @@ export default function FinalCTA() {
 
       <div className="relative z-10 mx-auto max-w-7xl px-6 text-center">
         <h2 className="font-display text-3xl font-extrabold tracking-tight text-white md:text-4xl lg:text-5xl">
-          Ready to Get Back on the Road?
+          {t.home.finalCTA.heading}
         </h2>
         <p className="mx-auto mt-4 max-w-2xl text-lg text-white/80">
-          Trust {BUSINESS.name} for expert suspension, brake, and tire services.
-          Fast turnaround, honest pricing, guaranteed results.
+          {t.home.finalCTA.description(BUSINESS.name)}
         </p>
 
         <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
@@ -29,13 +31,13 @@ export default function FinalCTA() {
           />
           <AnimatedButton
             href={LINKS.appointment}
-            text="Schedule Service"
+            text={t.home.finalCTA.scheduleService}
             icon={<Calendar className="h-5 w-5" />}
             className="px-8 py-4 text-white hover-black"
           />
           <AnimatedButton
             href={LINKS.google}
-            text="Get Directions"
+            text={t.home.finalCTA.getDirections}
             icon={<MapPin className="h-5 w-5" />}
             className="px-8 py-4 text-white border-2 border-white/30 hover-black"
           />

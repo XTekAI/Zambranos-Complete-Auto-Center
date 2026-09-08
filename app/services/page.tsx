@@ -22,154 +22,60 @@ import {
 import Navbar from '../../src/components/Navbar';
 import Footer from '../../src/components/Footer';
 import FinalCTA from '../../src/components/FinalCTA';
+import { useLanguage } from '../../src/lib/i18n/LanguageContext';
 
-/* ── Repairs (Most Profitable) ── */
+/* ── Repair image / icon mapping (text content comes from translations) ── */
 
-const repairs = [
-  {
-    id: 'brakes',
-    icon: Disc,
-    title: 'Brake Services',
-    tagline: 'Safety First',
-    description:
-      'Complete brake system service including pad replacement, rotor resurfacing/replacement, caliper service, brake fluid flush, and ABS diagnostics.',
-    features: [
-      'Brake Pad Replacement',
-      'Rotor Resurfacing / Replacement',
-      'Caliper Service',
-      'Brake Fluid Flush',
-      'ABS Diagnostics',
-      'Emergency Brake Repair',
-    ],
-    image: '/images/brakes.jpg',
-  },
-  {
-    id: 'suspension',
-    icon: Wrench,
-    title: 'Suspension Repair',
-    tagline: 'Our #1 Specialty',
-    description:
-      'Complete suspension diagnostics and repair including shocks, struts, control arms, ball joints, tie rods, and sway bar links. We restore ride quality and handling precision.',
-    features: [
-      'Shocks & Struts Replacement',
-      'Control Arm Repair',
-      'Ball Joint Service',
-      'Tie Rod Replacement',
-      'Sway Bar Links',
-      'Steering Component Repair',
-    ],
-    image: '/images/suspension repair.jpg',
-  },
-  {
-    id: 'engine',
-    icon: Cog,
-    title: 'Engine Services',
-    tagline: 'Heart of Your Vehicle',
-    description:
-      'Comprehensive engine diagnostics, tune-ups, and repair to keep your vehicle running at peak performance.',
-    features: [
-      'Engine Diagnostics',
-      'Tune-Ups',
-      'Spark Plug Replacement',
-      'Timing Belt / Chain',
-      'Engine Mount Repair',
-      'Check Engine Light',
-    ],
-    image: '/images/engine services.jpg',
-  },
-  {
-    id: 'ac',
-    icon: Snowflake,
-    title: 'AC Services',
-    tagline: 'Stay Cool in NJ Summers',
-    description:
-      'Full AC diagnostics, refrigerant recharge, compressor repair, and climate control service to keep you comfortable year-round.',
-    features: [
-      'AC Diagnostics',
-      'Refrigerant Recharge',
-      'Compressor Repair',
-      'Condenser Service',
-      'Evaporator Cleaning',
-      'Climate Control Repair',
-    ],
-    image: '/images/ac services.jpg',
-  },
-  {
-    id: 'radiator',
-    icon: Thermometer,
-    title: 'Radiator Services',
-    tagline: 'Keep Your Engine Cool',
-    description:
-      'Radiator repair, replacement, and coolant flush services to prevent overheating and engine damage.',
-    features: [
-      'Radiator Repair',
-      'Radiator Replacement',
-      'Coolant Flush',
-      'Thermostat Replacement',
-      'Hose Inspection & Replacement',
-      'Cooling System Diagnostics',
-    ],
-    image: '/images/radiator.jpg',
-  },
-  {
-    id: 'belts',
-    icon: Settings2,
-    title: 'Belts & Hoses',
-    tagline: 'Preventive Care',
-    description:
-      'Inspection and replacement of serpentine belts, timing belts, and hoses to prevent breakdowns.',
-    features: [
-      'Serpentine Belt Replacement',
-      'Timing Belt Service',
-      'Radiator Hose Replacement',
-      'Heater Hose Replacement',
-      'Belt Tensioner Service',
-      'Visual Inspection',
-    ],
-    image: '/images/belt and hoses.jpeg',
-  },
-  {
-    id: 'shocks',
-    icon: Gauge,
-    title: 'Shocks & Struts',
-    tagline: 'Ride Quality Experts',
-    description:
-      'Worn shocks and struts affect handling, braking, and tire wear. We restore your smooth, controlled ride.',
-    features: [
-      'Shock Absorber Replacement',
-      'Strut Assembly Replacement',
-      'Strut Mount Replacement',
-      'Bounce Test Diagnostics',
-      'Ride Height Inspection',
-      'Road Test Verification',
-    ],
-    image: '/images/suspension repair.jpg',
-  },
-];
+const repairMeta = [
+  { id: 'brakes', icon: Disc, image: '/images/brakes.jpg' },
+  { id: 'suspension', icon: Wrench, image: '/images/suspension repair.jpg' },
+  { id: 'engine', icon: Cog, image: '/images/engine services.jpg' },
+  { id: 'ac', icon: Snowflake, image: '/images/ac services.jpg' },
+  { id: 'radiator', icon: Thermometer, image: '/images/radiator.jpg' },
+  { id: 'belts', icon: Settings2, image: '/images/belt and hoses.jpeg' },
+  { id: 'shocks', icon: Gauge, image: '/images/suspension repair.jpg' },
+] as const;
 
-/* ── Tires ── */
+/* ── Tires icon mapping ── */
 
-const tireServices = [
-  { name: 'Tire Installation', icon: CircleDot },
-  { name: 'Tire Rotation', icon: CircleDot },
-  { name: 'Wheel Balance', icon: Move },
-  { name: 'TPMS Services', icon: Gauge },
-  { name: 'Wheel Alignment', icon: Move },
-  { name: 'Flat Repair', icon: Wrench },
-];
+const tireServiceMeta = [
+  { key: 'installation', icon: CircleDot },
+  { key: 'rotation', icon: CircleDot },
+  { key: 'balance', icon: Move },
+  { key: 'tpms', icon: Gauge },
+  { key: 'alignment', icon: Move },
+  { key: 'flatRepair', icon: Wrench },
+] as const;
 
-/* ── Maintenance ── */
+/* ── Maintenance icon mapping ── */
 
-const maintenanceServices = [
-  { name: 'Oil Changes', icon: Droplet },
-  { name: 'Filters', icon: Settings2 },
-  { name: 'Lighting', icon: Lightbulb },
-  { name: 'Wiper Blades', icon: Wind },
-  { name: 'Fluid Services', icon: Thermometer },
-  { name: 'Battery', icon: Battery },
-];
+const maintenanceServiceMeta = [
+  { key: 'oilChanges', icon: Droplet },
+  { key: 'filters', icon: Settings2 },
+  { key: 'lighting', icon: Lightbulb },
+  { key: 'wiperBlades', icon: Wind },
+  { key: 'fluidServices', icon: Thermometer },
+  { key: 'battery', icon: Battery },
+] as const;
 
 export default function ServicesPage() {
+  const { t } = useLanguage();
+
+  const repairs = repairMeta.map((meta) => ({
+    ...meta,
+    ...t.services.repairs.list[meta.id],
+  }));
+
+  const tireServices = tireServiceMeta.map((meta) => ({
+    ...meta,
+    name: t.services.tires.services[meta.key],
+  }));
+
+  const maintenanceServices = maintenanceServiceMeta.map((meta) => ({
+    ...meta,
+    name: t.services.maintenance.services[meta.key],
+  }));
+
   return (
     <>
       <Navbar />
@@ -185,15 +91,14 @@ export default function ServicesPage() {
             >
               <span className="mb-4 inline-flex items-center gap-2 rounded-full bg-primary/10 px-4 py-1.5 text-xs font-bold uppercase tracking-wider text-primary">
                 <Wrench className="h-4 w-4" />
-                Full Service Auto Care
+                {t.services.hero.badge}
               </span>
               <h1 className="font-display text-4xl font-black tracking-tight sm:text-5xl md:text-6xl leading-none">
-                <span className="text-white drop-shadow-lg">Expert Auto</span>{' '}
-                <span className="text-red-600 drop-shadow-lg">Services</span>
+                <span className="text-white drop-shadow-lg">{t.services.hero.headingPart1}</span>{' '}
+                <span className="text-red-600 drop-shadow-lg">{t.services.hero.headingPart2}</span>
               </h1>
               <p className="mt-4 max-w-xl text-lg text-white/60">
-                From complex suspension rebuilds to routine oil changes — our
-                certified technicians handle it all with military-grade precision.
+                {t.services.hero.description}
               </p>
             </motion.div>
           </div>
@@ -205,13 +110,13 @@ export default function ServicesPage() {
             <div className="mb-16 text-center">
               <span className="mb-4 inline-flex items-center gap-2 rounded-full bg-primary/10 px-4 py-1.5 text-xs font-bold uppercase tracking-wider text-primary">
                 <Wrench className="h-4 w-4" />
-                Repairs
+                {t.services.repairs.badge}
               </span>
               <h2 className="font-display text-3xl font-extrabold tracking-tight md:text-4xl">
-                Professional <span className="text-primary">Repair</span> Services
+                {t.services.repairs.headingPart1} <span className="text-primary">{t.services.repairs.headingHighlight}</span> {t.services.repairs.headingPart2}
               </h2>
               <p className="mx-auto mt-3 max-w-2xl text-muted">
-                The critical systems that keep you safe on the road. These are our core specialties.
+                {t.services.repairs.description}
               </p>
             </div>
 
@@ -258,7 +163,7 @@ export default function ServicesPage() {
                         className="mt-8 inline-flex items-center gap-2 rounded-xl bg-primary px-6 py-3 text-sm font-bold text-white transition-all hover:brightness-110 cursor-pointer"
                       >
                         <Calendar className="h-4 w-4" />
-                        Schedule This Service
+                        {t.services.repairs.scheduleButton}
                       </a>
                     </div>
 
@@ -284,13 +189,13 @@ export default function ServicesPage() {
             <div className="mb-12 text-center">
               <span className="mb-4 inline-flex items-center gap-2 rounded-full bg-primary/10 px-4 py-1.5 text-xs font-bold uppercase tracking-wider text-primary">
                 <CircleDot className="h-4 w-4" />
-                Tires
+                {t.services.tires.badge}
               </span>
               <h2 className="font-display text-3xl font-extrabold tracking-tight md:text-4xl">
-                Complete <span className="text-primary">Tire</span> Services
+                {t.services.tires.headingPart1} <span className="text-primary">{t.services.tires.headingHighlight}</span> {t.services.tires.headingPart2}
               </h2>
               <p className="mx-auto mt-3 max-w-2xl text-muted">
-                Authorized Bridgestone, Firestone & Fuzion dealer. From selection to installation, we handle it all.
+                {t.services.tires.description}
               </p>
             </div>
 
@@ -325,22 +230,22 @@ export default function ServicesPage() {
               >
                 <img
                   src="/images/tire installation.jpg"
-                  alt="Tire installation service"
+                  alt={t.services.tires.imageAlt}
                   className="h-full w-full object-cover"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-dark/60 to-transparent" />
                 <div className="absolute bottom-6 left-6 right-6">
                   <p className="font-display text-xl font-bold text-white">
-                    Expert Tire Care
+                    {t.services.tires.expertCareTitle}
                   </p>
                   <p className="mt-1 text-sm text-white/70">
-                    Professional installation, balancing & alignment for all tire brands.
+                    {t.services.tires.expertCareDescription}
                   </p>
                   <a
                     href="/tires"
                     className="mt-3 inline-flex items-center gap-2 text-sm font-bold text-primary hover:text-white transition-colors"
                   >
-                    View Tire Brands
+                    {t.services.tires.viewBrandsLink}
                     <ArrowRight className="h-4 w-4" />
                   </a>
                 </div>
@@ -355,13 +260,13 @@ export default function ServicesPage() {
             <div className="mb-12 text-center">
               <span className="mb-4 inline-flex items-center gap-2 rounded-full bg-primary/10 px-4 py-1.5 text-xs font-bold uppercase tracking-wider text-primary">
                 <Droplet className="h-4 w-4" />
-                Maintenance
+                {t.services.maintenance.badge}
               </span>
               <h2 className="font-display text-3xl font-extrabold tracking-tight md:text-4xl">
-                Routine <span className="text-primary">Maintenance</span>
+                {t.services.maintenance.headingPart1} <span className="text-primary">{t.services.maintenance.headingHighlight}</span>
               </h2>
               <p className="mx-auto mt-3 max-w-2xl text-muted">
-                Preventive care to keep your vehicle running at peak performance and avoid costly repairs.
+                {t.services.maintenance.description}
               </p>
             </div>
 

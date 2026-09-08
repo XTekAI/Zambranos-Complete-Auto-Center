@@ -4,8 +4,11 @@ import { motion } from 'motion/react';
 import { MapPin, Phone, Clock, Navigation } from 'lucide-react';
 import BusinessStatus from './BusinessStatus';
 import { BUSINESS, LINKS, HOURS } from '../lib/constants';
+import { useLanguage } from '../lib/i18n/LanguageContext';
 
 export default function ServiceArea() {
+  const { t, lang } = useLanguage();
+
   return (
     <section id="contact" className="bg-white py-24">
       <div className="mx-auto max-w-7xl px-6">
@@ -18,15 +21,17 @@ export default function ServiceArea() {
           >
             <span className="mb-4 inline-flex items-center gap-2 rounded-full bg-primary/10 px-4 py-1.5 text-xs font-bold uppercase tracking-wider text-primary">
               <MapPin className="h-4 w-4" />
-              Visit Our Shop
+              {t.home.serviceArea.badge}
             </span>
 
             <h2 className="font-display text-3xl font-extrabold tracking-tight text-dark md:text-4xl lg:text-5xl">
-              Serving <span className="text-primary">Trenton, Hamilton, Ewing</span> &amp; Surrounding Areas
+              {t.home.serviceArea.heading.prefix}{' '}
+              <span className="text-primary">{t.home.serviceArea.heading.places}</span>{' '}
+              {t.home.serviceArea.heading.suffix}
             </h2>
 
             <p className="mt-4 text-lg leading-relaxed text-muted">
-              Conveniently located on Hamilton Ave. We are your local experts for auto repair across Mercer County, including Hamilton and Ewing. Drop by or call today.
+              {t.home.serviceArea.description}
             </p>
 
             <div className="mt-8 space-y-4">
@@ -35,7 +40,7 @@ export default function ServiceArea() {
                   <Navigation className="h-5 w-5 text-primary" />
                 </div>
                 <div>
-                  <h3 className="font-display font-bold text-white">Location</h3>
+                  <h3 className="font-display font-bold text-white">{t.home.serviceArea.location.title}</h3>
                   <p className="text-sm text-white/60">{BUSINESS.address}</p>
                   <a
                     href={LINKS.google}
@@ -43,7 +48,7 @@ export default function ServiceArea() {
                     rel="noopener noreferrer"
                     className="mt-1 inline-block text-xs font-bold text-primary transition-colors hover:text-white cursor-pointer"
                   >
-                    Get Directions
+                    {t.home.serviceArea.location.getDirections}
                   </a>
                 </div>
               </div>
@@ -53,7 +58,7 @@ export default function ServiceArea() {
                   <Phone className="h-5 w-5 text-primary" />
                 </div>
                 <div>
-                  <h3 className="font-display font-bold text-white">Phone</h3>
+                  <h3 className="font-display font-bold text-white">{t.home.serviceArea.phone.title}</h3>
                   <a
                     href={BUSINESS.phoneTel}
                     className="text-lg font-bold text-white transition-colors hover:text-primary cursor-pointer"
@@ -69,14 +74,16 @@ export default function ServiceArea() {
                 </div>
                 <div className="w-full">
                   <div className="flex items-center justify-between">
-                    <h3 className="font-display font-bold text-white">Hours</h3>
-                    <BusinessStatus />
+                    <h3 className="font-display font-bold text-white">{t.home.serviceArea.hours.title}</h3>
+                    <BusinessStatus lang={lang} />
                   </div>
                   <ul className="mt-2 space-y-1 text-sm text-white/60">
                     {HOURS.map((h) => (
-                      <li key={h.day} className={`flex justify-between ${h.time === 'Closed' ? 'text-primary' : ''}`}>
-                        <span className={h.time === 'Closed' ? 'font-medium' : ''}>{h.day}</span>
-                        <span className={h.time === 'Closed' ? 'font-bold' : 'font-medium text-white'}>{h.time}</span>
+                      <li key={h.dayKey} className={`flex justify-between ${h.time === 'Closed' ? 'text-primary' : ''}`}>
+                        <span className={h.time === 'Closed' ? 'font-medium' : ''}>{t.common.hours[h.dayKey]}</span>
+                        <span className={h.time === 'Closed' ? 'font-bold' : 'font-medium text-white'}>
+                          {h.time === 'Closed' ? t.common.hours.closed : h.time}
+                        </span>
                       </li>
                     ))}
                   </ul>
@@ -100,7 +107,7 @@ export default function ServiceArea() {
               allowFullScreen
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"
-              title="Zambrano's Complete Auto Center location"
+              title={t.home.serviceArea.mapTitle}
               className="grayscale transition-all duration-500 hover:grayscale-0"
             />
           </motion.div>

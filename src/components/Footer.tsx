@@ -1,24 +1,10 @@
+'use client';
+
 import { Phone, MapPin, Facebook, Instagram, Twitter } from 'lucide-react';
 import Link from 'next/link';
 import { BUSINESS, LINKS } from '../lib/constants';
+import { useLanguage } from '../lib/i18n/LanguageContext';
 import Logo from './Logo';
-
-const quickLinks = [
-  { label: 'Home', href: '/' },
-  { label: 'Services', href: '/services' },
-  { label: 'About', href: '/about' },
-  { label: 'Commercial Fleet', href: '/#commercial' },
-  { label: 'Financing', href: '/financing' },
-];
-
-const serviceLinks = [
-  'Suspension Repair',
-  'Brake Services',
-  'Wheel Alignment',
-  'Tire Installation',
-  'Fleet Maintenance',
-  'AC Service',
-];
 
 const socials = [
   { icon: Facebook, href: LINKS.facebook, label: 'Facebook' },
@@ -27,6 +13,25 @@ const socials = [
 ];
 
 export default function Footer() {
+  const { t } = useLanguage();
+
+  const quickLinks = [
+    { label: t.common.footer.quickLinks.home, href: '/' },
+    { label: t.common.footer.quickLinks.services, href: '/services' },
+    { label: t.common.footer.quickLinks.about, href: '/about' },
+    { label: t.common.footer.quickLinks.commercial, href: '/#commercial' },
+    { label: t.common.footer.quickLinks.financing, href: '/financing' },
+  ];
+
+  const serviceLinks = [
+    t.common.footer.specialties.suspension,
+    t.common.footer.specialties.brakes,
+    t.common.footer.specialties.alignment,
+    t.common.footer.specialties.tires,
+    t.common.footer.specialties.fleet,
+    t.common.footer.specialties.ac,
+  ];
+
   return (
     <footer className="bg-dark text-white/50">
       <div className="mx-auto max-w-7xl px-6 py-16">
@@ -35,8 +40,7 @@ export default function Footer() {
           <div>
             <Logo className="mb-6" />
             <p className="mb-6 text-sm leading-relaxed">
-              Veteran-owned &amp; family operated auto repair serving Trenton since{' '}
-              {BUSINESS.established}. Specialists in suspension, brakes, tires &amp; commercial fleet services.
+              {t.common.footer.brandBlurb(BUSINESS.established)}
             </p>
             <div className="flex gap-3">
               {socials.map((s) => {
@@ -59,7 +63,7 @@ export default function Footer() {
 
           {/* Quick Links */}
           <div>
-            <h4 className="mb-4 text-sm font-bold uppercase tracking-wider text-white">Quick Links</h4>
+            <h4 className="mb-4 text-sm font-bold uppercase tracking-wider text-white">{t.common.footer.quickLinksTitle}</h4>
             <ul className="space-y-2 text-sm">
               {quickLinks.map((link) => (
                 <li key={link.label}>
@@ -73,7 +77,7 @@ export default function Footer() {
 
           {/* Services */}
           <div>
-            <h4 className="mb-4 text-sm font-bold uppercase tracking-wider text-white">Our Specialties</h4>
+            <h4 className="mb-4 text-sm font-bold uppercase tracking-wider text-white">{t.common.footer.specialtiesTitle}</h4>
             <ul className="space-y-2 text-sm">
               {serviceLinks.map((service) => (
                 <li key={service}>
@@ -87,7 +91,7 @@ export default function Footer() {
 
           {/* Contact */}
           <div>
-            <h4 className="mb-4 text-sm font-bold uppercase tracking-wider text-white">Contact Us</h4>
+            <h4 className="mb-4 text-sm font-bold uppercase tracking-wider text-white">{t.common.footer.contactTitle}</h4>
             <ul className="space-y-4 text-sm">
               <li className="flex items-start gap-3">
                 <MapPin className="mt-0.5 h-5 w-5 shrink-0 text-primary" />
@@ -106,18 +110,18 @@ export default function Footer() {
         </div>
 
         <div className="flex flex-col items-center justify-between gap-4 border-t border-white/10 pt-8 text-xs md:flex-row">
-          <p>&copy; {new Date().getFullYear()} {BUSINESS.name}. All rights reserved.</p>
+          <p>&copy; {new Date().getFullYear()} {BUSINESS.name}. {t.common.footer.rightsReserved}</p>
           <div className="flex items-center gap-4">
             <Link href="/privacy" className="text-white/40 transition-colors hover:text-primary">
-              Privacy Policy
+              {t.common.footer.privacyPolicy}
             </Link>
             <span className="text-white/20">·</span>
             <Link href="/terms" className="text-white/40 transition-colors hover:text-primary">
-              Terms of Service
+              {t.common.footer.termsOfService}
             </Link>
             <span className="text-white/20">·</span>
             <p className="text-white/30">
-              Website by{' '}
+              {t.common.footer.websiteBy}{' '}
               <a
                 href="https://www.xtekai.com/"
                 target="_blank"
