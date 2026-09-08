@@ -53,36 +53,37 @@ export default function Navbar() {
               <Star className="h-3 w-3 fill-yellow-500" />
               {BUSINESS.rating} {t.common.nav.googleRating}
             </a>
-            <LanguageToggle />
+            <div className="h-4 w-px bg-white/15" aria-hidden />
+            <LanguageToggle size="compact" />
           </div>
         </div>
       </div>
 
       {/* Main Navbar */}
       <nav className={`mx-auto transition-all duration-300 ease-in-out ${
-        isScrolled 
-        ? 'mt-4 max-w-4xl rounded-2xl border border-white/10 bg-dark/60 backdrop-blur-xl shadow-2xl' 
+        isScrolled
+        ? 'mt-4 max-w-5xl rounded-2xl border border-white/10 bg-dark/60 backdrop-blur-xl shadow-2xl'
         : 'max-w-7xl bg-dark/95'
       }`}>
         <div className={`mx-auto flex items-center justify-between px-6 transition-all duration-300 ${isScrolled ? 'py-3' : 'py-4'}`}>
-          <Logo />
+          <Logo className="shrink-0" />
 
           {/* Desktop Nav */}
-          <div className="hidden items-center gap-8 md:flex">
+          <div className="hidden items-center gap-5 lg:gap-7 md:flex">
             {NAV_LINKS.map((link) => (
               <Link
                 key={link.label}
                 href={link.href}
-                className="group flex items-center gap-1 text-sm font-bold text-white/70 transition-colors hover:text-white cursor-pointer"
+                className="group flex items-center gap-1 whitespace-nowrap text-sm font-bold text-white/70 transition-colors hover:text-white cursor-pointer"
               >
                 {link.label}
-                <ChevronRight className="h-3 w-3 opacity-0 transition-all group-hover:translate-x-0.5 group-hover:opacity-100" />
+                <ChevronRight className="h-3 w-3 shrink-0 opacity-0 transition-all group-hover:translate-x-0.5 group-hover:opacity-100" />
               </Link>
             ))}
             <AnimatedButton
               text={t.common.nav.schedule}
               href={LINKS.appointment}
-              className={`transition-all duration-300 ${isScrolled ? 'px-4 py-2 text-xs h-9' : 'px-5 py-2.5 text-sm h-11'}`}
+              className={`shrink-0 whitespace-nowrap transition-all duration-300 ${isScrolled ? 'px-4 py-2 text-xs h-9' : 'px-5 py-2.5 text-sm h-11'}`}
             />
           </div>
 
